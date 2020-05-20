@@ -1,0 +1,59 @@
+// 首页全部帖子列表的样式
+@list-item-img-size: 90px;
+@list-item-img-radius: .2rem;
+@list-item-title-font-size: 1.1rem;
+
+.list-items {
+    width: 100%;
+    height: auto;
+
+    .list-items-main {
+	display: flex;
+	
+	img {
+	    flex-grow: 0;
+	    border-radius: @list-item-img-radius;
+	    width: @list-item-img-size;
+	    height: @list-item-img-size;
+	    
+	}
+	.list-items-main-sorttext {
+	    flex-grow: 1;
+	    .list-items-main-sorttest-title {
+		display: flex;
+		justify-content: flex-start;
+		align-content: center;
+		font-size: @list-item-title-font-size;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	    }
+	    .list-items-main-sorttext-sort {
+		display: flex;
+		justify-content: flex-start;
+		align-content: center;
+		color: #212121;
+		font-size: .90rem;
+		text-overflow: -o-ellipsis-lastline;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 4;
+		-webkit-box-orient: vertical;
+	    }
+	}
+    }
+    .list-items-footer {
+	font-size: .86rem;
+	display: flex;
+	justify-content: flex-start;
+	.list-items-footer-user {
+	    color: #9d2933;
+	}
+	.list-items-footer-time {
+	    
+	}
+    }
+
+}
+

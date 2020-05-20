@@ -1,0 +1,21 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "description": "test for shang yue space 1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "hiredis": "^0.5.0",
+    "jsonwebtoken": "^8.5.1",
+    "less": "^3.11.1",
+    "nodemailer": "^6.4.6",
+    "qiniu": "^7.3.1",
+    "redis": "^3.0.2"
+  }
+}

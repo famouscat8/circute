@@ -1,0 +1,22 @@
+// 悬浮按钮样式
+@box-shadow: 0 0 3px rgba(0,0,0,.2);
+@darken-box-shadow: 0 0 3px rgba(0,0,0,.7);
+.btn-sendpost{
+    border-radius: 50%;		//圆形
+    background-image: url(../images/brush-alt.png);
+    background-repeat: no-repeat;
+    background-size: 28px 28px;
+    background-position: center center;
+    background-color: #ff0000;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    left: 96%;
+    top: 90%;
+    transform: translate(-50%, -50%);
+    box-shadow: @box-shadow;
+    &:hover {
+	box-shadow: @darken-box-shadow;
+    }
+}
