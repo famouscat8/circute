@@ -88,4 +88,3 @@ getUploadToken("token")
 	console.log("post.js something error:");
     });
 
-
