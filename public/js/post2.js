@@ -43,32 +43,50 @@ $(()=>{
     });
     //testeditor.fullscreen();
 });
+
+// 发布帖子的函数
+function sendPost(){
+    var index_layer=layer.load(1,{shade:[0.1,"#fff"]});
+    var token = localStorage.getItem("token");
+    var localtime=new Date().getTime();
+    var tags=$(".input-tags").val().split(" ");
+    var title=$(".input-title").val();
+    var markdown=testeditor.getMarkdown();
+    var post={
+	title:title,
+	time:localtime,
+	content:markdown,
+	tags:tags,
+    };
+    $.ajax({
+	type:"POST",
+	contentType:"application/json;charset=UTF-8",
+	url:"/sendpost",
+	data:JSON.stringify({token:token,post:post}),
+	success:r=>{
+	    console.dir(r);
+	    layer.close(index_layer);
+	    layer.msg("发布成功");
+	},
+	error:e=>{
+	    console.dir(e);
+	    layer.close(index_layer);
+	    layer.msg("发布失败");
+	}
+    })
+    
+}
+
 var title=localStorage.getItem("spost_title");
 $(".input-title").val(title);
 
 $(".btn-float").click(()=>{
     layer.confirm("确认发布这个帖子吗?",
 		  {btn:["发布","取消"]},
-		  ()=>{layer.msg("发布失败，哈哈哈");},
+		  ()=>{sendPost();},
 		  ()=>{layer.msg("取消成功，哈哈哈");});
 });
 
-
-var token = localStorage.getItem("token");
-var post={title:"第一个帖子",time:"10min ago",content:"haha",
-	  tags:["haha","jiejie","aaaaa"]};
-$.ajax({
-    type:"POST",
-    contentType:"application/json;charset=UTF-8",
-    url:"/sendpost",
-    data:JSON.stringify({token:token,post:post}),
-    success:r=>{
-	console.dir(r);
-    },
-    error:e=>{
-	console.dir(e);
-    }
-})
 
 
 

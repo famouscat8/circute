@@ -44,16 +44,30 @@ function savePost(post,res,ownid){
 		    owner:"userid:"+ownid,
 		    content:"content:"+postid,
 		    comment:"comment:"+postid,
-		    start:"1000",
-		    share:"1000",
-		    tags:JSON.stringify(post.tags)};
+		    start:"0",
+		    collect:"0",
+		    view:"0",
+		    share:"0",
+		    time:t_post.time,
+		    tags:JSON.stringify(t_post.tags)};
 		
 		dbtools.hmset("post:"+postid,postobject)
-		    .then(r=>{
-			res.json({state:"1",e:null});
-		    }).catch(e=>{res.json({state:"-1",e:e})});
-	    }).catch(e=>{res.json({state:"-1",e:e})});
-	}).catch(e=>{res.json({state:"-1",e:e})});
+		  .then(r=>{
+		      // 帖子内容对象
+		      var conobject={
+			  title:t_post.title,
+			  content:t_post.content};
+		      dbtools.hmset("content:"+postid,
+		           conobject).then(r=>{res.json({
+				state:"1",e:null,});
+				}).catch(e=>{res.json({
+				    state:"-1",e:e,m:"error0"
+				});});
+		  }).catch(e=>{res.json({state:"-1",e:e,
+					 m:"error1"})});
+	    }).catch(e=>{res.json({state:"-1",e:e,
+				   m:"error2"})});
+	}).catch(e=>{res.json({state:"-1",e:e,m:"error3"})});
     }
 }
 
