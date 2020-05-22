@@ -1,11 +1,11 @@
 var testeditor;
 
-$(function(){
+$(()=>{
     testeditor = editormd("editor", {
 	placeholder:
 	"本编辑器支持markdown编辑，左边编写，右边预览",
-	width: "100%",
-	height: 765,
+	width: "80%",
+	height: 500,
 	//syncScrolling: "single",
 	path: "js/libs/editor.md/lib/",
 	// theme:"dark",
@@ -39,16 +39,36 @@ $(function(){
 		    "preformatted-text","code-block","table","datetime",
 		    "emoji","html-entities","pagebreak","|","goto-line",
 		    "watch","preview","fullscreen","search","|","help","info"];
-	    //return editormd.toolbarModes["simple"];
 	},
-	// 全屏
-	
-	// onfullscreenexit: ()={},
     });
-    testeditor.fullscreen();
+    //testeditor.fullscreen();
+});
+var title=localStorage.getItem("spost_title");
+$(".input-title").val(title);
+
+$(".btn-float").click(()=>{
+    layer.confirm("确认发布这个帖子吗?",
+		  {btn:["发布","取消"]},
+		  ()=>{layer.msg("发布失败，哈哈哈");},
+		  ()=>{layer.msg("取消成功，哈哈哈");});
 });
 
 
+var token = localStorage.getItem("token");
+var post={title:"第一个帖子",time:"10min ago",content:"haha",
+	  tags:["haha","jiejie","aaaaa"]};
+$.ajax({
+    type:"POST",
+    contentType:"application/json;charset=UTF-8",
+    url:"/sendpost",
+    data:JSON.stringify({token:token,post:post}),
+    success:r=>{
+	console.dir(r);
+    },
+    error:e=>{
+	console.dir(e);
+    }
+})
 
 
 

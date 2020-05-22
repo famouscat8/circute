@@ -1,7 +1,7 @@
 // 首页帖子列表item布局
 
 .list-items {
-    height: 150px;
+    height: 120px;
     display:flex;
     flex-direction:row;
     overflow: hidden;
@@ -10,7 +10,10 @@
     justify-content: flex-start;
     
     .list-items-conner{
+	cursor:pointer;
 	img{
+	    width:120px;
+	    height:120px;
 	    border-radius: .3rem;
 	}
     }
@@ -21,12 +24,18 @@
 	flex-direction: column;
 	//p 帖子标题
 	.list-items-title{
+	    cursor:pointer;
 	    flex-grow: 2;
 	    display: flex;
 	    align-items: center;
+	    font-weight: 600;
+	    font-size:1.2rem;
+	    color: #333333;
 	}
 	//p 部分帖子内容
 	.list-items-post{
+	    cursor:pointer;
+	    color: #663366;
 	    flex-grow: 9;
 	}
 	// div 作者信息

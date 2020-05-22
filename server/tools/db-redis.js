@@ -99,7 +99,14 @@ async function get(key){
 	})
     })
 }
-
+async function incrby(key, num){
+    return new Promise((resolve, reject)=>{
+	redisClient.incrby(key,num,(err,re)=>{
+	    if(err)reject(err)
+	    resolve(re)
+	})
+    })
+}
 module.exports = {
     redisClient,
     setItem,
@@ -110,5 +117,6 @@ module.exports = {
     hmset,
     hmget,
     exists,
-    get
+    get,
+    incrby,
 }

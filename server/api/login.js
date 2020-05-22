@@ -25,9 +25,11 @@ router.post("/login",(req, res)=>{
 			// 登录成功
 			if(login_data.pass == user.psd){
 			    // 要生成的token主题信息
-			    let content = {email:user.email};
+			    let content = {uid:uid};
 			    token_tool.create(content,
-					      {expiresIn:3600})
+					      {
+						  expiresIn:3600,
+					      })
 				.then(token=>{
 				    res.json({state: "1",
 					      user: user,
@@ -41,6 +43,7 @@ router.post("/login",(req, res)=>{
 					      e:"create token error"});
 				    console.log(
 					"login.js:create token error");
+				    console.dir(e);
 				});
 			} else {
 			    console.log(user.psd);

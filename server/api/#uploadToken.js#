@@ -17,6 +17,7 @@ router.post("/uploadtoken", (req, res)=>{
     if(!userinfo || !userinfo.usertoken)
 	res.json({state:"-1",e:"error userinfo"});
     res.json({state:"1",uploadtoken:uploadTok
+
 	      en});
     console.log("test for my test"+uploadToken);
 })

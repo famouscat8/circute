@@ -8,11 +8,7 @@ var secret = token_secret;
 async function verify(token, token_secret){
     return new Promise((resolve, reject)=>{
 	jwt.verify(token, token_secret, (err, decode)=>{
-	    if(err){
-		console.log("token is here: " + token);
-		console.log("error: "+ err);
-		reject(err);
-	    } 
+	    if(err) reject(err); 
 	    resolve(decode)
 	})
     })

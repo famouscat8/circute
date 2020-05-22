@@ -2,3 +2,71 @@
   padding: 0;
   margin: 0;
 }
+.main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  padding: 10px;
+}
+.main .mhead {
+  width: 80%;
+  transform: translateX(12%);
+  margin-bottom: 1rem;
+}
+.main .mhead .tips .tips-head {
+  color: #ff6666;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.main .mhead .tips .tips-content {
+  color: #666666;
+  font-size: 0.9rem;
+}
+.main .mhead .input-container {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 30%;
+}
+.main .mhead .input-container input {
+  margin-bottom: 0.3rem;
+  border: #ff6666 1px solid;
+  border-radius: 3px;
+  outline: none;
+  padding: 0.5rem 1rem;
+}
+.main .mhead .input-container .input-title {
+  color: #666666;
+  font-size: 1rem;
+}
+.main .mhead .input-container .input-tags {
+  padding: 0.3rem 1rem;
+  color: #666666;
+}
+.main .float-view {
+  z-index: 100;
+  position: fixed;
+  top: 88%;
+  left: 90%;
+  transform: translate(-50%, -50%);
+}
+.main .float-view .btn-float {
+  outline: none;
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 500;
+  border-radius: 50%;
+  background: #ff6666;
+  border: #ff6666 1px solid;
+  width: 68px;
+  height: 68px;
+  transition-duration: 0.3s;
+}
+.main .float-view .btn-float:hover {
+  color: #ff6666;
+  background: #ffffff;
+}

@@ -1,12 +1,9 @@
 <!--编辑发布帖子的界面 -->
-
 <!DOCTYPE html>
 <html>
   <head>
     <title>发布帖子</title>
-
     <meta charset="utf-8">
-    
     <link rel="icon" href="images/favicon.ico"
 	  mce_href="images/favicon.ico"
 	  type="image/x-icon">
@@ -16,16 +13,39 @@
 	  href="js/libs/editor.md/css/editormd.css">
     <link rel="stylesheet"
 	  href="css/post/post.css">
-    
-    <script type="text/javascript"
-	    src="js/libs/jquery.js">
-    </script>
+    <script src="js/libs/jquery.js"></script>
+    <script src="js/libs/layer/layer.js"></script>
   </head>
-  
   <body>
-    <div class="editor" id="editor">
-      <textarea>### Hello Editor.md!</textarea>
+    
+    <div class="main">
+      <div class="float-view">
+	<button class="btn-float">完成</button>
+      </div>
+      
+      <div class="mhead">
+	<p class="tips">
+	  <span class="tips-head">Tips:</span>
+	  <span class="tips-content">
+	    MarkDown编辑器内按F11可进入全屏模式编辑
+	  </span>
+	</p>
+	<div class="input-container">
+	  <input type="text"
+		 class="input-title"
+		 placeholder="帖子标题">
+	  <input type="text"
+		 class="input-tags"
+		 placeholder="输入标签,空格分开">
+
+	</div>
+      </div>
+      
+      <div class="editor" id="editor">
+	<textarea>## 开始创作</textarea>
+      </div>
     </div>
+
     <script type="text/javascript"
 	    src="js/libs/editor.md/editormd.min.js">
     </script>

@@ -11,7 +11,8 @@ const login= require("./server/api/login")
 const uploadToken = require("./server/api/uploadToken")
 const token_tools = require("./server/tools/token_tools")
 const verifytoken = require("./server/api/verifytoken")
-
+// api 用户上传帖子
+const sendpost    = require("./server/api/sendpost")
 const bodyparser = require("body-parser")
 
 app.use(bodyparser.urlencoded({extende:true}));
@@ -46,7 +47,7 @@ app.get("/mail", mail)
 app.post("/login", login)
 app.post("/uploadtoken",uploadToken)
 app.post("/verifytoken", verifytoken.router)
-
+app.post("/sendpost", sendpost)
 app.get("/test", (req, res) =>res.send("haha :)"))
 app.get("/login.html", (req, res)=>{
     res.sendFile("/root/test/web/html/login.html");
