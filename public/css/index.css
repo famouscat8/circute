@@ -453,6 +453,10 @@
   cursor: pointer;
   color: #663366;
   flex-grow: 9;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .list-items .list-items-content .list-items-user {
   font-weight: 549;

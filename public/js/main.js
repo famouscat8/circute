@@ -86,27 +86,8 @@
 		console.dir(e);
 	    }
 	});
-	// 模拟数据
-	var data = [
-	    {
-		post_img:"https://s1.ax1x.com/2020/05/21/Yqlgp9.jpg",
-		post_title:"量子计算机新突破，量子计算机离我们还有多远?",
-		post_username:"澎湃新闻",
-		post_time:"10分钟前",
-		post_sort:"量子计算机伴随量子技术而出现，不论是美国还是我们国家，都在不断地探索量子计算机地新发展。可以预见......"
-	    },{
-		post_img:"https://s1.ax1x.com/2020/05/21/Yq1lcR.jpg",
-		post_title:"登封测极|因天气原因，珠峰高程测量登山队决定回撤休整",
-		post_username:"famouscat",
-		post_time:"1小时前",
-		post_sort:"5月21h日上午，珠穆朗玛峰大本营......"
-	    },{
-		post_img:"https://s1.ax1x.com/2020/05/21/Yqlgp9.jpg",
-		post_title:"量子计算机新突破，量子计算机离我们还有多远?",
-		post_username:"澎湃新闻",
-		post_time:"10分钟前",
-		post_sort:"量子计算机伴随量子技术而出现，不论是美国还是我们国家，都在不断地探索量子计算机地新发展。可以预见......"
-	    }];
+		       
+		       
     })
     
 })()
