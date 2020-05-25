@@ -28,6 +28,11 @@ $(()=>{
 	flowChart:true,
 	// 时序图支持 默认关闭
 	sequenceDiagram:true,
+	// 图片上传成功后的处理
+	onload:()=>{
+	    console.log("test");
+	},
+	
 	// 自定义工具栏
 	toolbarIcons: function(){
 	    return ["undo","redo","|","bold",
@@ -66,7 +71,12 @@ function sendPost(){
 	success:r=>{
 	    console.dir(r);
 	    layer.close(index_layer);
-	    layer.msg("发布成功");
+	    if(r.state=="1"){
+		layer.msg("发布成功");
+		window.location="http://192.168.0.111:3000/";
+	    }else{
+		layer.msg("发布失败");
+	    }
 	},
 	error:e=>{
 	    console.dir(e);

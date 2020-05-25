@@ -3,8 +3,6 @@ const router=express.Router()
 const dbtools=require("../tools/db-redis")
 const utoken=require("../tools/token_tools")
 
-
-
 // 发布帖子api
 // 数据格式{token:usertoken;post:postobject};
 router.post("/sendpost",(req,res)=>{
@@ -12,13 +10,11 @@ router.post("/sendpost",(req,res)=>{
     utoken.verify(token,utoken.secret)
 	.then(decode=>{
 	    
-	    
 	    console.log("api:/sendpost:verify token success"
 			+decode);
 	    console.dir(decode);
 	    var uid=decode.uid;
 	    savePost(req.body.post, res, uid);
-//	    res.json({state:"1",decode:decode,e:null})
 	}).catch(e=>{
 	    console.log("api:/sendpost:verify token error"+e);
 	    res.json({state:"-1",e:e});
@@ -26,8 +22,9 @@ router.post("/sendpost",(req,res)=>{
     
 })
 
-
 // 帖子总数,先读取帖子总数,作为id,然后postnum马上加一
+// 使用帖子的创建时间作为score维护一个postisd字段
+// 里面包含所有的帖子id，并且以时间排列
 // save post object on redis
 // post object:{title:"",time:"",content:"",tags:[],}
 function savePost(post,res,ownid){
@@ -41,7 +38,7 @@ function savePost(post,res,ownid){
 	    dbtools.incrby("postnum",1).then(r=>{
 		// the object will save on redis;
 		var postobject={
-		    owner:"userid:"+ownid,
+		    owner:"user:"+ownid,
 		    content:"content:"+postid,
 		    comment:"comment:"+postid,
 		    start:"0",
@@ -58,8 +55,22 @@ function savePost(post,res,ownid){
 			  title:t_post.title,
 			  content:t_post.content};
 		      dbtools.hmset("content:"+postid,
-		           conobject).then(r=>{res.json({
-				state:"1",e:null,});
+				    conobject).then(r=>{
+					// res.json({
+					//     state:"1",e:null,});
+					
+					
+	dbtools.zadd("post:"+postid,t_post.time,"postids")
+					    .then(r=>{
+		res.json({state:"1",e:null,r:r});
+					    })
+					    .catch(e=>{
+						res.json({state:"-1",e:e});
+					    });
+					
+					
+					
+					
 				}).catch(e=>{res.json({
 				    state:"-1",e:e,m:"error0"
 				});});

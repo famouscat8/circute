@@ -16,12 +16,17 @@
 	    // html dom 操作工具
 	    "dom":"modules/tools/dom",
 	    "localdb":"modules/tools/localdb",
+	    "tools":"modules/tools/tools",
+	    "viewtools":"modules/tools/viewtools",
 	}
     })
     var deps = ["jquery", "signup","layer",
-		"u_manager","dom","localdb"];
+		"u_manager","dom","localdb",
+		"tools","viewtools"];
     // 初始化界面(首页初始化)
-    requirejs(deps,($,signup,layer,u_m,dom,localdb)=>{
+    requirejs(deps,($,signup,layer,
+		    u_m,dom,localdb,tools,
+		   viewtools)=>{
 	// 判断用户token是否有效
 	var token=u_m.getToken();
 	console.log("token:"+token);
@@ -62,10 +67,25 @@
 		layer.msg("标题保存失败:" +e.e)
 	    });
 	});
-	// window.history.go();
-	// window.history.back();
-	// window.history.forward();
 	
+	// 从服务器获取帖子
+	$.ajax({
+	    type:"POST",
+	    contentType:"application/json;charset=UTF-8",
+	    url:"/post",
+	    data:JSON.stringify({page:1,pagesize:10,}),
+	    success:re=>{
+		console.log("main.js>post:/post");
+		console.dir(re);
+		if(re.state=="1")
+		    viewtools.item1(re.posts,dom,tools);
+		
+		console.dir(re.posts);
+	    },error:e=>{
+		console.log("main.js>post:/post");
+		console.dir(e);
+	    }
+	});
 	// 模拟数据
 	var data = [
 	    {
@@ -87,49 +107,6 @@
 		post_time:"10分钟前",
 		post_sort:"量子计算机伴随量子技术而出现，不论是美国还是我们国家，都在不断地探索量子计算机地新发展。可以预见......"
 	    }];
-	
-	var card_main=
-	    document.getElementsByClassName("card-main")[0];
-	
-	for(var i=0;i<data.length;i++){
-	    // 以下创建父容器
-	    var main=dom.div("list-items");
-	    //main.style.background="#"+i*2+"f0000";
-	    card_main.appendChild(main);
-	    
-	    // 创建左边图片容器 list-items-container
-	    var imgcontainer=dom.div("list-items-conner");
-	    var img=dom.img("list-items-img");
-	    imgcontainer.appendChild(img);
-	    main.appendChild(imgcontainer);
-	    
-	    // 右边帖子信息
-	    var postcent=dom.div("list-items-content");
-	    // postcent.style.background="#ffff00";
-	    main.appendChild(postcent);
-	    var title=dom.p("list-items-title");
-	    //title.innerHTML="[&nbsp;精品&nbsp;]&nbsp;TITLE For My TEST";
-	    postcent.appendChild(title);
-	    var sort=dom.p("list-items-post");
-	    postcent.appendChild(sort);
-	    var user=dom.div("list-items-user");
-	    postcent.appendChild(user);
-	    var username=dom.p("list-items-username");
-	    //username.innerText="famouscat";
-	    user.appendChild(username);
-	    var postime=dom.p("list-items-postime");
-	    user.appendChild(postime);
-	    var line=
-		dom.p("hr-list-items b-m-top-05rem b-m-bottom-1rem");
-	    card_main.appendChild(line);
-	    
-	    img.src=data[i].post_img;                           
-	    title.innerText=data[i].post_title;                                   
-	    sort.innerText=data[i].post_sort;
-	    username.innerText=data[i].post_username;                                 
-	    postime.innerHTML="&nbsp;&bull;&nbsp;"+data[i].post_time;
-
-	}
     })
     
 })()

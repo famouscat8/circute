@@ -8,7 +8,6 @@ var qiniu = require("qiniu");
 var qiniu_tools = require("../tools/qiniu");
 
 var options = {scope: "circute",};
-console.log("tyest");
 router.post("/uploadtoken", (req, res)=>{
     var uploadToken = qiniu_tools.uploadToken(options);
     var userinfo = req.body;
