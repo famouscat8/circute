@@ -39,6 +39,7 @@ $(()=>{
 		console.dir(err);
 	    },complete(res){
 		console.dir(res);
+		console.log(res.fileUrl);
 	    }
 	};
 	var config={
@@ -67,6 +68,27 @@ $(()=>{
 	    var subscription=observable.subscribe(observer);
 	})
     }
+    
+    function tenxuncos(file){
+	var cos=new COS({
+	    SecretId:"AKIDoOhjRKiKErPhiSsB6l8KFtGPIuGKp2bt",
+	    SecretKey:"HH2WikW3QZS7VcF9pTggQVO0MUK6KHxM",
+	});
+	cos.putObject({
+	    Bucket:"circute-1259491699",
+	    Region:"ap-guangzhou",
+	    Key:"test",
+	    StorageClass:"STANDARD",
+	    Body:file,
+	    onProgress:progressData=>{
+		console.dir(progressData);
+	    }
+	},(err,data)=>{
+	    console.dir(err);
+	    console.dir(data);
+	})
+    }
+    
     // 生成代码片段c，插入markdown
     function uploadUrlCallback(data){
 	var url=data.hash;
@@ -181,10 +203,12 @@ $(()=>{
 		// uploadConfig包含上传文件所需的参数,uploadUrlCallback是
 		// 上传成功后的回调函数，用于将生成代码片段插入markdown
 		//ajaxUpload(uploadConfig,files,uploadUrlCallback);
-		qiniuUpload(files[0],files[0].name,
-			    uploadConfig.uploadtoken,
-			    uploadUrlCallback);
+		// qiniuUpload(files[0],files[0].name,
+		// 	    uploadConfig.uploadtoken,
+		// 	    uploadUrlCallback);
+		tenxuncos(files[0]);
 	    }
+	    
 	    
 	},
 	

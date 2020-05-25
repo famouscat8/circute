@@ -7,8 +7,14 @@ var qiniu = require("qiniu");
 // 返回七牛的token
 var qiniu_tools = require("../tools/qiniu");
 
-var options = {scope: "circute",};
-
+var callbackBody={fname:"$(fname)",
+		  hash:"$(etag)",
+		  uid:"$(uid)"};
+//http://49.232.164.187/t_qiniucallback
+// var options = {scope: "circute",
+// 	       callbackUrl:"http://49.232.164.187/t_qiniucallback",
+// 	       callbackBody:JSON.stringify(callbackBody)};
+var options = {scope: "circute"};
 // 客户端吧请求uploadtoken
 // 将返回客户端上传文件到七牛云所需的参数
 router.post("/uploadtoken", (req, res)=>{
