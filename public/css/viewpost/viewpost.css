@@ -172,6 +172,98 @@ ul {
 :root {
   font-size: 15px;
 }
+main {
+  padding: 1rem 2rem;
+  display: grid;
+  grid-template-rows: 100%;
+  grid-column-gap: 1.3rem;
+  grid-template-columns: 26% 69%;
+}
+main .middle #test-editormd {
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+}
+.leftsight .user {
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 266px;
+  padding-bottom: 1rem;
+}
+.leftsight .user .usercontainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.leftsight .user .usercontainer .useravatar {
+  width: 69px;
+  height: 69px;
+  padding: 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.leftsight .user .usercontainer .useravatar .avatar {
+  border: 1px red solid;
+  border-radius: 50%;
+  width: 67px;
+  height: 67px;
+}
+.leftsight .user .usercontainer .usermessage {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.leftsight .user .usercontainer .usermessage .userqu {
+  flex-grow: 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.leftsight .user .usercontainer .usermessage .userqu .username {
+  color: #000000;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+.leftsight .user .usercontainer .usermessage .userqu .usersign {
+  font-weight: 500;
+  color: #666666;
+  font-size: 0.9rem;
+}
+.leftsight .user .usercontainer .usermessage .userstar {
+  min-height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 2;
+  background: green;
+}
+.postmessage {
+  margin-top: 1rem;
+  padding: 1rem;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  height: 266px;
+  display: flex;
+  flex-direction: column;
+}
+.postmessage .titlecontainer {
+  flex-grow: 1;
+}
+.postmessage .titlecontainer p {
+  font-weight: 700;
+  color: #999999;
+  font-size: 1.25rem;
+}
+.postmessage .message {
+  flex-grow: 10;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  color: #999999;
+  font-size: 0.9rem;
+  font-weight: 300;
+}
 * {
   padding: 0;
   margin: 0;
@@ -180,15 +272,4 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-}
-body main {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
-}
-body main #test-editormd {
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
-  margin-top: 10px;
-  width: 56%;
 }

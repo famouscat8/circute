@@ -1,0 +1,31 @@
+@import url(../theme/theme.less);
+
+
+.postmessage{
+    margin-top:1rem;
+    padding: 1rem;
+    box-shadow:@shadow01;
+    height: 266px;
+    display:flex;
+    flex-direction: column;
+
+    .titlecontainer{
+	flex-grow:1;
+	p{
+	    font-weight: 700;
+	    color: @grey;
+	    font-size:1.25rem;
+	}
+    }
+    
+    .message{
+	flex-grow: 10;
+	display:flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	color: @grey;
+	font-size:.9rem;
+	font-weight: 300;
+    }
+
+}

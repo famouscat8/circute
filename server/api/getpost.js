@@ -13,19 +13,24 @@ router.post("/getpost",(req,res)=>{
     }
     dbtools.hgetall("post:"+s_data.pid)
 	.then(data=>{
-	    var pcontentid=data.content;
-	    dbtools.hgetall(pcontentid)
-		.then(content=>{
-		    data.content=content;
+	    var pcontentid  =data.content;
+	    var userid      =data.owner;
+	    //var comment
+	    var content_data=dbtools.hgetall(pcontentid);
+	    var user_data   =dbtools.hgetall(userid);
+	    Promise.all([user_data,content_data]).then(
+		values=>{
+		    data.owner=values[0];
+		    data.content=values[1];
 		    res.json({state:"1",e:null,post:data});
-		}).catch(e=>{
-		    res.json({state:"-1",e:e,post:null});
-		});
+		},reason=>{
+		    res.json({state:"-1",e:reason,post:null});
+		}
+	    );
 	}).catch(e=>{
 	    res.json({state:"-1",e:e,post:null});
 	})
+    
 })
-
-
 
 module.exports=router

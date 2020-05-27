@@ -1,0 +1,63 @@
+@import url(../theme/theme.less);
+
+.leftsight{
+    .user{
+	box-shadow:@shadow01;
+	display: flex;
+	justify-content:center;
+	align-items:flex-end;
+	height: 266px;
+	padding-bottom:1rem;
+	.usercontainer{
+	    width: 100%;
+	    display:flex;
+	    flex-direction:row;
+	    .useravatar{
+		width: 69px;
+		height: 69px;
+		padding: .6rem;
+		display: flex;
+		align-items: center;
+		justify-content:center;
+		.avatar{
+		    border: 1px red solid;
+		    border-radius: 50%;
+		    width: 67px;
+		    height: 67px;
+		}
+	    }
+	    .usermessage{
+		display:flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		.userqu{
+		    flex-grow: 4;
+		    display: flex;
+		    flex-direction: column;
+		    justify-content: center;
+		    align-items: flex-start;
+		    .username{
+			color: #000000;
+			font-weight: 600;
+			font-size: 1.2rem;
+			
+		    }
+		    .usersign{
+			font-weight: 500;
+			color: #666666;
+			font-size: .9rem;
+		    }
+		}
+		.userstar{
+		    min-height: 30px;
+		    display: flex;
+		    justify-content:center;
+		    align-items: center;
+		    flex-grow: 2;
+		    background: green;
+		}
+	    }
+	    
+	}
+    }
+}

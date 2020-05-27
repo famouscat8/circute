@@ -10,3 +10,5 @@ cos.getService((err,data)=>{
     console.dir(data);
     console.log(data && data.Buckets);
 })
+
+
