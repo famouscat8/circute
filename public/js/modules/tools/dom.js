@@ -17,6 +17,11 @@ define(()=>{
 	a.className=c_name;
 	return a;
     }
+    function a(c_name){
+	var a=document.createElement("a");
+	a.className=c_name;
+	return a;
+    }
 
     function p(c_name){
 	var a=document.createElement("p");
@@ -37,6 +42,8 @@ define(()=>{
 
 
     return {
-	div,span,p,h1,img,li,
+	div,span,p,
+	h1,img,li,
+	a,
     }
 })

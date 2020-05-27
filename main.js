@@ -5,19 +5,24 @@ const app = express();
 const port = 3000;
 
 const indexRouter = require("./server/routers/index")
-const mail = require("./server/api/signup")
-const login= require("./server/api/login")
+const mail        = require("./server/api/signup")
+const login       = require("./server/api/login")
 // 返回qiniu云uploadToken
 const uploadToken = require("./server/api/uploadToken")
 const token_tools = require("./server/tools/token_tools")
 const verifytoken = require("./server/api/verifytoken")
 // api 用户上传帖子
 const sendpost    = require("./server/api/sendpost")
-// api 用户获取帖子
-const getpost     = require("./server/api/post")
+// api 返回帖子列表
+const post        = require("./server/api/post")
+// api 返回某条帖子
+const getpost     = require("./server/api/getpost")
 // api tenxunyun temple token 
 const sts         = require("./server/api/sts")
-const bodyparser = require("body-parser")
+// api 向客户端返回帖子
+const viewpost    = require("./server/api/viewpost")
+const bodyparser  = require("body-parser")
+
 
 app.use(bodyparser.urlencoded({extende:true}));
 app.use(bodyparser.json())
@@ -52,13 +57,15 @@ app.post("/login", login)
 app.post("/uploadtoken",uploadToken)
 app.post("/verifytoken", verifytoken.router)
 app.post("/sendpost", sendpost)
-app.post("/post",getpost)
+app.post("/post",post)
 app.post("/sts",sts)
-
+app.post("/getpost",getpost)
+app.get("/viewpost.html",viewpost)
 app.get("/test", (req, res) =>res.send("haha :)"))
 app.get("/login.html", (req, res)=>{
     res.sendFile("/root/test/web/html/login.html");
 })
+
 app.get("/post.html", (req, res)=>{
     res.sendFile("/root/test/web/html/post.html");
 })

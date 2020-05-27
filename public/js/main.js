@@ -78,7 +78,7 @@
 		console.log("main.js>post:/post");
 		console.dir(re);
 		if(re.state=="1")
-		    viewtools.item1(re.posts,dom,tools);
+		    viewtools.item1(re.posts,dom,tools,$);
 		
 		console.dir(re.posts);
 	    },error:e=>{

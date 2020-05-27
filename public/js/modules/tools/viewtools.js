@@ -1,5 +1,5 @@
 define(()=>{
-    function item1(posts,dom,tools){
+    function item1(posts,dom,tools,$){
 	var card_main=document.
 	    getElementsByClassName("card-main")[0];
 	for(var i=0;i<posts.length;i++){
@@ -15,9 +15,9 @@ define(()=>{
 	    // 右边帖子信息
 	    var postcent=dom.div("list-items-content");
 	    main.appendChild(postcent);
-	    var title=dom.p("list-items-title");
+	    var title=dom.a("list-items-title");
 	    postcent.appendChild(title);
-	    var sort=dom.p("list-items-post");
+	    var sort=dom.a("list-items-post");
 	    postcent.appendChild(sort);
 	    var user=dom.div("list-items-user");
 	    postcent.appendChild(user);
@@ -25,22 +25,26 @@ define(()=>{
 	    user.appendChild(username);
 	    var postime=dom.p("list-items-postime");
 	    user.appendChild(postime);
-	    var line=dom.p("hr-list-items b-m-top-05rem b-m-bottom-1rem");
-	    card_main.appendChild(line);
+	    var line=dom.
+		p("hr-list-items b-m-top-05rem b-m-bottom-1rem");
 	    
+	    card_main.appendChild(line);
 	    //img.src=posts[i].post_img;                           
 	    console.dir(posts);
-	    title.innerText=posts[i].content.title;                                   
+	    title.innerText=posts[i].content.title;
+            title.href=
+		location.href+"viewpost.html?pid="+posts[i].pid;     
 	    sort.innerText=posts[i].content.content;
-	    username.innerText=posts[i].owner.username;                                 
+	    username.innerText=posts[i].owner.username;
 	    postime.innerHTML="&nbsp;&bull;&nbsp;"+
 		tools.getDateDiff(posts[i].time);
-	    console.dir(posts);
+	    
 
 	}
 
 	
     };
-    return {item1,
-	   }
+    return {
+	item1,
+    }
 })

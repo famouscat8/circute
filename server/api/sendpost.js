@@ -39,12 +39,13 @@ function savePost(post,res,ownid){
 		// the object will save on redis;
 		var postobject={
 		    owner:"user:"+ownid,
+		    pid:""+pid,
 		    content:"content:"+postid,
 		    comment:"comment:"+postid,
-		    start:"0",
-		    collect:"0",
-		    view:"0",
-		    share:"0",
+		    start:0,
+		    collect:0,
+		    view:0,
+		    share:0,
 		    time:t_post.time,
 		    tags:JSON.stringify(t_post.tags)};
 		
