@@ -15,6 +15,8 @@ const verifytoken = require("./server/api/verifytoken")
 const sendpost    = require("./server/api/sendpost")
 // api 用户获取帖子
 const getpost     = require("./server/api/post")
+// api tenxunyun temple token 
+const sts         = require("./server/api/sts")
 const bodyparser = require("body-parser")
 
 app.use(bodyparser.urlencoded({extende:true}));
@@ -51,6 +53,7 @@ app.post("/uploadtoken",uploadToken)
 app.post("/verifytoken", verifytoken.router)
 app.post("/sendpost", sendpost)
 app.post("/post",getpost)
+app.post("/sts",sts)
 
 app.get("/test", (req, res) =>res.send("haha :)"))
 app.get("/login.html", (req, res)=>{
