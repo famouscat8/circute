@@ -8,9 +8,10 @@
 	  mce_href="images/favicon.ico"
 	  type="images/x-icon"/>
     <link rel="stylesheet"
-	  href="js/libs/editor.md/css/editormd.css"/>
+	  href="css/viewpost/viewpost.css"
+	  type="text/css"/>
     <link rel="stylesheet"
-	  href="css/viewpost.css"/>
+    	  href="js/libs/editor.md/css/editormd.css"/>
     <script src="js/libs/jquery.js"></script>
     <script src="js/lib/marked.min.js"></script>
     <script src="js/lib/prettify.min.js"></script>
@@ -22,8 +23,48 @@
     
   </head>
   <body>
-    <div id="test-editormd">
-    </div>
+    <header>
+      <a href='' class="logo">CIRCUTE</a>
+      <div class="logo-rightside">
+	<ul class="links">
+	  <li><a href="">首页</a></li>
+	  <li><a href="wenku.html"
+		 class="btn-tools-wenku">百度文库下载</a></li>
+	  <li><a href=""
+		 class="btn-more-tools">小工具</a></li>
+	</ul>
+	<div class="login">
+	  <a href="login.html"
+	     class="btn-login">登录</a>
+	  <a href="javascript:void(0);"
+	     class="btn-signup">注册</a>
+	  <div class="user">
+	    <p class="username"></p>
+	    <img src="images/test.ico"
+		 alt="useravatar"
+		 class="useravatar"/>
+	    <div class="user-cover">
+	      <div class="user-cover-header">
+		<p class="user-cover-username"></p>
+	      </div>
+	      <div class="user-cover-footer">
+		<a href="javascript:void(0);"
+		   class="btn-settings">
+		  个人设置</a>
+		
+		<a href="javascript:void(0);"
+		   class="btn-logout">
+		  退出登录</a>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+      </div>
+    </header>
+    <main class="mmain">
+      <div id="test-editormd">
+      </div>
+    </main>
     <script src="js/viewpost.js"></script>
   </body>
   

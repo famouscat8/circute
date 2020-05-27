@@ -1,3 +1,4 @@
+@import url(theme/theme.less);
 * {
     margin: 0;
     padding: 0;
@@ -7,15 +8,15 @@
 // color for text which has been selected!
 ::selection {
     color: #fff;
-    background: #9d2933;
+    background: @selectedColor;
 }
 ::-moz-selection {
     color: #fff;
-    background: #9d2933;    
+    background: @selectedColor;    
 }
 ::-webkit-selection {
     color: #fff;
-    background: #9d2933;
+    background: @selectedColor;
 }
 a {
     text-decoration: none;

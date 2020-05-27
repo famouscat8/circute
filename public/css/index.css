@@ -489,7 +489,7 @@ header .logo-rightside {
 header .logo-rightside .links {
   display: flex;
   align-items: center;
-  flex-grow: 1;
+  flex-grow: 2;
 }
 header .logo-rightside .links li {
   margin-right: 1.2rem;
