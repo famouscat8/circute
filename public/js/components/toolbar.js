@@ -44,10 +44,9 @@ class ToolBar extends HTMLElement{
 	this.appendChild(tem.content.cloneNode(true));
 	var userManager = new UserManager();
 	var token       = userManager.getToken();
-
 	
 	userManager.verifyToken(token,$).then(data=>{
-	    var user=getUser();
+	    var user=userManager.getUser();
 	    $(".btn-login").fadeOut();
 	    $(".btn-signup").fadeOut();
 	    $(".user").fadeIn();
@@ -57,7 +56,7 @@ class ToolBar extends HTMLElement{
 	    $(".user-cover-header")
 		.css("background-image","url("+user.uimg+")");
 	    $(".btn-logout").click(()=>{
-		if(delUM()==1)location.reload();
+		if(userManager.delUM()==1)location.reload();
 	    });
 	    $(".btn-settings").click(()=>{
 		layer.msg("个人中心");
@@ -72,9 +71,7 @@ class ToolBar extends HTMLElement{
 
 	});
 	
-    
     }
 }
 
     window.customElements.define('tool-bar', ToolBar);
-

@@ -53,6 +53,7 @@ header .logo-rightside .login .btn-signup {
   margin: 0.3rem;
   padding: 0.1rem 0.3rem;
   transition-duration: 0.3s;
+  display: none;
 }
 header .logo-rightside .login .btn-login:hover,
 header .logo-rightside .login .btn-signup:hover {
@@ -78,12 +79,12 @@ header .logo-rightside .login .user .useravatar {
   width: 33px;
   height: 33px;
   border-radius: 50%;
-  border: solid 1px #9d2933;
+  border: 1px #9d2933 solid;
 }
 header .logo-rightside .login .user .user-cover {
   visibility: hidden;
   opacity: 0;
-  transition: 0.3s;
+  transition: 0.1s;
   background: #fff;
   box-shadow: 0 0 3px #3f3f3f;
   position: absolute;
@@ -135,7 +136,7 @@ header .logo-rightside .login .user .user-cover .user-cover-footer a {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  transition-duration: 0.3s;
+  transition-duration: 0.16s;
 }
 header .logo-rightside .login .user .user-cover .user-cover-footer a:hover {
   background: #9d2933;
@@ -182,7 +183,11 @@ main {
 main .middle #test-editormd {
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
 }
-.leftsight .user {
+.leftsight .puser {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
@@ -190,12 +195,12 @@ main .middle #test-editormd {
   height: 266px;
   padding-bottom: 1rem;
 }
-.leftsight .user .usercontainer {
+.leftsight .puser .usercontainer {
   width: 100%;
   display: flex;
   flex-direction: row;
 }
-.leftsight .user .usercontainer .useravatar {
+.leftsight .puser .usercontainer .useravatar {
   width: 69px;
   height: 69px;
   padding: 0.6rem;
@@ -203,35 +208,35 @@ main .middle #test-editormd {
   align-items: center;
   justify-content: center;
 }
-.leftsight .user .usercontainer .useravatar .avatar {
+.leftsight .puser .usercontainer .useravatar .avatar {
   border: 1px red solid;
   border-radius: 50%;
   width: 67px;
   height: 67px;
 }
-.leftsight .user .usercontainer .usermessage {
+.leftsight .puser .usercontainer .usermessage {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
 }
-.leftsight .user .usercontainer .usermessage .userqu {
+.leftsight .puser .usercontainer .usermessage .userqu {
   flex-grow: 4;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
 }
-.leftsight .user .usercontainer .usermessage .userqu .pusername {
+.leftsight .puser .usercontainer .usermessage .userqu .pusername {
   color: #000000;
   font-weight: 600;
   font-size: 1.2rem;
 }
-.leftsight .user .usercontainer .usermessage .userqu .usersign {
+.leftsight .puser .usercontainer .usermessage .userqu .usersign {
   font-weight: 500;
   color: #666666;
   font-size: 0.9rem;
 }
-.leftsight .user .usercontainer .usermessage .userstar {
+.leftsight .puser .usercontainer .usermessage .userstar {
   min-height: 25px;
   display: flex;
   justify-content: flex-start;

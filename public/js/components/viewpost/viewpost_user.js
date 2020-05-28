@@ -1,5 +1,5 @@
 const tem2 = document.createElement('template');
-tem2.innerHTML=`<div class="user" id="user">
+tem2.innerHTML=`<div class="puser" id="user">
 	  <div class="usercontainer" id="container">
 	    <div class="useravatar" id="useravatar">
 	      <img class="avatar" id="avatar"/>

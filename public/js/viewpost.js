@@ -8,7 +8,9 @@ $(()=>{
     var avatar=avatar_data=>{
 	$(".avatar").attr("src",avatar_data.avatarurl);
 	$(".pusername").html(avatar_data.nickname);
-	$(".user").attr("background",avatar_data.uimg);
+	$(".puser").css("background-image",
+		       "url("+avatar_data.uimg+")");
+	
     };
     var show=post_data=>{
 	var testeditor = editormd.markdownToHTML("test-editormd",{
