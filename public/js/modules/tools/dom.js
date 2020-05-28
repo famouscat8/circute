@@ -1,49 +1,44 @@
-// 操作html dom的javascript工具
-define(()=>{
+class Dom {
+    constructor(){}
+    
     // input class name and return li
-    function li(c_name){
+    li(c_name){
 	var a=document.createElement("li");
 	a.className=c_name;
 	return a;
     }
-    function img(c_name){
+    img(c_name){
 	var a=document.createElement("img");
 	a.className=c_name;
 	return a;
     }
 
-    function h1(c_name){
+     h1(c_name){
 	var a=document.createElement("h1");
 	a.className=c_name;
 	return a;
     }
-    function a(c_name){
+     a(c_name){
 	var a=document.createElement("a");
 	a.className=c_name;
 	return a;
     }
 
-    function p(c_name){
+     p(c_name){
 	var a=document.createElement("p");
 	a.className=c_name;
 	return a;
     }
 
-    function span(c_name){
+     span(c_name){
 	var a=document.createElement("span");
 	a.className=c_name;
 	return a;
     }
-    function div(c_name){
+     div(c_name){
 	var a=document.createElement("div");
 	a.className=c_name;
 	return a;
     }
 
-
-    return {
-	div,span,p,
-	h1,img,li,
-	a,
-    }
-})
+}

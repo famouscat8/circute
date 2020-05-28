@@ -1,7 +1,10 @@
+class Tools {
+    constructor(){
+	
+    }
 
-define(()=>{
     // 输入时间戳，返回人性化的时间显示
-    function getDateDiff(dataTimeStamp){
+    getDateDiff(dataTimeStamp){
 	var result="";
 	var minute= 1000 * 60;
 	var hour  = minute * 60;
@@ -22,6 +25,7 @@ define(()=>{
 	else if(minC>=1)result=""+parseInt(minC)+"分钟前";
 	else result="刚刚";
 	return result;
-    };
-    return {getDateDiff,}
-})
+    
+    }
+
+}

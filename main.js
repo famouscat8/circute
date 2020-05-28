@@ -23,10 +23,8 @@ const sts         = require("./server/api/sts")
 const viewpost    = require("./server/api/viewpost")
 const bodyparser  = require("body-parser")
 
-
-app.use(bodyparser.urlencoded({extende:true}));
+app.use(bodyparser.urlencoded({extende:true}))
 app.use(bodyparser.json())
-
 
 var verify_token = (req, res, next)=>{
     
@@ -48,6 +46,7 @@ var verify_token = (req, res, next)=>{
 	
     }
 }
+
 app.use(verify_token)
 // 挂载静态资源
 app.use(express.static("public"))
@@ -72,7 +71,6 @@ app.get("/post.html", (req, res)=>{
 app.get("/wenku.html",(red,res)=>{
     res.sendFile("/root/test/web/html/tools/wenku.html");
 })
-
 
 app.listen(port,()=>{
     console.log(`Example app listening on port ${port}!`);

@@ -1,8 +1,15 @@
-define(()=>{
-    function item1(posts,dom,tools,$){
+// 渲染界面类
+class ViewTools {
+    constructor(){}
+
+    // 渲染帖子
+    // @param: post_data
+    // @param: dom: create view
+    // @param: tools: can return new time
+    item1(post_data,dom,tools,$){
 	var card_main=document.
 	    getElementsByClassName("card-main")[0];
-	for(var i=0;i<posts.length;i++){
+	for(var i=0;i<post_data.length;i++){
 	    // 以下创建父容器
 	    var main=dom.div("list-items");
 	    //main.style.background="#"+i*2+"f0000";
@@ -29,22 +36,17 @@ define(()=>{
 		p("hr-list-items b-m-top-05rem b-m-bottom-1rem");
 	    
 	    card_main.appendChild(line);
-	    //img.src=posts[i].post_img;                           
-	    console.dir(posts);
-	    title.innerText=posts[i].content.title;
-            title.href=
-		location.href+"viewpost.html?pid="+posts[i].pid;     
-	    sort.innerText=posts[i].content.content;
-	    username.innerText=posts[i].owner.username;
+	    //img.src=post_data[i].post_img; 
+	    title.innerText=post_data[i].content.title;
+	    
+            title.href=location.href+
+		"viewpost.html?pid="+post_data[i].pid;     
+	    sort.innerText=post_data[i].content.content;
+	    username.innerText=post_data[i].owner.username;
 	    postime.innerHTML="&nbsp;&bull;&nbsp;"+
-		tools.getDateDiff(posts[i].time);
+		tools.getDateDiff(post_data[i].time);
 	    
 
 	}
-
-	
-    };
-    return {
-	item1,
     }
-})
+}

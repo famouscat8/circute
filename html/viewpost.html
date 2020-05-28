@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <!-- the view to scan post  -->
+
 <html lang="cn">
   <head>
     <title>查看贴子</title>
@@ -15,71 +16,21 @@
     <script src="js/libs/jquery.js"></script>
     <script src="js/lib/marked.min.js"></script>
     <script src="js/lib/prettify.min.js"></script>
-    <script src="js/lib/raphael.min.js"></script>
     <script src="js/lib/underscore.min.js"></script>
+    <script src="js/lib/raphael.min.js"></script>
     <script src="js/lib/sequence-diagram.min.js"></script>
     <script src="js/lib/flowchart.min.js"></script>
     <script src="js/libs/editor.md/editormd.min.js"></script>
+    <script src="js/modules/tools/usermanager.js"></script>
     
   </head>
   <body>
-    <header>
-      <a href='' class="logo">CIRCUTE</a>
-      <div class="logo-rightside">
-	<ul class="links">
-	  <li><a href="">首页</a></li>
-	  <li><a href="wenku.html"
-		 class="btn-tools-wenku">百度文库下载</a></li>
-	  <li><a href=""
-		 class="btn-more-tools">小工具</a></li>
-	</ul>
-	<div class="login">
-	  <a href="login.html"
-	     class="btn-login">登录</a>
-	  <a href="javascript:void(0);"
-	     class="btn-signup">注册</a>
-	  <div class="user">
-	    <p class="username"></p>
-	    <img src="images/test.ico"
-		 alt="useravatar"
-		 class="useravatar"/>
-	    <div class="user-cover">
-	      <div class="user-cover-header">
-		<p class="user-cover-username"></p>
-	      </div>
-	      <div class="user-cover-footer">
-		<a href="javascript:void(0);"
-		   class="btn-settings">
-		  个人设置</a>
-		
-		<a href="javascript:void(0);"
-		   class="btn-logout">
-		  退出登录</a>
-	      </div>
-	    </div>
-	  </div>
-	</div>
-      </div>
-    </header>
-    
+    <tool-bar></tool-bar>
+      
     <main class="mmain">
       <div class="leftsight">
 	<!-- 显示用户信息 -->
-	<div class="user" id="user">
-	  <div class="usercontainer" id="container">
-	    <div class="useravatar" id="useravatar">
-	      <img class="avatar" id="avatar"/>
-	    </div>
-	    <div class="usermessage" id="usermessage">
-	      <div class="userqu" id="userqu">
-		<p class="username">FAMOUSCAT</p>
-		<p class="usersign">我想带一人回云深不知处</p>
-	      </div>
-	      <div class="usersatr" id="userstar">just for test</div>
-	    </div>
-	  </div>
-	</div>
-	
+	<viewpost-user></viewpost-user>
 	<!-- 显示帖子信息 -->
 	<div class="postmessage"
 	     id="postmessage">
@@ -95,9 +46,9 @@
 	</div>
       </div>
     </main>
-    
+    <script src="js/components/toolbar.js"></script>
+    <script src="js/components/viewpost/viewpost_user.js"></script>
     <script src="js/viewpost.js"></script>
-    
   </body>
   
 </html>

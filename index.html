@@ -11,10 +11,6 @@
     <link rel="stylesheet"
     	  href="js/libs/layer/theme/default/layer.css"
 	  type="text/css">
-
-    <script data-main="js/main"
-	    src="js/libs/requirejs.js">
-    </script>
     
   </head>
   <body>
@@ -33,45 +29,45 @@
       <button class="startfunny-start"
 	      >开始创作</button>
     </div>
-    
-    <header>
-      <a href='' class="logo">CIRCUTE</a>
-      <div class="logo-rightside">
-	<ul class="links">
-	  <li><a href="">首页</a></li>
-	  <li><a href="wenku.html"
-		 class="btn-tools-wenku">百度文库下载</a></li>
-	  <li><a href=""
-		 class="btn-more-tools">小工具</a></li>
-	</ul>
-	<div class="login">
-	  <a href="login.html"
-	     class="btn-login">登录</a>
-	  <a href="javascript:void(0);"
-	     class="btn-signup">注册</a>
-	  <div class="user">
-	    <p class="username"></p>
-	    <img src="images/test.ico"
-		 alt="useravatar"
-		 class="useravatar"/>
-	    <div class="user-cover">
-	      <div class="user-cover-header">
-		<p class="user-cover-username"></p>
-	      </div>
-	      <div class="user-cover-footer">
-		<a href="javascript:void(0);"
-		   class="btn-settings">
-		  个人设置</a>
+    <tool-bar></tool-bar>    
+    <!-- <header> -->
+    <!--   <a href='' class="logo">CIRCUTE</a> -->
+    <!--   <div class="logo-rightside"> -->
+    <!-- 	<ul class="links"> -->
+    <!-- 	  <li><a href="">首页</a></li> -->
+    <!-- 	  <li><a href="wenku.html" -->
+    <!-- 		 class="btn-tools-wenku">百度文库下载</a></li> -->
+    <!-- 	  <li><a href="" -->
+    <!-- 		 class="btn-more-tools">小工具</a></li> -->
+    <!-- 	</ul> -->
+    <!-- 	<div class="login"> -->
+    <!-- 	  <a href="login.html" -->
+    <!-- 	     class="btn-login">登录</a> -->
+    <!-- 	  <a href="javascript:void(0);" -->
+    <!-- 	     class="btn-signup">注册</a> -->
+    <!-- 	  <div class="user"> -->
+    <!-- 	    <p class="username"></p> -->
+    <!-- 	    <img src="images/test.ico" -->
+    <!-- 		 alt="useravatar" -->
+    <!-- 		 class="useravatar"/> -->
+    <!-- 	    <div class="user-cover"> -->
+    <!-- 	      <div class="user-cover-header"> -->
+    <!-- 		<p class="user-cover-username"></p> -->
+    <!-- 	      </div> -->
+    <!-- 	      <div class="user-cover-footer"> -->
+    <!-- 		<a href="javascript:void(0);" -->
+    <!-- 		   class="btn-settings"> -->
+    <!-- 		  个人设置</a> -->
 		
-		<a href="javascript:void(0);"
-		   class="btn-logout">
-		  退出登录</a>
-	      </div>
-	    </div>
-	  </div>
-	</div>
-      </div>
-    </header>
+    <!-- 		<a href="javascript:void(0);" -->
+    <!-- 		   class="btn-logout"> -->
+    <!-- 		  退出登录</a> -->
+    <!-- 	      </div> -->
+    <!-- 	    </div> -->
+    <!-- 	  </div> -->
+    <!-- 	</div> -->
+    <!--   </div> -->
+    <!-- </header> -->
 
 
 
@@ -95,8 +91,16 @@
     <footer>
       famouscat 版权所有 @copyright 2020-
     </footer>
-    <script type="text/javascript" src="js/online_tool.js">
-    </script>
+    <script type="text/javascript" src="js/online_tool.js"></script>
+    <script src="js/libs/jquery.js"></script>
+    <script src="js/libs/layer/layer.js"></script>
+    <script src="js/modules/tools/dom.js"></script>
+    <script src="js/modules/tools/tools.js"></script>
+    <script src="js/modules/tools/localdb.js"></script>
+    <script src="js/modules/tools/viewtools.js"></script>
+    <script src="js/modules/tools/usermanager.js"></script>
+    <script src="js/components/toolbar.js"></script>
+    <script src="js/main.js"></script>
 
     </body>
   </html>

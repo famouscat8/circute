@@ -180,10 +180,10 @@ main {
   grid-template-columns: 26% 69%;
 }
 main .middle #test-editormd {
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
 }
 .leftsight .user {
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -221,7 +221,7 @@ main .middle #test-editormd {
   justify-content: center;
   align-items: flex-start;
 }
-.leftsight .user .usercontainer .usermessage .userqu .username {
+.leftsight .user .usercontainer .usermessage .userqu .pusername {
   color: #000000;
   font-weight: 600;
   font-size: 1.2rem;
@@ -232,17 +232,16 @@ main .middle #test-editormd {
   font-size: 0.9rem;
 }
 .leftsight .user .usercontainer .usermessage .userstar {
-  min-height: 30px;
+  min-height: 25px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-grow: 2;
-  background: green;
 }
 .postmessage {
   margin-top: 1rem;
   padding: 1rem;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
   height: 266px;
   display: flex;
   flex-direction: column;

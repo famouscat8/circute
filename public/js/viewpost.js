@@ -1,18 +1,15 @@
 $(()=>{
-
-
     // 错误处理函数
     var errorshow=error=>{
 	
     }
-    
+	
     // 处理用户信息
     var avatar=avatar_data=>{
 	$(".avatar").attr("src",avatar_data.avatarurl);
-	$(".username").html(avatar_data.nickname);
+	$(".pusername").html(avatar_data.nickname);
 	$(".user").attr("background",avatar_data.uimg);
     };
-    
     var show=post_data=>{
 	var testeditor = editormd.markdownToHTML("test-editormd",{
 	    markdown: post_data,
@@ -57,5 +54,4 @@ $(()=>{
     })
     
 })
-
 

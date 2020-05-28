@@ -520,6 +520,7 @@ header .logo-rightside .login .btn-signup {
   margin: 0.3rem;
   padding: 0.1rem 0.3rem;
   transition-duration: 0.3s;
+  display: none;
 }
 header .logo-rightside .login .btn-login:hover,
 header .logo-rightside .login .btn-signup:hover {
@@ -545,12 +546,12 @@ header .logo-rightside .login .user .useravatar {
   width: 33px;
   height: 33px;
   border-radius: 50%;
-  border: solid 1px #9d2933;
+  border: 1px #9d2933 solid;
 }
 header .logo-rightside .login .user .user-cover {
   visibility: hidden;
   opacity: 0;
-  transition: 0.3s;
+  transition: 0.1s;
   background: #fff;
   box-shadow: 0 0 3px #3f3f3f;
   position: absolute;
@@ -602,7 +603,7 @@ header .logo-rightside .login .user .user-cover .user-cover-footer a {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  transition-duration: 0.3s;
+  transition-duration: 0.16s;
 }
 header .logo-rightside .login .user .user-cover .user-cover-footer a:hover {
   background: #9d2933;

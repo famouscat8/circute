@@ -1,26 +1,19 @@
-@header-height: 60px;
-@header-padding: 0 5%;
-@header-box-shadow: 0 0 3px rgba(0,0,0,.5);
-@header-logo-font-size: 1.5rem;
-@header-logo-textcolot: #000;
-@theme-color-right: #9d2933;
-
+@import url(theme/theme.less);
 
 header {
-    height: @header-height;
-    padding: @header-padding;
+    height: @toolbar-height;
+    padding: @toolbar-padding;
     display: flex;
     flex-direction: row;
     align-items: center;
-    box-shadow: @header-box-shadow;
+    box-shadow: @toolbar-shadow;
     
     .logo {
-	color: @header-logo-textcolot;
-	font-size: @header-logo-font-size;
-	font-weight: bold;
-	
+	color: @logo-color;
+	font-size: @logo-font-size;
+	font-weight: @logo-font-weight;
 	&:hover {
-	    color: #999;
+	    color: @logo-hover-color;
 	}
     }
     
@@ -39,10 +32,10 @@ header {
 		    transition-duration:.5s;
 		    font-weight: 500;
 		    font-size: 1.2rem;
-		    color: #666666;
+		    color: @grey02;
 		}
 		&:hover a {
-		    color: @theme-color-right;
+		    color:@theme-color-light;
 		}
 	    }
 	    
@@ -58,14 +51,14 @@ header {
 		align-items: center;
 		font-size: .9rem;
 		border-radius: .3rem;
-		border: solid 1px @theme-color-right;
-		color: @theme-color-right;
+		border: solid 1px @theme-color-light;
+		color: @theme-color-light;
 		margin: .3rem;
 		padding: .1rem .3rem;
 		transition-duration: .3s;
-		
+		display:none;
 		&:hover{
-		    background: @theme-color-right;
+		    background: @theme-color-light;
 		    color: #fff;
 		}
 	    }
@@ -89,15 +82,14 @@ header {
 		    width: 33px;
 		    height: 33px;
 		    border-radius: 50%;
-		    border: solid 1px #9d2933;
+		    border: @avatar-border;
 		}
 		.user-cover {
 		    visibility: hidden;
 		    opacity: 0;
-		    
-		    transition: .3s;
+		    transition: .1s;
 		    background: #fff;
-		    box-shadow: 0 0 3px #3f3f3f;
+		    box-shadow: @shadow03;
 		    position: absolute;
 		    border-radius: 6px;
 		    top: 0px;
@@ -146,9 +138,9 @@ header {
 			    display: flex;
 			    justify-content: flex-start;
 			    align-items: center;
-			    transition-duration: .3s;
+			    transition-duration: .16s;
 			    &:hover {
-				background: #9d2933;
+				background: @theme-color-light;
 				color: #fff;
 			    }
 			}
