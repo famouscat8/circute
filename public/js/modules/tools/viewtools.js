@@ -36,7 +36,10 @@ class ViewTools {
 		p("hr-list-items b-m-top-05rem b-m-bottom-1rem");
 	    
 	    card_main.appendChild(line);
-	    //img.src=post_data[i].post_img; 
+	    if(post_data[i].imgs){
+		var imgsArray=JSON.parse(post_data[i].imgs);
+		img.src=imgsArray[0];
+	    }
 	    title.innerText=post_data[i].content.title;
 	    
             title.href=location.href+
@@ -46,7 +49,6 @@ class ViewTools {
 	    postime.innerHTML="&nbsp;&bull;&nbsp;"+
 		tools.getDateDiff(post_data[i].time);
 	    
-
 	}
     }
 }

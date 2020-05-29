@@ -1,7 +1,8 @@
 // 首页帖子列表item布局
+@import url(theme/theme.less);
 
 .list-items {
-    height: 120px;
+    height: @item1-height;
     display:flex;
     flex-direction:row;
     overflow: hidden;
@@ -12,8 +13,9 @@
     .list-items-conner{
 	cursor:pointer;
 	img{
-	    width:120px;
-	    height:120px;
+	    object-fit: cover;
+	    width:@item1-height;
+	    height:@item1-height;
 	    border-radius: .3rem;
 	}
     }
@@ -28,14 +30,14 @@
 	    flex-grow: 2;
 	    display: flex;
 	    align-items: center;
-	    font-weight: 600;
+	    font-weight: @item1-title-fontweight;
 	    font-size:1.2rem;
-	    color: #333333;
+	    color: @item1-title-color;
 	}
 	//p 部分帖子内容
 	.list-items-post{
 	    cursor:pointer;
-	    color: #663366;
+	    color: @item1-sorttext-color;
 	    flex-grow: 9;
 	    display:-webkit-box;
 	    -webkit-line-clamp:3;
@@ -47,7 +49,7 @@
 	    font-weight: 549;
 	    display: flex;
 	    flex-grow: 1;
-	    color:#663366;
+	    color:@item1-username-color;
 	    align-items: center;
 	    
 	}

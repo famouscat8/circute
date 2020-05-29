@@ -39,28 +39,27 @@ async function getposts(t_posts){
 // {page:int;}
 router.post("/post",(req,res)=>{
     var reqdata=req.body;
-    dbtools.zrange("postids",0,-1)
-	.then(obj=>{
-	    getposts(obj).then(post_obj=>{
-		res.json(
-		    {state:"1",
-		     posts:post_obj,
-		     e:null,
-		     m:null});
-	    }).catch(e=>{
-		res.json(
-		    {state:"-1",
-		     posts:null,
-		     e:e,
-		     m:"error1"});
-	    });
+    dbtools.zrange("postids",0,-1).then(obj=>{
+	getposts(obj).then(post_obj=>{
+	    res.json({
+		state:"1",
+		posts:post_obj,
+		e:null,
+		m:null});
 	}).catch(e=>{
-	    res.json(
-		{state:"-1",
-		 posts:null,
-		 e:e,
-		 m:"error1"});
-	})
+	    res.json({
+		state:"-1",
+		posts:null,
+		e:e,
+		m:"error1"});
+	});
+    }).catch(e=>{
+	res.json({
+	    state:"-1",
+	    posts:null,
+	    e:e,
+	    m:"error1"});
+    })
 })
 
 module.exports = router;

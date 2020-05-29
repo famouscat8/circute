@@ -430,6 +430,7 @@
   cursor: pointer;
 }
 .list-items .list-items-conner img {
+  object-fit: cover;
   width: 120px;
   height: 120px;
   border-radius: 0.3rem;
@@ -451,7 +452,7 @@
 }
 .list-items .list-items-content .list-items-post {
   cursor: pointer;
-  color: #663366;
+  color: #443322;
   flex-grow: 9;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -462,7 +463,7 @@
   font-weight: 549;
   display: flex;
   flex-grow: 1;
-  color: #663366;
+  color: #443322;
   align-items: center;
 }
 header {

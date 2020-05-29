@@ -47,7 +47,9 @@ function savePost(post,res,ownid){
 		    view:0,
 		    share:0,
 		    time:t_post.time,
-		    tags:JSON.stringify(t_post.tags)};
+		    tags:JSON.stringify(t_post.tags),
+		    imgs:JSON.stringify(t_post.imgs),
+		};
 		
 		dbtools.hmset("post:"+postid,postobject)
 		  .then(r=>{
@@ -57,9 +59,6 @@ function savePost(post,res,ownid){
 			  content:t_post.content};
 		      dbtools.hmset("content:"+postid,
 				    conobject).then(r=>{
-					// res.json({
-					//     state:"1",e:null,});
-					
 					
 	dbtools.zadd("post:"+postid,t_post.time,"postids")
 					    .then(r=>{

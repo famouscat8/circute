@@ -1,5 +1,11 @@
+// 发布帖子界面
+
 var testeditor;
+var imgs = [];
+
 $(()=>{
+    
+    
     var edmdtoolbarIcons=()=>{
 	return ["undo","redo",
 		"|","bold",
@@ -31,7 +37,7 @@ $(()=>{
 		tenxuncos(files[0], uploadUrlCallback);
 	    }
     };
-
+    
     function sts(){
 	return new Promise((resolve,reject)=>{
 	    $.ajax({
@@ -48,48 +54,27 @@ $(()=>{
 	})
     }
 
-
-
-    function test (tmpkeys,file,callback){
-	var cos=new COS({
-	    getAuthorization:(options,call)=>{
-		call({
-		    TmpSecretKey:tmpkeys.credentials.tmpSecretKey,
-		    TmpSecretId:tmpkeys.credentials.tmpSecretId,
-		    XCosSecurityToken:
-		    tmpkeys.credentials.sessionToken,
-		    StartTime:tmpkeys.startTime,
-		    ExpiredTime:tmpkeys.expiredTime,
-		});
-	    }
-	});
-	
-	var Bucket="circute2-1259491699";
-	var Region="ap-beijing";
-	cos.putObject({
-	    Bucket:Bucket,
-	    Region:Region,
-	    Key:file.name+"",
-	    Body:file,
-	    onProgress:progressData=>{
-		console.dir(progressData);
-	    }
-	},(err,data)=>{
-	    console.log("test test test");
-	    console.dir(err);
-	    console.dir(data);
-	    if(!err)
-		cos.getObjectUrl({
-		    Bucket:Bucket,
-		    Region:Region,
-		    Key:file.name+"",
-		    Sign:false,
-		},(err,data)=>{
-		    console.dir(err);
-		    console.dir(data);
-		    if(!err)callback(data.Url);
-		})
-	})
+    function test1(tmpkeys,file,call){
+	var loading_index=layer.load(1,{shade:[0.1,"#fff"]});
+	var mycos = new MyCOS(tmpkeys);
+	// proData:
+	// {loaded:int, total:int,speed:float,precent: float}
+	function progress(proData){
+	    console.log("post2.js->pro");
+	    console.dir(proData);
+	};
+	// data: {Location:url, statusCode: int}
+	// err : {}
+	function callback(err, data){
+	    layer.close(loading_index);
+	    if(err)layer.msg(JSON.stringify(err));
+	    else{
+		var url = "https://" + data.Location;
+		call(url);	
+		imgs.push(url);
+	    } 
+	};
+	mycos.putObject(file,callback,progress);
     }
 
     
@@ -99,8 +84,9 @@ $(()=>{
     function tenxuncos(file,callback){
 	sts().then(tmpkeys=>{
 	    console.dir(tmpkeys);
-	    test(tmpkeys,file,callback);
+	    test1(tmpkeys,file,callback);
 	}).catch(err=>{
+	    console.log("post2.js-> create cos token error");
 	    console.dir(err);
 	})
     }
@@ -120,9 +106,11 @@ $(()=>{
 	    cm.setCursor(cursor.line,cursor.ch+2);
 	    return;
 	}
+	
 	// 以下是对图片上传结果的处理，应用原image-load插件的代码
 	var altAttr=(alt!=="")?"\""+alt+"\"":"";
-	if(link===""||link==="http://") cm.replaceSelection("!["+alt+"]("+url+altAttr+")");
+	if(link===""||link==="http://")
+	    cm.replaceSelection("!["+alt+"]("+url+altAttr+")");
 	else cm.replaceSelection("!["+alt+"]("+url+altAttr+")");
 	if(alt==="")cm.setCursor(cursor.line,cursor.ch+2);
     }
@@ -152,7 +140,7 @@ $(()=>{
 });
 
 // 发布帖子的函数
-function sendPost(t_editor){
+function sendPost(t_editor,t_imgs){
     var index_layer=layer.load(1,{shade:[0.1,"#fff"]});
     var token = localStorage.getItem("token");
     var localtime=new Date().getTime();
@@ -164,14 +152,15 @@ function sendPost(t_editor){
 	time:localtime,
 	content:markdown,
 	tags:tags,
+	imgs:t_imgs,
     };
+    
     $.ajax({
 	type:"POST",
 	contentType:"application/json;charset=UTF-8",
 	url:"/sendpost",
 	data:JSON.stringify({token:token,post:post}),
 	success:r=>{
-	    console.dir(r);
 	    layer.close(index_layer);
 	    if(r.state=="1"){
 		layer.msg("发布成功");
@@ -194,7 +183,7 @@ $(".input-title").val(title);
 $(".btn-float").click(()=>{
     layer.confirm("确认发布这个帖子吗?",
 		  {btn:["发布","取消"]},
-		  ()=>{sendPost(testeditor);},
+		  ()=>{sendPost(testeditor,imgs);},
 		  ()=>{layer.msg("取消成功，哈哈哈");});
 });
 
