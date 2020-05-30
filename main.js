@@ -68,10 +68,12 @@ app.get("/login.html", (req, res)=>{
 app.get("/post.html", (req, res)=>{
     res.sendFile("/root/test/web/html/post.html");
 })
-app.get("/wenku.html",(red,res)=>{
+app.get("/wenku.html",(req,res)=>{
     res.sendFile("/root/test/web/html/tools/wenku.html");
 })
-
+app.get("/user.html",(req,res)=>{
+    res.sendFile("/root/test/web/html/user.html");
+})
 app.listen(port,()=>{
     console.log(`Example app listening on port ${port}!`);
 })

@@ -25,7 +25,7 @@ tem.innerHTML=`<header>
 		<p class="user-cover-username"></p>
 	      </div>
 	      <div class="user-cover-footer">
-		<a href="javascript:void(0);"
+		<a href="user.html"
 		   class="btn-settings">
 		  个人设置</a>
 		<a href="javascript:void(0);"
@@ -37,6 +37,7 @@ tem.innerHTML=`<header>
 	</div>
       </div>
     </header>`;
+
 
 class ToolBar extends HTMLElement{
     constructor(){
@@ -59,7 +60,6 @@ class ToolBar extends HTMLElement{
 		if(userManager.delUM()==1)location.reload();
 	    });
 	    $(".btn-settings").click(()=>{
-		layer.msg("个人中心");
 	    });
 	    
 	}).catch(e=>{

@@ -1,0 +1,279 @@
+header {
+  height: 60px;
+  padding: 0 5%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+header .logo {
+  color: #000;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+header .logo:hover {
+  color: #999;
+}
+header .logo-rightside {
+  margin-left: 1rem;
+  display: flex;
+  flex-grow: 1;
+}
+header .logo-rightside .links {
+  display: flex;
+  align-items: center;
+  flex-grow: 2;
+}
+header .logo-rightside .links li {
+  margin-right: 1.2rem;
+}
+header .logo-rightside .links li a {
+  transition-duration: 0.5s;
+  font-weight: 500;
+  font-size: 1.2rem;
+  color: #666666;
+}
+header .logo-rightside .links li:hover a {
+  color: #9d2933;
+}
+header .logo-rightside .login {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 0;
+}
+header .logo-rightside .login .btn-login,
+header .logo-rightside .login .btn-signup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9rem;
+  border-radius: 0.3rem;
+  border: solid 1px #9d2933;
+  color: #9d2933;
+  margin: 0.3rem;
+  padding: 0.1rem 0.3rem;
+  transition-duration: 0.3s;
+  display: none;
+}
+header .logo-rightside .login .btn-login:hover,
+header .logo-rightside .login .btn-signup:hover {
+  background: #9d2933;
+  color: #fff;
+}
+header .logo-rightside .login .user {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  transition: 0.3s linear;
+}
+header .logo-rightside .login .user .username {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-right: 0.55rem;
+}
+header .logo-rightside .login .user .useravatar {
+  width: 33px;
+  height: 33px;
+  border-radius: 50%;
+  border: 1px #9d2933 solid;
+}
+header .logo-rightside .login .user .user-cover {
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.1s;
+  background: #fff;
+  box-shadow: 0 0 3px #3f3f3f;
+  position: absolute;
+  border-radius: 6px;
+  top: 0px;
+  right: 20px;
+  width: 300px;
+  height: 300px;
+  z-index: 2;
+  cursor: auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+header .logo-rightside .login .user .user-cover .user-cover-header {
+  width: 100%;
+  height: 66%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+header .logo-rightside .login .user .user-cover .user-cover-header .user-cover-username {
+  background: rgba(255, 255, 255, 0.5);
+  color: #000;
+  width: 100%;
+  padding: 0.8rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+header .logo-rightside .login .user .user-cover .user-cover-footer {
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  margin-top: 10px;
+}
+header .logo-rightside .login .user .user-cover .user-cover-footer a {
+  padding: 0.3rem 0.8rem;
+  width: 100%;
+  min-height: 1.5rem;
+  border: none;
+  color: #000;
+  font-weight: bold;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  transition-duration: 0.16s;
+}
+header .logo-rightside .login .user .user-cover .user-cover-footer a:hover {
+  background: #9d2933;
+  color: #fff;
+}
+header .logo-rightside .login .user:hover .user-cover {
+  transform: translateY(40px);
+  visibility: visible;
+  opacity: 1;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-size;
+}
+::selection {
+  color: #fff;
+  background: #9d2933;
+}
+::-moz-selection {
+  color: #fff;
+  background: #9d2933;
+}
+::-webkit-selection {
+  color: #fff;
+  background: #9d2933;
+}
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+:root {
+  font-size: 15px;
+}
+.hr-1 {
+  width: 100%;
+  background: #e0e0e0;
+  height: 2px;
+}
+.hr-2 {
+  width: 100%;
+  background: #e0e0e0;
+  height: 2px;
+  margin: 0.3rem 0;
+}
+.hr-dashed {
+  border: 1 dashed #e0e0e0;
+  width: 100%;
+  height: 1;
+  background: #e0e0e0;
+}
+.hr-list-items {
+  width: 100%;
+  background: #e0e0e0;
+  height: 1.39px;
+}
+.usermessage {
+  height: 500px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.usermessage .avatarcontainer {
+  flex-grow: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.usermessage .avatarcontainer .avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  border: 1px #9d2933 solid;
+}
+.usermessage .minibar {
+  flex-grow: 0.6;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.usermessage .minibar a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.6rem 1rem;
+  background: #9d2933;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.2rem;
+  transition-duration: 0.2s;
+}
+.usermessage .minibar a:hover {
+  background: rgba(157, 41, 51, 0.5);
+}
+.usermessage .showmessage {
+  flex-grow: 8;
+  background: #e0e0e0;
+}
+.postmessage {
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.postmessage .titlecontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.postmessage .titlecontainer .title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #616161;
+  font-size: 1.55rem;
+  font-weight: 700;
+  flex-grow: 1;
+}
+.postmessage .content {
+  background: #e0e0e0;
+  flex-grow: 1;
+}
+main {
+  padding: 1rem 2rem;
+  display: grid;
+  grid-template-rows: 100%;
+  grid-column-gap: 1.3rem;
+  grid-template-columns: 46% 46%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}

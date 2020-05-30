@@ -1,0 +1,55 @@
+@import url(../theme/theme.less);
+
+.usermessage{
+    height        : 500px;
+    box-shadow    : @shadow01;
+    padding       : @padding1;
+    display       : flex;
+    flex-direction: column;
+    
+    .avatarcontainer{
+	flex-grow      : 3;
+	display        : flex;
+	justify-content: center;
+	align-items    : center;
+	.avatar{
+	    width        : 88px;
+	    height       : 88px;
+	    border-radius: 50%;
+	    border       : @mborder;
+	}
+    }
+    .minibar{
+	flex-grow        : .6;
+	display          : flex;
+	flex-direction   : row;
+	justify-content  : space-around;
+	align-items      : center;
+	a{
+	    display        : flex;
+	    justify-content: center;
+	    align-items    : center;
+	    padding        : .6rem 1rem;
+	    background     : @theme-color-light;
+	    box-shadow     : @shadow02;
+	    color          : #fff;
+	    font-weight    : 700;
+	    font-size      : 1.2rem;
+	    transition-duration: .2s;
+	    &:hover{
+		background : @theme-color-light02;
+		//background   : #fff;
+	    }
+	}
+	.collect{
+	}
+	.star{
+	}
+	.follow{
+	}
+    }
+    .showmessage{
+	flex-grow    : 8;
+	background   : @hr-color-2;
+    }
+}
