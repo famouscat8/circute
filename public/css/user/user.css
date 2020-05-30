@@ -178,6 +178,11 @@ ul {
   background: #e0e0e0;
   height: 2px;
 }
+.hr-3 {
+  width: 100%;
+  background: #e0e0e0;
+  height: 1px;
+}
 .hr-2 {
   width: 100%;
   background: #e0e0e0;
@@ -240,6 +245,42 @@ ul {
   flex-grow: 8;
   background: #e0e0e0;
 }
+.list-container .item {
+  margin-top: 1rem;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.list-container .item .title-container {
+  width: 100%;
+}
+.list-container .item .title-container .title {
+  width: 100%;
+  color: #000;
+  font-weight: 700;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.list-container .item .sort-container {
+  width: 100%;
+  flex-grow: 1;
+}
+.list-container .item .sort-container .sort {
+  color: #616161;
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.list-container .item .item-footer {
+  width: 100%;
+  display: flex;
+}
 .postmessage {
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
   padding: 1rem;
@@ -261,8 +302,7 @@ ul {
   font-weight: 700;
   flex-grow: 1;
 }
-.postmessage .content {
-  background: #e0e0e0;
+.postmessage .list-container {
   flex-grow: 1;
 }
 main {

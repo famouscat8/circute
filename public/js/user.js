@@ -15,6 +15,7 @@ $(()=>{
     }
     
     ajax.post("/getuser",JSON.stringify(p_data),su,er);
-    
+    var n = new MyList();
+    mlist.test();
     
 })
