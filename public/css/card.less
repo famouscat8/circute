@@ -1,13 +1,21 @@
 // 图片组件
+@import url(theme/theme.less);
 
 .card {
-    border-radius: .3rem;
-    box-shadow: 0 0 2px rgba(0,0,0,.3);
-    //background: red;
-    display: flex;
-    flex-direction: column;
+    border-radius          : .3rem;
+    box-shadow             : @boxShadow;
+    display                : flex;
+    flex-direction         : column;
 
     .card-main {
-	flex-grow: 1;
+	flex-grow          : 1;
+	.loading{
+	    color          : @grey;
+	    height         : 200px;
+	    width          : 100%;
+	    display        : flex;
+	    justify-content: center;
+	    align-items    : center;
+	}
     }
 }

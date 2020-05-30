@@ -299,6 +299,12 @@
   background: #e0e0e0;
   height: 2px;
 }
+.hr-2 {
+  width: 100%;
+  background: #e0e0e0;
+  height: 2px;
+  margin: 0.3rem 0;
+}
 .hr-dashed {
   border: 1 dashed #e0e0e0;
   width: 100%;
@@ -417,6 +423,14 @@
 }
 .card .card-main {
   flex-grow: 1;
+}
+.card .card-main .loading {
+  color: #999999;
+  height: 200px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .list-items {
   height: 120px;

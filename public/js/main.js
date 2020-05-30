@@ -29,6 +29,8 @@ $.ajax({
 	    var tools= new Tools();
 	    var dom  = new Dom();
 	    vt.item1(re.posts,dom,tools,$);
+	    // 隐藏加载提示
+	    $(".loading").fadeOut();
 	}
     },error:e=>{
 	console.log("main.js>post:/post: error");

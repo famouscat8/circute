@@ -107,9 +107,9 @@ function hdel(key){
 	})
     })
 }
- function zadd(zkey,score,key){
+ function zadd(key,score,subkey){
     return new Promise((resolve, reject)=>{
-	redisClient.zadd([key,score,zkey],(err,re)=>{
+	redisClient.zadd([key,score,subkey],(err,re)=>{
 	    if(err)reject(err)
 	    resolve(re);
 	})

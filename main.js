@@ -22,6 +22,8 @@ const sts         = require("./server/api/sts")
 // api 向客户端返回帖子
 const viewpost    = require("./server/api/viewpost")
 const bodyparser  = require("body-parser")
+// 返回某用户的个人信息
+const getuser     = require("./server/api/getuser")
 
 app.use(bodyparser.urlencoded({extende:true}))
 app.use(bodyparser.json())
@@ -59,6 +61,8 @@ app.post("/sendpost", sendpost)
 app.post("/post",post)
 app.post("/sts",sts)
 app.post("/getpost",getpost)
+app.post("/getuser", getuser)
+
 app.get("/viewpost.html",viewpost)
 app.get("/test", (req, res) =>res.send("haha :)"))
 app.get("/login.html", (req, res)=>{
