@@ -1,0 +1,52 @@
+@import url(../theme/theme.less);
+// 显示用户基本信息组件
+
+    .usermessage-vital{
+	flex-grow      : 3;
+	display        : flex;
+	justify-content: center;
+	align-items    : center;
+	flex-direction : column;
+	.avatar{
+	    width        : 88px;
+	    height       : 88px;
+	    border-radius: 50%;
+	    border       : @mborder;
+	}
+	// 更换头像按钮样式
+	.file{
+	    position       : relative;
+	    display        : flex;
+	    justify-content: center;
+	    align-items    : center;
+	    background     : #d0eeff;
+	    border         : 1px solid #99d3f5;
+	    border-radius  : 4px;
+	    padding        : 4px 12px;
+	    overflow       : hidden;
+	    color          : #1e88c7;
+	    text-decoration: none;
+	    input{
+		position   : absolute;
+		font-size  : 100px;
+		right      : 0;
+		top        : 0;
+		opacity    : 0;
+	    }
+	    &:hover{
+		background     : #aadffd;
+		border-color   :#78c3f3;
+		color          : #004974;
+		text-decoration: none;
+	    }
+	}
+
+	.usermessage-vital-username{
+	    color      : #000;
+	    font-weight: 700;
+	    font-size  : 1.3rem;
+
+
+	    
+	}
+    }

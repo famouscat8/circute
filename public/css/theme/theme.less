@@ -20,6 +20,9 @@
 @padding08                  : .8rem;
 @mborder                    : 1px @theme-color-light solid;
 
+
+
+
 // toolbar
 @toolbar-height             : 60px;
 @toolbar-padding            : 0 5%;
@@ -48,3 +51,92 @@
 
 // 用户个人界面
 
+
+// input
+// input-1:边框输入框
+.input-1{
+    border: 1px solid @grey;
+    border-radius: 3.8px;
+    outline: none;
+    padding: .6rem .9rem;
+    transition-duration: .3s;
+    &:hover{
+	border: 1px solid @theme-color-light;
+    }
+}
+
+
+
+// button
+// button-1: 无边框透明灰字按钮
+.button-1{
+    border    :none;
+    outline   : none;
+    color     : @grey;
+    background: transparent;
+    transition-duration: .3s;
+    &:hover{
+	color: #000;
+    }
+}
+
+
+
+// button-2 蓝色边框按钮
+.button-2{
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    background     : #d0eeff;
+    border         : 1px solid #99d3f5;
+    border-radius  : 4px;
+    padding        : 4px 12px;
+    overflow       : hidden;
+    color          : #1e88c7;
+    text-decoration: none;
+    &:hover{
+	background     : #aadffd;
+	border-color   :#78c3f3;
+	color          : #004974;
+    }
+}
+
+
+// button-3 红色边框按钮
+.button-3{
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    border         : 1px solid @theme-color-light;
+    border-radius  : 4px;
+    padding        : 4px 12px;
+    overflow       : hidden;
+    color          : @theme-color-light;
+    text-decoration: none;
+    transition-duration: .3s;
+    &:hover{
+	background     : @theme-color-light;
+	color          : #fff;;
+    }
+}
+
+
+
+// button-4 灰色边框按钮
+.button-4{
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    border         : 1px solid @grey;
+    border-radius  : 4px;
+    padding        : 4px 12px;
+    overflow       : hidden;
+    color          : @grey;
+    text-decoration: none;
+    transition-duration: .3s;
+    &:hover{
+	border         : 1px solid @theme-color-light;
+	background     : @theme-color-light;
+	color          : #fff;;
+    }
+}

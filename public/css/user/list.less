@@ -2,8 +2,8 @@
 @import url(../hr.less);
 
 .list-container{
-    
     .item{
+	overflow       : hidden;
 	margin-top     : 1rem;
 	height         : 100px;
 	display        :flex;
@@ -13,7 +13,10 @@
 	
 	.title-container{
 	    width        : 100%;
-	    .title{
+	    .item-title{
+		-webkit-line-clamp: 1;
+		-webkit-box-orient: vertical;
+		overflow       : hidden;
 		width          : 100%;
 		color          : @title-color;
 		font-weight    : @title-font-weight;
@@ -29,18 +32,23 @@
 	    width: 100%;
 	    
 	    flex-grow          : 1;
-	    .sort{
-		color          : @grey03;
-		font-size      : .8rem;
-		display        : flex;
-		justify-content: flex-start;
-		align-items    : flex-start;
+	    .item-sort{
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow       : hidden;
+		color          : @item1-sorttext-color;
+		font-size      : .9rem;
+		display        : -webkit-box;
 	    }
 	}
 	.item-footer{
-	    width  : 100%;
-	    display: flex;
-	    
+	    width    : 100%;
+	    display  : flex;
+	    font-size: .8rem;
+	    color    : @grey;
+	    .item-time{
+		color: @grey;
+	    }   
 	}
     }
     

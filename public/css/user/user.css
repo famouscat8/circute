@@ -1,3 +1,73 @@
+.input-1 {
+  border: 1px solid #999999;
+  border-radius: 3.8px;
+  outline: none;
+  padding: 0.6rem 0.9rem;
+  transition-duration: 0.3s;
+}
+.input-1:hover {
+  border: 1px solid #9d2933;
+}
+.button-1 {
+  border: none;
+  outline: none;
+  color: #999999;
+  background: transparent;
+  transition-duration: 0.3s;
+}
+.button-1:hover {
+  color: #000;
+}
+.button-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #d0eeff;
+  border: 1px solid #99d3f5;
+  border-radius: 4px;
+  padding: 4px 12px;
+  overflow: hidden;
+  color: #1e88c7;
+  text-decoration: none;
+}
+.button-2:hover {
+  background: #aadffd;
+  border-color: #78c3f3;
+  color: #004974;
+}
+.button-3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #9d2933;
+  border-radius: 4px;
+  padding: 4px 12px;
+  overflow: hidden;
+  color: #9d2933;
+  text-decoration: none;
+  transition-duration: 0.3s;
+}
+.button-3:hover {
+  background: #9d2933;
+  color: #fff;
+}
+.button-4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #999999;
+  border-radius: 4px;
+  padding: 4px 12px;
+  overflow: hidden;
+  color: #999999;
+  text-decoration: none;
+  transition-duration: 0.3s;
+}
+.button-4:hover {
+  border: 1px solid #9d2933;
+  background: #9d2933;
+  color: #fff;
+}
 header {
   height: 60px;
   padding: 0 5%;
@@ -200,24 +270,122 @@ ul {
   background: #e0e0e0;
   height: 1.39px;
 }
+.usermessage-vital {
+  position: relative;
+  flex-grow: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.usermessage-vital .usermessage-vital-change {
+  position: absolute;
+  left: 93%;
+  top: -1%;
+  border: none;
+  outline: none;
+  color: #999999;
+  background: transparent;
+  transition-duration: 0.3s;
+}
+.usermessage-vital .usermessage-vital-change:hover {
+  color: #000;
+}
+.usermessage-vital .avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  border: 1px #9d2933 solid;
+}
+.usermessage-vital .usermessage-vital-table {
+  display: none;
+  margin-top: 1rem;
+  width: 100%;
+}
+.usermessage-vital .usermessage-vital-table .file-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.usermessage-vital .usermessage-vital-table .file-container .file {
+  width: 20%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #999999;
+  border-radius: 4px;
+  padding: 4px 12px;
+  overflow: hidden;
+  color: #999999;
+  text-decoration: none;
+  transition-duration: 0.3s;
+}
+.usermessage-vital .usermessage-vital-table .file-container .file:hover {
+  border: 1px solid #9d2933;
+  background: #9d2933;
+  color: #fff;
+}
+.usermessage-vital .usermessage-vital-table .file-container .file input {
+  position: absolute;
+  font-size: 100px;
+  right: 0;
+  top: 0;
+  opacity: 0;
+}
+.usermessage-vital .usermessage-vital-table .usermessage-vital-setting {
+  width: 100%;
+  height: 200px;
+}
+.usermessage-vital .usermessage-vital-table .usermessage-vital-setting .usermessage-vital-userinfo {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.usermessage-vital .usermessage-vital-table .usermessage-vital-setting .usermessage-vital-userinfo .usermessage-vital-userinfo-title {
+  color: #000;
+  font-size: 1.3rem;
+}
+.usermessage-vital .usermessage-vital-table .usermessage-vital-setting .usermessage-vital-userinfo .usermessage-vital-userinfo-username {
+  color: #999999;
+  font-size: 0.9rem;
+}
+.usermessage-vital .usermessage-vital-table .usermessage-vital-setting .usermessage-vital-userinfo .usermessage-vital-userinfo-username-input {
+  border: 1px solid #999999;
+  border-radius: 3.8px;
+  outline: none;
+  padding: 0.6rem 0.9rem;
+  transition-duration: 0.3s;
+}
+.usermessage-vital .usermessage-vital-table .usermessage-vital-setting .usermessage-vital-userinfo .usermessage-vital-userinfo-username-input:hover {
+  border: 1px solid #9d2933;
+}
+.usermessage-vital .usermessage-vital-table .usermessage-vital-setting .usermessage-vital-userinfo .usermessage-vital-userinfo-nickname {
+  color: #999999;
+  font-size: 0.9rem;
+}
+.usermessage-vital .usermessage-vital-table .usermessage-vital-setting .usermessage-vital-userinfo .usermessage-vital-userinfo-nickname-input {
+  border: 1px solid #999999;
+  border-radius: 3.8px;
+  outline: none;
+  padding: 0.6rem 0.9rem;
+  transition-duration: 0.3s;
+}
+.usermessage-vital .usermessage-vital-table .usermessage-vital-setting .usermessage-vital-userinfo .usermessage-vital-userinfo-nickname-input:hover {
+  border: 1px solid #9d2933;
+}
+.usermessage-vital .usermessage-vital-username {
+  color: #000;
+  font-weight: 700;
+  font-size: 1.3rem;
+}
 .usermessage {
   height: 500px;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
   padding: 1rem;
   display: flex;
   flex-direction: column;
-}
-.usermessage .avatarcontainer {
-  flex-grow: 3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.usermessage .avatarcontainer .avatar {
-  width: 88px;
-  height: 88px;
-  border-radius: 50%;
-  border: 1px #9d2933 solid;
 }
 .usermessage .minibar {
   flex-grow: 0.6;
@@ -246,6 +414,7 @@ ul {
   background: #e0e0e0;
 }
 .list-container .item {
+  overflow: hidden;
   margin-top: 1rem;
   height: 100px;
   display: flex;
@@ -256,7 +425,10 @@ ul {
 .list-container .item .title-container {
   width: 100%;
 }
-.list-container .item .title-container .title {
+.list-container .item .title-container .item-title {
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   width: 100%;
   color: #000;
   font-weight: 700;
@@ -270,16 +442,22 @@ ul {
   width: 100%;
   flex-grow: 1;
 }
-.list-container .item .sort-container .sort {
-  color: #616161;
-  font-size: 0.8rem;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
+.list-container .item .sort-container .item-sort {
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: #443322;
+  font-size: 0.9rem;
+  display: -webkit-box;
 }
 .list-container .item .item-footer {
   width: 100%;
   display: flex;
+  font-size: 0.8rem;
+  color: #999999;
+}
+.list-container .item .item-footer .item-time {
+  color: #999999;
 }
 .postmessage {
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
