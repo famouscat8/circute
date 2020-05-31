@@ -26,14 +26,34 @@ usermessage.innerHTML = `<div class="usermessage-vital">
                   昵称:</p>
                   <input type="text" 
                   class="usermessage-vital-userinfo-nickname-input">
-
                 </div>
              </div>
           </div>
-            <p class="usermessage-vital-username">username</p>
-	</div>`;
+      <p class="usermessage-vital-username">username</p></div>`;
 
-
+function reChangeUserAvatar(obj){
+    var files = obj.files;
+    console.dir(files);
+    var reader = new FileReader();
+    reader.onloadstart = e=>{
+	console.log("load start");
+    }
+    reader.onprogress  = e=>{
+	console.log("progress:" + e);
+    }
+    reader.onabort     = e=>{
+	console.log("abort:"+e);
+    }
+    reader.onerror     = e=>{
+	console.log("error:"+e);
+    }
+    reader.onload      = e=>{
+	var img = document.getElementsByClassName("avatar")[0];
+	img.src = e.target.result;
+    }
+    reader.readAsDataURL(files[0]);
+    
+}
 var mUserMessage;
 class UserMessage extends HTMLElement{
     constructor(){
@@ -41,8 +61,9 @@ class UserMessage extends HTMLElement{
 	this.appendChild(usermessage.content.cloneNode(true));
 	mUserMessage = this;
     }
+    
     // 初始化显示用户基本信息
-    initUserMessage(user_object){
+    initUserMessage(user_object,ajax,usermanager){
 	var user = user_object;
 	$(".avatar").attr("src",user.avatarurl);
 	$(".usermessage-vital-username").text(user.nickname);
@@ -50,22 +71,57 @@ class UserMessage extends HTMLElement{
 	    .val(user.username);
 	$(".usermessage-vital-userinfo-nickname-input")
 	    .val(user.nickname);
-	var clickNum = 0;
+	var clickNum = 1;
 	var btnText  = ["修改","保存"];
 	$(".usermessage-vital-change").click(()=>{
-	    
-	    if(clickNum == 0){clickNum =1;
-		$(".usermessage-vital-change")
-		    .text(btnText[clickNum]);
-		
-		
-	    }else{clickNum =0;
-		$(".usermessage-vital-change")
-		    .text(btnText[clickNum]);
-		 }
-	    $(".usermessage-vital-table").slideToggle();
-	    $(".usermessage-vital-username").fadeToggle();
+	    if(clickNum == 0){
+		clickNum =1;
+		$(".usermessage-vital-change").text("修改");
+		var index_layer = layer.load(1,{shade:[0.5,"#000"]});
+		saveUser(index_layer);
+	    }else{
+		$(".usermessage-vital-table").slideToggle();
+		$(".usermessage-vital-username").fadeToggle();
+
+		clickNum =0;
+		$(".usermessage-vital-change").text("保存");
+	    }
 	});
+
+	// 保存用户信息
+	function saveUser(index_layer){
+	    var token    = usermanager.getToken();
+	    var username =
+		$(".usermessage-vital-userinfo-username-input")
+		.val();
+	    var nickname =
+		$(".usermessage-vital-userinfo-nickname-input")
+		.val();
+	    var co       = {usertoken: token,
+			    changeto: {username: username,
+				       nickname: nickname}};
+	    var success  = data=>{
+		console.dir(data);
+		$(".usermessage-vital-table").slideToggle();
+		$(".usermessage-vital-username").fadeToggle();
+
+		layer.close(index_layer);
+		if(data.state=="-1")
+		    layer.msg("保存失败:"+e);
+		layer.msg("保存成功");
+	    };
+	    
+	    var error    = e=>{
+		console.dir(e);
+		$(".usermessage-vital-table").toggle();
+		$(".usermessage-vital-username").toggle();
+		layer.close(index_layer);
+		layer.msg("保存失败:"+e);
+	    };
+	    ajax.post("/changeuser",
+		      JSON.stringify(co),success,error);
+	}
+
     }
 }
 window.customElements.define('user-message',UserMessage);

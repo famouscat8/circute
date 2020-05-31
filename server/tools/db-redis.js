@@ -46,6 +46,15 @@ function setItem(key, value, exprires){
 	    resolve(data)
 	})
     })
+ }
+
+function hset(key,subkey,string){
+    return new Promise((resolve, reject)=>{
+	redisClient.hset(key,subkey,string,(err,data)=>{
+	    if(err)reject(err)
+	    resolve(data)
+	})
+    })
 }
 
 function hgetall(key){

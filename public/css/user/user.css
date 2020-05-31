@@ -1,3 +1,6 @@
+.img-src-center {
+  object-fit: cover;
+}
 .input-1 {
   border: 1px solid #999999;
   border-radius: 3.8px;
@@ -292,6 +295,7 @@ ul {
   color: #000;
 }
 .usermessage-vital .avatar {
+  object-fit: cover;
   width: 88px;
   height: 88px;
   border-radius: 50%;

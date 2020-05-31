@@ -11,8 +11,8 @@ $(()=>{
     function su(data){
 	// 显示用户发布的帖子
 	mlist.initList(data.posts);
-	// 显示用户基本信息
-	mUserMessage.initUserMessage(data.user);
+	// 显示用户基本信息ajax connect to server
+	mUserMessage.initUserMessage(data.user,ajax,usermanager);
 	// just for test
 	console.dir(data);
 	
@@ -23,5 +23,4 @@ $(()=>{
     }
     
     ajax.post("/getuser",JSON.stringify(p_data),su,er);
-    //mlist.test();
 })

@@ -21,6 +21,9 @@ const getpost     = require("./server/api/getpost")
 const sts         = require("./server/api/sts")
 // api 向客户端返回帖子
 const viewpost    = require("./server/api/viewpost")
+// api  修改ia用户信息
+const changeuser  = require("./server/api/changeuser")
+
 const bodyparser  = require("body-parser")
 // 返回某用户的个人信息
 const getuser     = require("./server/api/getuser")
@@ -62,6 +65,7 @@ app.post("/post",post)
 app.post("/sts",sts)
 app.post("/getpost",getpost)
 app.post("/getuser", getuser)
+app.post("/changeuser",changeuser)
 
 app.get("/viewpost.html",viewpost)
 app.get("/test", (req, res) =>res.send("haha :)"))

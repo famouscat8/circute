@@ -4,8 +4,7 @@ var testeditor;
 var imgs = [];
 
 $(()=>{
-    
-    
+        
     var edmdtoolbarIcons=()=>{
 	return ["undo","redo",
 		"|","bold",
