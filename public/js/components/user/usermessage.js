@@ -92,7 +92,7 @@ class UserMessage extends HTMLElement{
 		}).then(data=>{
 		    console.dir(data);
 		    layer.msg("success");
-		    saveUser(index_layer,"https://"+data.Location);
+		    saveUser(index_layer,data.Location);
 		}).catch(e=>{
 		    layer.msg("error:");
 		    console.log("error:"+e);
@@ -129,13 +129,24 @@ class UserMessage extends HTMLElement{
 	    var nickname =
 		$(".usermessage-vital-userinfo-nickname-input")
 		.val();
-	    var co= {
-		usertoken: token,
-		changeto:{
-		    username: username,
-		    nickname: nickname,
-		    avatarurl:avatarurl
-		}};
+	    var co = null;
+	    if(Boolean(avatarurl)==false){
+		co = {
+		    usertoken: token,
+		    changeto:{
+			username: username,
+			nickname: nickname,
+		    }};
+	    }else{
+		co = {
+		    usertoken: token,
+		    changeto:{
+			username: username,
+			nickname: nickname,
+			avatarurl:"https://"+avatarurl,
+		    }};
+	    }
+	    
 	    var success  = data=>{
 		console.dir(data);
 		$(".usermessage-vital-table").slideToggle();
