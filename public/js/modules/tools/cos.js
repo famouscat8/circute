@@ -7,6 +7,7 @@ class MyCOS extends COS{
 	    getAuthorization: (options,call)=>{
 		call({
 		    TmpSecretKey:tmpkeys.credentials.tmpSecretKey,
+		    
 		    TmpSecretId:tmpkeys.credentials.tmpSecretId,
 		    XCosSecurityToken:
 		    tmpkeys.credentials.sessionToken,

@@ -34,6 +34,7 @@ usermessage.innerHTML = `<div class="usermessage-vital">
 function reChangeUserAvatar(obj){
     var files = obj.files;
     console.dir(files);
+    mUserMessage.getAvatar(files[0]);
     var reader = new FileReader();
     reader.onloadstart = e=>{
 	console.log("load start");
@@ -54,6 +55,7 @@ function reChangeUserAvatar(obj){
     reader.readAsDataURL(files[0]);
     
 }
+
 var mUserMessage;
 class UserMessage extends HTMLElement{
     constructor(){
@@ -62,9 +64,16 @@ class UserMessage extends HTMLElement{
 	mUserMessage = this;
     }
     
+    // 接收用户选择的头像文件
+    getAvatar(avatarobject){
+	this.avatar = avatarobject;
+    }
+    
     // 初始化显示用户基本信息
-    initUserMessage(user_object,ajax,usermanager){
+    initUserMessage(user_object,ajax,mycos,usermanager){
+
 	var user = user_object;
+	this.avatarurl = user.avatarurl;
 	$(".avatar").attr("src",user.avatarurl);
 	$(".usermessage-vital-username").text(user.nickname);
 	$(".usermessage-vital-userinfo-username-input")
@@ -72,24 +81,47 @@ class UserMessage extends HTMLElement{
 	$(".usermessage-vital-userinfo-nickname-input")
 	    .val(user.nickname);
 	var clickNum = 1;
-	var btnText  = ["修改","保存"];
+	var btnText  = ["修改","保存 "];
 	$(".usermessage-vital-change").click(()=>{
 	    if(clickNum == 0){
 		clickNum =1;
 		$(".usermessage-vital-change").text("修改");
 		var index_layer = layer.load(1,{shade:[0.5,"#000"]});
-		saveUser(index_layer);
+		saveAvatar(this.avatar,mycos,proData=>{
+		    console.dir(proData);
+		}).then(data=>{
+		    console.dir(data);
+		    layer.msg("success");
+		    saveUser(index_layer,"https://"+data.Location);
+		}).catch(e=>{
+		    layer.msg("error:");
+		    console.log("error:"+e);
+		    console.dir(e);
+		});
 	    }else{
 		$(".usermessage-vital-table").slideToggle();
 		$(".usermessage-vital-username").fadeToggle();
-
 		clickNum =0;
 		$(".usermessage-vital-change").text("保存");
 	    }
 	});
 
+	function saveAvatar(avatarobject,mycos,progress){
+	    if(avatarobject==null) return Promise.resolve("1");
+	    return new Promise((resolve,reject)=>{
+		if(mycos == null) reject("error"); 
+		mycos.putObject(avatarobject,(err,data)=>{
+		    if(err)reject(err);
+		    resolve(data);
+		},proData=>{
+		    progress(proData);
+		});
+
+	    });
+	}
+
 	// 保存用户信息
-	function saveUser(index_layer){
+	function saveUser(index_layer,avatarurl){
 	    var token    = usermanager.getToken();
 	    var username =
 		$(".usermessage-vital-userinfo-username-input")
@@ -97,9 +129,13 @@ class UserMessage extends HTMLElement{
 	    var nickname =
 		$(".usermessage-vital-userinfo-nickname-input")
 		.val();
-	    var co       = {usertoken: token,
-			    changeto: {username: username,
-				       nickname: nickname}};
+	    var co= {
+		usertoken: token,
+		changeto:{
+		    username: username,
+		    nickname: nickname,
+		    avatarurl:avatarurl
+		}};
 	    var success  = data=>{
 		console.dir(data);
 		$(".usermessage-vital-table").slideToggle();
@@ -111,7 +147,7 @@ class UserMessage extends HTMLElement{
 		layer.msg("保存成功");
 	    };
 	    
-	    var error    = e=>{
+	    var error= e=>{
 		console.dir(e);
 		$(".usermessage-vital-table").toggle();
 		$(".usermessage-vital-username").toggle();
