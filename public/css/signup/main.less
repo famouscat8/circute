@@ -1,0 +1,79 @@
+@import url(../theme/theme.less);
+@import url(../theme/frame.less);
+
+.main{
+    .flex-column();
+    justify-content: center;
+    align-items    : center;
+    .user-email-container{
+	.flex-column();
+	width: 100%;
+	margin-top: .8rem;
+	.email-help{
+	    color: @grey;
+	    font-size: .9rem;
+	    .flex-center-left();
+	    width: 100%;
+	}
+	.user-email{
+	    .input-1();
+	}
+
+    }
+    .user-pass-container{
+	.flex-column();
+	width: 100%;
+
+	margin-top: .8rem;
+	.pass-help{
+	    color: @grey;
+	    font-size: .9rem;
+	    .flex-center-left();
+	    width: 100%;
+	}
+	.user-pass{
+	    .input-1();
+	}
+    }
+    .user-passcomfir-container{
+	.flex-column();
+	width: 100%;
+	margin-top: .8rem;
+	.passcomfir-help{
+	    color: @grey;
+	    font-size: .9rem;
+	    .flex-center-left();
+	    width: 100%;
+	}
+	.user-passcomfir{
+	    .input-1();
+
+	}
+    }
+
+    // 验证码
+    .user-token-container{
+	.flex-column();
+	margin-top: .8rem;
+	.token-help{
+	    color: @grey;
+	    font-size: .9rem;
+	    .flex-center-left();
+	    width: 100%;
+	}
+	.token-main{
+	    flex-direction: row;
+	    display:flex;
+	    justify-content:center;
+	    align-items: center;
+	    .user-token{
+		.input-1();
+
+	    }
+	    .user-sendtoken{
+		.button-1();
+	    }
+	}
+    }
+}
+

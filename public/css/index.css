@@ -272,7 +272,7 @@
   }
 }
 .title a {
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   color: #000;
   text-decoration: none;
 }
@@ -287,17 +287,95 @@
   align-content: center;
 }
 .title-a {
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   color: #000;
   text-decoration: none;
 }
 .title-a:hover {
   color: #9d2933;
 }
+.img-src-center {
+  object-fit: cover;
+}
+.input-1 {
+  border: 1px solid #999999;
+  border-radius: 3.8px;
+  outline: none;
+  padding: 0.6rem 0.9rem;
+  transition-duration: 0.3s;
+}
+.input-1:hover {
+  border: 1px solid #9d2933;
+}
+.button-1 {
+  border: none;
+  outline: none;
+  color: #999999;
+  background: transparent;
+  transition-duration: 0.3s;
+}
+.button-1:hover {
+  color: #000;
+}
+.button-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #d0eeff;
+  border: 1px solid #99d3f5;
+  border-radius: 4px;
+  padding: 4px 12px;
+  overflow: hidden;
+  color: #1e88c7;
+  text-decoration: none;
+}
+.button-2:hover {
+  background: #aadffd;
+  border-color: #78c3f3;
+  color: #004974;
+}
+.button-3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #9d2933;
+  border-radius: 4px;
+  padding: 4px 12px;
+  overflow: hidden;
+  color: #9d2933;
+  text-decoration: none;
+  transition-duration: 0.3s;
+}
+.button-3:hover {
+  background: #9d2933;
+  color: #fff;
+}
+.button-4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #999999;
+  border-radius: 4px;
+  padding: 4px 12px;
+  overflow: hidden;
+  color: #999999;
+  text-decoration: none;
+  transition-duration: 0.3s;
+}
+.button-4:hover {
+  border: 1px solid #9d2933;
+  background: #9d2933;
+  color: #fff;
+}
 .hr-1 {
   width: 100%;
   background: #e0e0e0;
   height: 2px;
+}
+.hr-3 {
+  width: 100%;
+  background: #e0e0e0;
+  height: 1px;
 }
 .hr-2 {
   width: 100%;
@@ -528,14 +606,14 @@ header .logo-rightside .login .btn-signup {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 0.9rem;
-  border-radius: 0.3rem;
-  border: solid 1px #9d2933;
+  border: 1px solid #9d2933;
+  border-radius: 4px;
+  padding: 4px 12px;
+  overflow: hidden;
   color: #9d2933;
-  margin: 0.3rem;
-  padding: 0.1rem 0.3rem;
+  text-decoration: none;
   transition-duration: 0.3s;
-  display: none;
+  margin: 0.3rem;
 }
 header .logo-rightside .login .btn-login:hover,
 header .logo-rightside .login .btn-signup:hover {

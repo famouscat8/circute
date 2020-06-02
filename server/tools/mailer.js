@@ -9,16 +9,22 @@ const config = {
 	pass: "ismwzmtzcjzldgga"
     }
 };
-const transporter = nodemailer.createTransport(config);
+var transporter = nodemailer.createTransport(config);
 
-var sendSignupMail = function(mail){
-    transporter.sendMail(mail, function(error, info){
-	if(error){
-	    return console.log(error);
-	} 
-	console.log("mail sent: ", info.response);
-    });
+var sendSignupMail =(to,html)=>{
+    var mailOptions = {
+	from   : "3142362556@qq.com",
+	to     : to,
+	subject: "注册CIRCUTE",
+	html   :html,
+    };
+    
+    return new Promise((resolve,reject)=>{
+	transporter.sendMail(mailOptions, function(err, info){
+	    if(err)reject(err);
+	    resolve(info);
+	});
+    })
 };
 
-// 发送邮件
 module.exports.sendSignupMail = sendSignupMail;

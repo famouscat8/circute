@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!-- 注册界面 -->
+<html lang="cn">
+  <head>
+    <title>注册CIRCUTE</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+	  content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+	  href="css/signup/signup.css">
+    <link rel="stylesheet"
+	  href="js/libs/layer/theme/default/layer.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="main">
+	<div class="user-email-container">
+	  <p class="email-help">邮箱:</p>
+	  <input type="text"
+		 class="user-email">
+	</div>
+	<div class="user-pass-container">
+	  <p class="pass-help">密码:</p>
+	  <input type="password"
+		 class="user-pass">
+	</div>
+	<div class="user-passcomfir-container">
+	  <p class="passcomfir-help">确认密码:</p>
+	  <input type="password"
+		 class="user-passcomfir">
+	</div>
+	<!-- 验证码 -->
+	<div class="user-token-container">
+	  <p class="token-help">验证码:</p>
+	  <div class="token-main">
+	    <input type="text"
+		   class="user-token">
+	    <button class="user-sendtoken">发送验证码</button>
+	  </div>
+	</div>
+	
+      </div>
+      <p class="hr-2"/>
+      <div class="footer">
+	<button class="signup">SIGNUP</button>
+      </div>
+    </div>
+    
+  </body>
+  <script src="js/libs/md5.min.js"></script>
+  <script src="js/libs/jquery.js"></script>
+  <script src="js/modules/tools/ajax.js"></script>
+  <script src="js/libs/layer/layer.js"></script>
+  <script src="js/signup/signup.js"></script>
+  </html>

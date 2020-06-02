@@ -5,7 +5,7 @@ const app = express();
 const port = 3000;
 
 const indexRouter = require("./server/routers/index")
-const mail        = require("./server/api/signup")
+const signup      = require("./server/api/signup")
 const login       = require("./server/api/login")
 // 返回qiniu云uploadToken
 const uploadToken = require("./server/api/uploadToken")
@@ -21,8 +21,11 @@ const getpost     = require("./server/api/getpost")
 const sts         = require("./server/api/sts")
 // api 向客户端返回帖子
 const viewpost    = require("./server/api/viewpost")
-// api  修改ia用户信息
+// api  修改用户信息
 const changeuser  = require("./server/api/changeuser")
+// api 返回邮箱验证码
+const getemailtoken = require("./server/api/getemailtoken")
+
 
 const bodyparser  = require("body-parser")
 // 返回某用户的个人信息
@@ -56,7 +59,7 @@ app.use(verify_token)
 // 挂载静态资源
 app.use(express.static("public"))
 app.use("/", indexRouter)
-app.get("/mail", mail)
+//app.get("/mail", mail)
 app.post("/login", login)
 app.post("/uploadtoken",uploadToken)
 app.post("/verifytoken", verifytoken.router)
@@ -66,11 +69,13 @@ app.post("/sts",sts)
 app.post("/getpost",getpost)
 app.post("/getuser", getuser)
 app.post("/changeuser",changeuser)
+app.post("/signup",signup)
+app.post("/getemailtoken", getemailtoken)
 
 app.get("/viewpost.html",viewpost)
 app.get("/test", (req, res) =>res.send("haha :)"))
 app.get("/login.html", (req, res)=>{
-    res.sendFile("/root/test/web/html/login.html");
+    res.sendFile("/root/test/web/html/login/login.html");
 })
 
 app.get("/post.html", (req, res)=>{
@@ -82,6 +87,10 @@ app.get("/wenku.html",(req,res)=>{
 app.get("/user.html",(req,res)=>{
     res.sendFile("/root/test/web/html/user.html");
 })
+app.get("/signup.html",(req,res)=>{
+    res.sendFile("/root/test/web/html/signup/signup.html");
+})
+
 app.listen(port,()=>{
     console.log(`Example app listening on port ${port}!`);
 })

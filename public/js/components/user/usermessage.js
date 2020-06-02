@@ -130,7 +130,7 @@ class UserMessage extends HTMLElement{
 		$(".usermessage-vital-userinfo-nickname-input")
 		.val();
 	    var co = null;
-	    if(Boolean(avatarurl)==false){
+	    if(!Boolean(avatarurl)){
 		co = {
 		    usertoken: token,
 		    changeto:{

@@ -1,19 +1,18 @@
 const tem = document.createElement('template');
+// 	  <li><a href="wenku.html"class="btn-tools-wenku">百度文库下载</a></li>
+
 tem.innerHTML=`<header>
       <a href='' class="logo">CIRCUTE</a>
       <div class="logo-rightside">
 	<ul class="links">
 	  <li><a href="">首页</a></li>
-
-	  <li><a href="wenku.html"
-		 class="btn-tools-wenku">百度文库下载</a></li>
 	  <li><a href=""
 		 class="btn-more-tools">小工具</a></li>
 	</ul>
 	<div class="login">
 	  <a href="login.html"
 	     class="btn-login">log in</a>
-	  <a href="javascript:void(0);"
+	  <a href="signup.html"
 	     class="btn-signup">sign up</a>
 	  <div class="user">
 	    <p class="username"></p>

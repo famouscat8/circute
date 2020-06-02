@@ -1,0 +1,24 @@
+@import url(../theme/theme.less);
+@import url(main.less);
+@import url(../theme/frame.less);
+@import url(../hr.less);
+@import url(footer.less);
+
+*{
+    padding: 0;
+    margin : 0;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items    : center;
+    height         : 500px;
+    .container{
+	.flex-center();
+	flex-direction: column;
+	width: 290px;
+	box-shadow: @boxShadow;
+	padding: 1rem;
+    }
+}

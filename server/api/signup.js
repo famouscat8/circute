@@ -1,47 +1,53 @@
-
-
-
-
 const express= require("express")
 const router = express.Router()
 const mailer = require("../tools/mailer")
 const dbtools= require("../tools/db-redis")
-const app    = express();
+const md5    = require("md5")
+//const crypto = require("crypto")
 
-
-var bodyparser = require("body-parser")
-app.use(bodyparser.urlencoded({extende: true}));
-app.use(bodyparser.json())
-
-// 使用get接受和发送数据
-// router.get("/mail", async (ctx) => {
-//     var email = ctx.query.email;
-//     var user_name ="殇月空间";
-//     var pass = ctx.query.pass;
-//     console.log( "注册成功" + "email:" + email +
-// 	"pass:" + pass );
-    
-//     var code = "123456";
-//     var isLive = "no";
-
-//     var mail = {
-// 	from: "<3142362556@qq.com>",
-// 	subject: "注册殇月空间",
-// 	to: email,
-// 	text: "使用" +
-// 	    code +
-// 	    "作为你的验证码注册殇月空间" +
-// 	    "你的密码是" +
-// 	    pass
-//     };
-
-//     await mailer.sendSignupMail(mail);
-    
-// })
-
-router.post("/mail", (req, res)=>{
-    var result = req.body;
-    res.send(JSON.stringify(result));
+// 注册界面:绝对不能将用户密码明文存储
+// req.body:{token:string,email:string,type:int,password:string}
+router.post("/signup", (req, res)=>{
+    var data = req.body;
+    var token= data.token;
+    var email= data.email;
+    var pass = md5(data.password);
+    console.dir(pass);
+    // 验证token
+    dbtools.get("email:signup:"+email).then(r=>{
+	if(token == r)
+	    loop2(email,pass,res);
+	else
+	    res.json({state:"-1",m:"token verify error"});
+    }).catch(e=>{
+	res.json({state:"-1",m:"token can not be null"});
+    })
 })
+
+function loop2(email, pass,res){
+    dbtools.get("usernum").then(uid=>{
+	loop3(email,pass,uid,res);
+    }).catch(e=>{
+	res.json({state:"-1",e:e,m:"get uid error"});
+    });
+}
+
+function loop3(email,pass,uid,res){
+    var user = {
+	nickname : "nickname__test",
+	uimg     : "https://s1.ax1x.com/2020/05/22/YOkjTs.png",
+	avatarurl: "",
+	username : "username__test",
+	psd      : pass,
+    };
+    var addUserNum = dbtools.incrby("usernum",1);
+    var saveUser   = dbtools.hmset("user:"+uid,user);
+    var saveEmail  = dbtools.set("user:email:"+email,uid);
+    Promise.all([addUserNum,saveUser,saveEmail]).then(r=>{
+	res.json({state:"1",e:null,m:"恭喜你,注册成功"});
+    }).catch(reasons=>{
+	res.json({state:"-1",e:reasons,m:"稍后重试"});
+    });
+}
 
 module.exports = router

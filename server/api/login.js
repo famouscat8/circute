@@ -3,67 +3,54 @@ const router  = express.Router()
 const dbtool  = require("../tools/db-redis")
 const jwt     = require("jsonwebtoken")
 const token_tool = require("../tools/token_tools")
+const md5     = require("md5");
 
-var app = express();
-
+// logda: {email:email, pass: password, type: type}
+// 登录的类型 type==2 ==> email login
+// type == 1 ==> userid login
 router.post("/login",(req, res)=>{
-    var login_data = req.body;
-    if(!login_data)
-	res.json({state: "-1", e: "error userid"});
-    
-    // 前端数据: {userid: userid, pass: password, type: type}
-    // 登录的类型 type==2 ==> email login
-    // type == 1 ==> userid login
-    
-    if(login_data.type == "2"){	//用户使用邮箱登录
-	dbtool.get("user:email:"+login_data.userid)
-	    .then(uid=>{
-		console.log("uid:"+uid);
-		// 根据uid查用户信息
-		if(uid)
-		    dbtool.hgetall("user:"+uid).then(user=>{
-			// 登录成功
-			if(login_data.pass == user.psd){
-			    // 要生成的token主题信息
-			    let content = {uid:uid};
-			    token_tool.create(content,
-					      {
-						  expiresIn:3600,
-					      })
-				.then(token=>{
-				    res.json({state: "1",
-					      user: user,
-					      token: token});
-				    console.log(
-					"create token for:"
-					    +user.email
-					    +"token:"+token);
-				}).catch(e=>{
-				    res.json({state: "-5",
-					      e:"create token error"});
-				    console.log(
-					"login.js:create token error");
-				    console.dir(e);
-				});
-			} else {
-			    console.log(user.psd);
-			    console.log(login_data.pass);
-			    res.json({state: "-3",
-				      e: "账号或密码错误"});
-			}
-		    }).catch(e=>{
-			res.json({state: "-2",
-				  e: "系统错误,请联系站长"});
-		    })
-		else
-		    res.json({state: "-4",e:"用户不存在" });
-	    }).catch(e=>{
-		console.log("search for uid error:"+e);
-		res.json({state: "-1", e: e});
-	    })
-    } else {
-	res.json({state: "-1", e: "不支持使用其他方式登录"});
-    }
+    var logda = req.body;
+    if(!logda)
+	res.json({state: "-6", e:null,m:"email can not be null"});
+    else if(logda.type == "2")
+	loginWithEmail(logda,res);
+    else
+	res.json({state: "-7", e:null,m:"不支持使用其他方式登录"});
 })
+
+function loginWithEmail(logda,res){
+    var key = "user:email:"+logda.email;
+    dbtool.get(key).then(uid=>{
+	if(uid)loop1(logda,uid,res);
+	else res.json({state: "-4",e:null,m:"用户不存在" });
+    }).catch(e=>{
+	res.json({state: "-1", e:e,m:"no such user"});
+    })
+}
+
+function loop1(logda,uid,res){
+    var pass = md5(logda.pass);
+    dbtool.hgetall("user:"+uid).then(user=>{
+	if(pass == user.psd)
+	    createUserToken(user,uid,res);
+	else 
+	    res.json({state: "-3",e:null,m: "账号或密码错误"});
+    }).catch(e=>{
+	res.json({state: "-2",e:e,m: "系统错误,请联系站长"});
+    })
+}
+
+// 生成usertoken
+function createUserToken(user,uid, res){
+    let content = {uid:uid};
+    var options={expiresIn:3600};
+    token_tool.create(content,options).then(token=>{
+	res.json({state: "1",user:user,token:token});
+    }).catch(e=>{
+	res.json({state: "-5",e:null,m:"create token error"});
+	console.log("login.js:create token error");
+	console.dir(e);
+    });
+}
 
 module.exports = router

@@ -22,15 +22,17 @@ const _createClient = ()=>{
 
 const redisClient = _createClient();
 
-function setItem(key, value, exprires){
-    redisClient.set(key, value);
-    if (exprires){
-	redisClient.expireA(key, exprires);
-    }
+function set(key, value){
+    return new Promise((resolve,reject)=>{
+	redisClient.set(key, value, (err,val)=>{
+	    if(err)reject(err)
+	    resolve(val)
+	})
+    })
 }
 
 
- function getItem(key){
+function get(key){
     return new Promise((resolve, reject) => {
 	redisClient.get(key, (err, val)=>{
 	    if(err) reject(err)
@@ -115,7 +117,8 @@ function hdel(key){
 	    resolve(re)
 	})
     })
-}
+ }
+
  function zadd(key,score,subkey){
     return new Promise((resolve, reject)=>{
 	redisClient.zadd([key,score,subkey],(err,re)=>{
@@ -132,6 +135,7 @@ function hdel(key){
 	})
     })
 }
+
  function zrange(key,min,max){
     return new Promise((resolve,reject)=>{
 	redisClient.zrange(key,min,max,(err,obj)=>{
@@ -139,11 +143,20 @@ function hdel(key){
 	    resolve(obj)
 	})
     })
+ }
+
+function expire(key, time){
+    return new Promise((resolve,reject)=>{
+	redisClient.expire(key,time,(err,r)=>{
+	    if(err)reject(err)
+	    resolve(r)
+	})
+    })
 }
 module.exports = {
     redisClient,
-    setItem,
-    getItem,
+    set,
+    get,
     hget,
     hgetall,
     hdel,
@@ -155,4 +168,5 @@ module.exports = {
     zadd,
     zrangebyscore,
     zrange,
+    expire,
 }
