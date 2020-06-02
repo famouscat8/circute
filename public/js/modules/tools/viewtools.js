@@ -39,6 +39,12 @@ class ViewTools {
 	    if(post_data[i].imgs){
 		var imgsArray=JSON.parse(post_data[i].imgs);
 		img.src=imgsArray[0];
+		img.onerror=()=>{
+		    var img= event.srcElement;
+		    img.src=
+			"https://s1.ax1x.com/2020/06/02/tN6ZJx.jpg";
+		    img.onerror=null;
+		}
 	    }
 	    title.innerText=post_data[i].content.title;
 	    
