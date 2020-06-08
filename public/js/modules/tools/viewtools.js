@@ -12,7 +12,6 @@ class ViewTools {
 	for(var i=0;i<post_data.length;i++){
 	    // 以下创建父容器
 	    var main=dom.div("list-items");
-	    //main.style.background="#"+i*2+"f0000";
 	    card_main.appendChild(main);
 	    // 创建左边图片容器 list-items-container
 	    var imgcontainer=dom.div("list-items-conner");

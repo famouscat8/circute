@@ -43,7 +43,6 @@ function loop2(email,res){
     })
 }
 
-// 发送验证码到用户邮箱
 function loop3(email,html,res){
     mailtools.sendSignupMail(email,html).then(info=>{
 	res.json({state:"1",e:null});

@@ -2,7 +2,6 @@
 const express=require("express")
 const router=express.Router()
 const dbtools =require("../tools/db-redis")
-var app=express()
 
 // t_posts:postid时间排列
 // return: Promise:post object
@@ -15,7 +14,6 @@ async function getposts(t_posts){
     var rpost={};
     for(var i=0;i<posts_len;i++){
 	var postid=posts[i]; // post:12
-	console.log(postid);
 	// 根据帖子id查询帖子
 	var p=await dbtools.hgetall(postid)
 	    .catch(e=>{return e;});
@@ -29,7 +27,6 @@ async function getposts(t_posts){
 	p.owner=owner;
 	p.comment=comment;
 	rposts.unshift(p);
-	
     }
     return rposts;
 }
@@ -40,25 +37,13 @@ async function getposts(t_posts){
 router.post("/post",(req,res)=>{
     var reqdata=req.body;
     dbtools.zrange("postids",0,-1).then(obj=>{
-	getposts(obj).then(post_obj=>{
-	    res.json({
-		state:"1",
-		posts:post_obj,
-		e:null,
-		m:null});
+	getposts(obj).then(post=>{
+	    res.json({state:"1",posts:post,});
 	}).catch(e=>{
-	    res.json({
-		state:"-1",
-		posts:null,
-		e:e,
-		m:"error1"});
+	    res.json({state:"-1",e:e,m:"查找帖子错误"});
 	});
     }).catch(e=>{
-	res.json({
-	    state:"-1",
-	    posts:null,
-	    e:e,
-	    m:"error1"});
+	res.json({state:"-1",e:e,m:"获取帖子时序错误"});
     })
 })
 

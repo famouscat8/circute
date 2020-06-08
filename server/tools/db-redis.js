@@ -41,7 +41,12 @@ function get(key){
     })
 }
 
- function hget(key, subkey){
+
+
+
+
+
+function hget(key, subkey){
     return new Promise((resolve, reject)=>{
 	redisClient.hget(key, subkey, (err, data)=>{
 	    if(err) reject(err)
@@ -49,6 +54,8 @@ function get(key){
 	})
     })
  }
+
+
 
 function hset(key,subkey,string){
     return new Promise((resolve, reject)=>{
@@ -59,6 +66,8 @@ function hset(key,subkey,string){
     })
 }
 
+
+
 function hgetall(key){
     return new Promise((resolve, reject)=>{
 	redisClient.hgetall(key, (err, object)=>{
@@ -68,6 +77,8 @@ function hgetall(key){
     })
 }
 
+
+
 function hdel(key){
     return new Promise((resolve, reject)=>{
 	redisClient.hdel(key, (err, res)=>{
@@ -76,7 +87,11 @@ function hdel(key){
 	})
     })
 }
- function hmset(key, object){
+
+
+
+
+function hmset(key, object){
     return new Promise((resolve, reject)=>{
 	redisClient.hmset(key, object, (err, res)=>{
 	    if(err) reject(err)
@@ -84,7 +99,8 @@ function hdel(key){
 	})
     })
 }
- function hmget(key, subkeys){
+
+function hmget(key, subkeys){
     return new Promise((resolve, reject)=>{
 	redisClient.hmget(key, subkeys, (err, object)=>{
 	    if(err) reject(err)
@@ -93,7 +109,7 @@ function hdel(key){
     })
 }
 
- function exists(key){
+function exists(key){
     return new Promise((resolve, reject)=>{
 	redisClient.exists(key, (err, res)=>{
 	    if(err) reject(err)
@@ -102,7 +118,7 @@ function hdel(key){
     })
 }
 
- function get(key){
+function get(key){
     return new Promise((resolve, reject)=>{
 	redisClient.get(key, (err, data)=>{
 	    if(err) reject(err)
@@ -110,7 +126,8 @@ function hdel(key){
 	})
     })
 }
- function incrby(key, num){
+
+function incrby(key, num){
     return new Promise((resolve, reject)=>{
 	redisClient.incrby(key,num,(err,re)=>{
 	    if(err)reject(err)
@@ -119,7 +136,7 @@ function hdel(key){
     })
  }
 
- function zadd(key,score,subkey){
+function zadd(key,score,subkey){
     return new Promise((resolve, reject)=>{
 	redisClient.zadd([key,score,subkey],(err,re)=>{
 	    if(err)reject(err)
@@ -127,14 +144,16 @@ function hdel(key){
 	})
     })
 }
- function zrangebyscore(key,min,max){
+
+function zrangebyscore(key,min,max){
     return new Promise((resolve,reject)=>{
 	redisClient.zrangebyscore(key,min,max,(err,obj)=>{
 	    if(err)reject(err)
 	    resolve(obj)
 	})
     })
-}
+ }
+
 
  function zrange(key,min,max){
     return new Promise((resolve,reject)=>{
@@ -158,6 +177,7 @@ module.exports = {
     set,
     get,
     hget,
+    hset,
     hgetall,
     hdel,
     hmset,
