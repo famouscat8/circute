@@ -32,8 +32,14 @@ class MakePost extends HTMLElement{
 	super();
 	this.appendChild(makepost.content.cloneNode(true));
 	mMakePost=this;
+	
+	var send_btn = document
+	    .getElementsByClassName("makepost-sendpost")[0];
+	send_btn.onclick=()=>{
+	    location.href+="post.html";
+	};
     }
-
+    
 }
 
 window.customElements.define('make-post',MakePost);

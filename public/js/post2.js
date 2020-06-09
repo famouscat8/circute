@@ -118,8 +118,7 @@ $(()=>{
     testeditor = editormd("editor", {
 	placeholder:
 	"本编辑器支持markdown编辑，左边编写，右边预览",
-	width: "80%",
-	height: 500,
+	width: "100%",
 	path: "js/libs/editor.md/lib/",
 	saveHTMLToTextarea:false,
 	emoji:true,taskList:true,

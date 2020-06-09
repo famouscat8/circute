@@ -13,12 +13,22 @@
 }
 .button-1 {
   border: none;
-  outline: none;
   color: #999999;
   background: transparent;
   transition-duration: 0.3s;
+  outline: none;
 }
 .button-1:hover {
+  color: #000;
+}
+.button-122 {
+  border: none;
+  color: #999999;
+  background: transparent;
+  transition-duration: 0.3s;
+  outline: none;
+}
+.button-122:hover {
   color: #000;
 }
 .button-2 {
@@ -32,6 +42,7 @@
   overflow: hidden;
   color: #1e88c7;
   text-decoration: none;
+  outline: none;
 }
 .button-2:hover {
   background: #aadffd;
@@ -49,6 +60,7 @@
   color: #9d2933;
   text-decoration: none;
   transition-duration: 0.3s;
+  outline: none;
 }
 .button-3:hover {
   background: #9d2933;
@@ -65,11 +77,63 @@
   color: #999999;
   text-decoration: none;
   transition-duration: 0.3s;
+  outline: none;
 }
 .button-4:hover {
   border: 1px solid #9d2933;
   background: #9d2933;
   color: #fff;
+}
+.button-5 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #9d2933;
+  border-radius: 4px;
+  padding: 4px 12px;
+  overflow: hidden;
+  color: #9d2933;
+  text-decoration: none;
+  transition-duration: 0.3s;
+  outline: none;
+}
+.button-5:hover {
+  border: 1px solid #9d2933;
+  background: #9d2933;
+  color: #fff;
+}
+.search-container {
+  margin-right: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.search-container .search-input {
+  border: 1px solid #999999;
+  border-radius: 3.8px;
+  outline: none;
+  padding: 0.6rem 0.9rem;
+  transition-duration: 0.3s;
+}
+.search-container .search-input:hover {
+  border: 1px solid #9d2933;
+}
+.search-container .search-button {
+  border: none;
+  color: #999999;
+  background: transparent;
+  transition-duration: 0.3s;
+  outline: none;
+  margin-left: 0.5rem;
+}
+.search-container .search-button:hover {
+  color: #000;
+}
+.toolbar-bell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1rem;
 }
 header {
   height: 60px;
@@ -126,6 +190,7 @@ header .logo-rightside .login .btn-signup {
   color: #9d2933;
   text-decoration: none;
   transition-duration: 0.3s;
+  outline: none;
   margin: 0.3rem;
 }
 header .logo-rightside .login .btn-login:hover,
@@ -152,7 +217,7 @@ header .logo-rightside .login .user .useravatar {
   width: 33px;
   height: 33px;
   border-radius: 50%;
-  border: 1px #9d2933 solid;
+  border: 1px #666666 solid;
 }
 header .logo-rightside .login .user .user-cover {
   visibility: hidden;
@@ -210,6 +275,9 @@ header .logo-rightside .login .user .user-cover .user-cover-footer a {
   justify-content: flex-start;
   align-items: center;
   transition-duration: 0.16s;
+}
+header .logo-rightside .login .user .user-cover .user-cover-footer a i {
+  margin-right: 0.5rem;
 }
 header .logo-rightside .login .user .user-cover .user-cover-footer a:hover {
   background: #9d2933;
@@ -286,10 +354,10 @@ ul {
   left: 93%;
   top: -1%;
   border: none;
-  outline: none;
   color: #999999;
   background: transparent;
   transition-duration: 0.3s;
+  outline: none;
 }
 .usermessage-vital .usermessage-vital-change:hover {
   color: #000;
@@ -324,6 +392,7 @@ ul {
   color: #999999;
   text-decoration: none;
   transition-duration: 0.3s;
+  outline: none;
 }
 .usermessage-vital .usermessage-vital-table .file-container .file:hover {
   border: 1px solid #9d2933;

@@ -8,6 +8,17 @@ tem.innerHTML=`<header>
 	  <li><a href=""
 		 class="btn-more-tools">小工具</a></li>
 	</ul>
+
+<div class="search-container">
+    <input type="text"
+	   class="search-input"
+	   placeholder="Type to search"/>
+    <button class="search-button">搜索</button>
+</div>
+
+<div class="toolbar-bell">
+<i class="fa fa-bell" aria-hidden="true"></i>
+</div>
 	<div class="login">
 	  <a href="login.html"
 	     class="btn-login">log in</a>
@@ -25,9 +36,11 @@ tem.innerHTML=`<header>
 	      <div class="user-cover-footer">
 		<a href="user.html"
 		   class="btn-settings">
+               <i class="fa fa-cog" aria-hidden="true"></i>
 		  个人设置</a>
 		<a href="javascript:void(0);"
 		   class="btn-logout">
+               <i class="fa fa-sign-out" aria-hidden="true"></i>
 		  退出登录</a>
 	      </div>
 	    </div>
@@ -72,4 +85,4 @@ class ToolBar extends HTMLElement{
     }
 }
 
-    window.customElements.define('tool-bar', ToolBar);
+window.customElements.define('tool-bar', ToolBar);

@@ -1,5 +1,6 @@
 @import url(theme/theme.less);
-
+@import url(toolbar/search.less);
+@import url(toolbar/bell.less);
 header {
     height: @toolbar-height;
     padding: @toolbar-padding;
@@ -114,7 +115,6 @@ header {
 			justify-content: end;
 			margin-top: 10px;
 			a{
-			    
 			    padding: .3rem .8rem;
 			    width: 100%;
 			    min-height: 1.5rem;
@@ -126,6 +126,9 @@ header {
 			    justify-content: flex-start;
 			    align-items: center;
 			    transition-duration: .16s;
+			    i{
+				margin-right: .5rem;
+			    }
 			    &:hover {
 				background: @theme-color-light;
 				color: #fff;

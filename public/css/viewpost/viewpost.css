@@ -1,3 +1,30 @@
+.search-container {
+  margin-right: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.search-container .search-input {
+  border: 1px solid #999999;
+  border-radius: 3.8px;
+  outline: none;
+  padding: 0.6rem 0.9rem;
+  transition-duration: 0.3s;
+}
+.search-container .search-input:hover {
+  border: 1px solid #9d2933;
+}
+.search-container .search-button {
+  border: none;
+  color: #999999;
+  background: transparent;
+  transition-duration: 0.3s;
+  outline: none;
+  margin-left: 0.5rem;
+}
+.search-container .search-button:hover {
+  color: #000;
+}
 header {
   height: 60px;
   padding: 0 5%;
@@ -53,6 +80,7 @@ header .logo-rightside .login .btn-signup {
   color: #9d2933;
   text-decoration: none;
   transition-duration: 0.3s;
+  outline: none;
   margin: 0.3rem;
 }
 header .logo-rightside .login .btn-login:hover,
@@ -79,7 +107,7 @@ header .logo-rightside .login .user .useravatar {
   width: 33px;
   height: 33px;
   border-radius: 50%;
-  border: 1px #9d2933 solid;
+  border: 1px #666666 solid;
 }
 header .logo-rightside .login .user .user-cover {
   visibility: hidden;
@@ -283,12 +311,22 @@ main .middle #test-editormd {
 }
 .button-1 {
   border: none;
-  outline: none;
   color: #999999;
   background: transparent;
   transition-duration: 0.3s;
+  outline: none;
 }
 .button-1:hover {
+  color: #000;
+}
+.button-122 {
+  border: none;
+  color: #999999;
+  background: transparent;
+  transition-duration: 0.3s;
+  outline: none;
+}
+.button-122:hover {
   color: #000;
 }
 .button-2 {
@@ -302,6 +340,7 @@ main .middle #test-editormd {
   overflow: hidden;
   color: #1e88c7;
   text-decoration: none;
+  outline: none;
 }
 .button-2:hover {
   background: #aadffd;
@@ -319,6 +358,7 @@ main .middle #test-editormd {
   color: #9d2933;
   text-decoration: none;
   transition-duration: 0.3s;
+  outline: none;
 }
 .button-3:hover {
   background: #9d2933;
@@ -335,8 +375,27 @@ main .middle #test-editormd {
   color: #999999;
   text-decoration: none;
   transition-duration: 0.3s;
+  outline: none;
 }
 .button-4:hover {
+  border: 1px solid #9d2933;
+  background: #9d2933;
+  color: #fff;
+}
+.button-5 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #9d2933;
+  border-radius: 4px;
+  padding: 4px 12px;
+  overflow: hidden;
+  color: #9d2933;
+  text-decoration: none;
+  transition-duration: 0.3s;
+  outline: none;
+}
+.button-5:hover {
   border: 1px solid #9d2933;
   background: #9d2933;
   color: #fff;

@@ -37,5 +37,9 @@ $(()=>{
 
     var post_data = {page:1,pagesize:10}
     ajax.post("/post",JSON.stringify(post_data),success,error);
+        
 })
+
+
+
 
