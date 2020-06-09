@@ -28,10 +28,22 @@ class MainList extends HTMLElement{
   </div>
   <div class="list-item-3-postmessage-container">
     <small class="list-item-3-tag">签到</small>
+
+<div class="list-item-3-username-container">
+<small>
+<i class="fa fa-user" aria-hidden="true"></i>
+</small>
     <small class="list-item-3-username"
        id="list-item-3-username-id-`+i+`"></small>
+</div>
+
+<div class="list-item-3-time-container">
+<small>
+<i class="fa fa-clock-o" aria-hidden="true"></i>
+</small>
     <small class="list-item-3-time"
        id="list-item-3-time-id-`+i+`"></small>
+</div>
   </div>
 </div>`;
 	    list.appendChild(item);
@@ -89,8 +101,14 @@ class MainList extends HTMLElement{
 	    var star = post.start;
 	    var colle= post.collect;
 	    var pid  = post.pid;
-	    var imgsArray=JSON.parse(post.imgs);
+	    try{
+		var imgurl=JSON.parse(post.imgs);
+		var imgsArray=imgurl;
 
+	    }catch{
+		console.log("error");
+		var imgsArray=["dsadaso"];
+	    }
 	    // 设置帖子图片
 	    var img = document
 		.getElementById("list-items-img-id-"+i);

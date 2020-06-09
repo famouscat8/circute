@@ -21,6 +21,8 @@ $(()=>{
 	var tools= new Tools();
 	var dom  = new Dom();
 	mMainList.init(posts,tools,$);
+	mArtPost.init(posts);
+	console.log("diasuhdfsuiahb");
     }
     
     function success(data){

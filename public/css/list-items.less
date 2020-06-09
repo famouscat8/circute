@@ -15,7 +15,7 @@
 	align-items: center;
 	width: @item3-height;
 	height: @item3-height;
-		   
+	
 	.list-item-3-img{
 	    width: 60px;
 	    height: 60px;
@@ -27,6 +27,7 @@
     .list-item-3-main{
 	margin-left: 1rem;
 	display: flex;
+	flex-grow:1;
 	flex-direction: column;
 	align-items: flex-start;
 	justify-content: flex-start;
@@ -45,8 +46,10 @@
 	.list-item-3-postmessage-container{
 	    flex-grow:1;
 	    display: flex;
-	    justify-content:center;
+	    justify-content:flex-start;
 	    align-items: center;
+	    margin-top: .5rem;
+	    color: #666;
 	    .list-item-3-tag{
 		background    : #4a74d3;
 		border-radius : 6px;
@@ -64,9 +67,14 @@
 	    .list-item-3-username{
 		margin-right: .5rem;
 	    }
-	    .list-item-3-time{
-		flex-grow:1;
-		margin-right: .5rem;
+	    .list-item-3-time-container{
+		display: flex;
+		justify-content:center;
+		align-items:center;
+		.list-item-3-time{
+		    margin-left: .1rem;
+		    margin-right: .5rem;
+		}
 	    }
 	}
     }

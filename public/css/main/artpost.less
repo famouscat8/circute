@@ -1,0 +1,47 @@
+// 主页右边精品帖子控件样式
+@import url(../theme/theme.less);
+
+.artpost-container{
+    box-shadow: @boxShadow;
+    border-radius          : .3rem;
+    .artpost-title-container{
+	color: #666;
+	display: flex;
+	justify-content:flex-start;
+	align-items: center;
+	.artpost-title{
+	    margin-right: .3rem;
+	}
+	
+    }
+    .artpost-main{
+	color: #666;
+	.artpost-main-item{
+	    padding: 6px 8px;
+	    display:flex;
+	    flex-direction: column;
+	    border-bottom: .8px @hr-color-2 solid;
+	    &:last-child{
+		border-bottom: none;
+	    }
+	    .artpost-main-item{
+		flex-grow:1;
+		color: #000;
+	    }
+	    .artpost-item-postmessage-container{
+		margin-top: .6rem;
+		color: #666;
+		font-size:.8rem;
+		.artpost-item-username{
+		    margin-right: .5rem;
+		}
+		.artpost-item-star{
+		    margin-right: .5rem;
+		}
+		.artpost-item-collect{
+		    margin-right: .5rem;
+		}
+	    }
+	}
+    }
+}

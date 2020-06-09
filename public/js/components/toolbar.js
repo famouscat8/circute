@@ -1,5 +1,4 @@
 const tem = document.createElement('template');
-// 	  <li><a href="wenku.html"class="btn-tools-wenku">百度文库下载</a></li>
 
 tem.innerHTML=`<header>
       <a href='' class="logo">CIRCUTE</a>

@@ -11,6 +11,9 @@
     <link rel="stylesheet"
     	  href="js/libs/layer/theme/default/layer.css"
 	  type="text/css">
+    <link rel="stylesheet"
+	  href="js/libs/fontawesome/css/font-awesome.min.css"
+	  type="text/css">
     
   </head>
   <body>
@@ -33,7 +36,7 @@
     <tool-bar></tool-bar>    
 
     <main class="mymain">
-      <div class="middle card b-p-1rem b-m-1rem">
+      <div class="middle card b-p-1rem">
 	<div class="title">
 	  <a href="">全部帖子</a>
 	</div>
@@ -41,10 +44,17 @@
 	  <p class="hr-1 b-m-top-08rem b-m-bottom-08rem"/>
 	</div>
 	<main-list></main-list>
-	<div class="card-footer">card footer here!</div>
+	<div class="card-footer b-m-1rem">
+	  card footer here!</div>
       </div>
       
-      <div class="rightside card b-p-1rem b-m-1rem">rightside</div>
+      <div class="rightside">
+	<make-post></make-post>
+	<art-post></art-post>
+      </div>
+      
+      
+      
     </main>
     <footer>
       famouscat @Copyright 2020
@@ -59,6 +69,8 @@
     <script src="js/modules/tools/ajax.js"></script>
     <script src="js/components/toolbar.js"></script>
     <script src="js/components/main/list.js"></script>
+    <script src="js/components/main/makepost.js"></script>
+    <script src="js/components/main/artpost.js"></script>
     <script src="js/modules/tools/viewtools.js"></script>
     <script src="js/main.js"></script>
 

@@ -1,0 +1,39 @@
+@import url(../theme/theme.less);
+
+.makepost-container{
+    display: flex;
+    flex-direction: column;
+    box-shadow    : @boxShadow;
+    border-radius          : .3rem;
+    margin-bottom: 2rem;
+    .makepost-title-container{
+	.makepost-title{
+	    color: #666;
+	    font-weight: 300;
+	}
+    }
+    .makepost-main-container{
+	flex-grow: 1;
+	.makepost-main{
+	    color: #666;
+	    
+	}
+    }
+    .makepost-footer-container{
+	margin-top: .5rem;
+	display:flex;
+	justify-content: space-around;
+	.makepost-sendpost{
+	    .button-4();   
+	    background: #fff;
+	}
+	.makepost-sign{
+	    .button-5();
+	    background: #fff;
+	}
+    }
+}
+
+
+
+
