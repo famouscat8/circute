@@ -1,0 +1,48 @@
+@import url(../theme/theme.less);
+
+@left-bar-height:  51px;
+
+.left-bar{
+    width: @left-bar-height;
+    height: 100%;
+    background: #aaa;
+    display: flex;
+    flex-direction: column;
+    .left-bar-something{
+	flex-grow:1;
+    }
+    button{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border: none;
+	outline: none;
+	color: #fff;
+	background: transparent;
+	transition-duration: .3s;
+	outline: none;
+	&:hover{
+	    color: @theme-color-light;
+	}
+	&:focus{
+	    color: @theme-color-light;
+	}
+	&:active{}
+    }
+    
+    .left-bar-settings,.left-bar-books,.left-bar-trash{
+	height: @left-bar-height;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items    : center;
+	color: #fff;
+	font-size: .78rem;
+	transition: .3s;
+	i{
+	    font-size: 1.2rem;
+	}
+    }
+    
+}

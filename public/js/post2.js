@@ -4,7 +4,7 @@ var testeditor;
 var imgs = [];
 
 $(()=>{
-        
+    
     var edmdtoolbarIcons=()=>{
 	return ["undo","redo",
 		"|","bold",
@@ -21,20 +21,20 @@ $(()=>{
     };
     
     var edmdonload=()=>{
-	    var codeEditor=$(".CodeMirror-wrap")[0];
-	    codeEditor.ondragenter=e=>{
-		e.preventDefault();e.stopPropagation();
-		return false;
-	    };
-	    codeEditor.ondragover=e=>{
-		e.preventDefault();e.stopPropagation();
-		return false;
-	    };
-	    codeEditor.ondrop=e=>{
-		e.preventDefault();e.stopPropagation();
-		var files=e.dataTransfer.files // 获取到用户的文件
-		tenxuncos(files[0], uploadUrlCallback);
-	    }
+	var codeEditor=$(".CodeMirror-wrap")[0];
+	codeEditor.ondragenter=e=>{
+	    e.preventDefault();e.stopPropagation();
+	    return false;
+	};
+	codeEditor.ondragover=e=>{
+	    e.preventDefault();e.stopPropagation();
+	    return false;
+	};
+	codeEditor.ondrop=e=>{
+	    e.preventDefault();e.stopPropagation();
+	    var files=e.dataTransfer.files // 获取到用户的文件
+	    tenxuncos(files[0], uploadUrlCallback);
+	}
     };
     
     function sts(){
@@ -76,7 +76,6 @@ $(()=>{
 	mycos.putObject(file,callback,progress);
     }
 
-    
     // @param: file:file object
     // @param: callback: callback after upload
     // upload file to tenxunyun...
@@ -89,7 +88,7 @@ $(()=>{
 	    console.dir(err);
 	})
     }
-        
+    
     // 生成代码片段c，插入markdown
     function uploadUrlCallback(data){
 	var url=data;
@@ -98,13 +97,6 @@ $(()=>{
 	var alt="";
 	var cm=testeditor;
 	var cursor=cm.getCursor();
-	if(url.endsWith(".mp4")){
-	    // var videoHtml='<video class="video-js" controls preload="auto" width="100%" poster="" data-setup=\'{"aspectRatio":"16:9"}\'><source src="'+url+'"type=\'video/mp4\'>'+'<p class="vjs-no-js">To view this video please enable javascript</p></video>';
-	    // videoHtml="\n"+videoHtml+"\n";
-	    // cm.replaceSelection(videoHtml);
-	    cm.setCursor(cursor.line,cursor.ch+2);
-	    return;
-	}
 	
 	// 以下是对图片上传结果的处理，应用原image-load插件的代码
 	var altAttr=(alt!=="")?"\""+alt+"\"":"";
@@ -134,7 +126,36 @@ $(()=>{
 	onload:edmdonload,	// 图片上传成功后的处理
 	toolbarIcons: edmdtoolbarIcons,	// 自定义工具栏
     });
-    //testeditor.fullscreen();
+
+    var ajax    = new MyAjax();
+    var myBooks = new Books("leftside-list");
+    var myTrash = new Trash("leftside-list");
+    var mySettings = new Settings("leftside-list");
+    var btn_books_listen = (obj)=>{
+	myBooks.init();
+	mlistBooks.init(ajax);
+    };
+    var btn_trash_listen = ()=>{
+	myTrash.init();
+    };
+    var btn_settings_listen = ()=>{
+	mySettings.init();
+    };
+
+    var btn_books = document
+	.getElementsByClassName("left-bar-books")[0];
+    var btn_trash = document
+	.getElementsByClassName("left-bar-trash")[0];
+    var btn_settings = document
+	.getElementsByClassName("left-bar-settings")[0];
+    btn_books.onclick=btn_books_listen;
+    btn_trash.onclick=btn_trash_listen;
+    btn_settings.onclick=btn_settings_listen;
+
+
+
+
+    
 });
 
 // 发布帖子的函数

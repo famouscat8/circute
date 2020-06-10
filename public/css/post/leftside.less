@@ -1,13 +1,30 @@
+@import url(leftbar.less);
+@import url(settings.less);
+@import url(trash.less);
+@import url(books.less);
 
 .leftside{
     height: 100vh;
     overflow:hidden;
-    .mhead{
-	overflow-y:scroll;
-	height: 100%;
+    display:flex;
+    flex-direction: row;
+    .leftside-main{
+	width: 100%;
+	.leftside-list{
+	    overflow-y:scroll;
+	    height: 100%;
+	    // 随着leftbar的控制
+	    // 下面3的界面一次加载进leftside-main
+	    .books{
+		width: 100%;
+	    }
+	    .trash{
+		width: 100%;
+	    }
+	    .settings{
+		width: 100%;
+	    }
+	}	
     }
-}
-
-
-::-webkit-scrollbar{
+    
 }

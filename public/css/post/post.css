@@ -108,16 +108,150 @@
 .main {
   display: grid;
   grid-template-rows: 100% 100%;
-  grid-template-columns: 25% 75%;
+  grid-template-columns: 28% 72%;
   overflow: none;
+}
+.left-bar {
+  width: 51px;
+  height: 100%;
+  background: #aaa;
+  display: flex;
+  flex-direction: column;
+}
+.left-bar .left-bar-something {
+  flex-grow: 1;
+}
+.left-bar button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  color: #fff;
+  background: transparent;
+  transition-duration: 0.3s;
+  outline: none;
+}
+.left-bar button:hover {
+  color: #9d2933;
+}
+.left-bar button:focus {
+  color: #9d2933;
+}
+.left-bar .left-bar-settings,
+.left-bar .left-bar-books,
+.left-bar .left-bar-trash {
+  height: 51px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 0.78rem;
+  transition: 0.3s;
+}
+.left-bar .left-bar-settings i,
+.left-bar .left-bar-books i,
+.left-bar .left-bar-trash i {
+  font-size: 1.2rem;
+}
+.settings .settings-list-header {
+  height: 3.8rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #333;
+  font-weight: 700;
+  font-size: 1.5rem;
+  padding-left: 1rem;
+  box-shadow: 0 0 5px #999999;
+}
+.trash .trash-list-header {
+  height: 3.8rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #333;
+  font-weight: 700;
+  font-size: 1.5rem;
+  padding-left: 1rem;
+  box-shadow: 0 0 5px #999999;
+}
+.list-header {
+  height: 3.8rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #333;
+  font-weight: 700;
+  font-size: 1.5rem;
+  padding-left: 1rem;
+  box-shadow: 0 0 5px #999999;
+}
+.books .books-list-header {
+  height: 3.8rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #333;
+  font-weight: 700;
+  font-size: 1.5rem;
+  padding-left: 1rem;
+  box-shadow: 0 0 5px #999999;
+}
+.books .books-list .books-item {
+  margin: 1rem 0;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0px 3px #999999;
+}
+.books .books-list .books-item .books-item-title {
+  color: #555;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.books .books-list .books-item .books-item-footer {
+  height: 30px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  color: #888;
+}
+.books .books-list .books-item .books-item-footer small {
+  margin-right: 0.5rem;
+  transition-duration: 0.3s;
+}
+.books .books-list .books-item .books-item-footer small:hover {
+  background: #eee;
 }
 .leftside {
   height: 100vh;
   overflow: hidden;
+  display: flex;
+  flex-direction: row;
 }
-.leftside .mhead {
+.leftside .leftside-main {
+  width: 100%;
+}
+.leftside .leftside-main .leftside-list {
   overflow-y: scroll;
   height: 100%;
+}
+.leftside .leftside-main .leftside-list .books {
+  width: 100%;
+}
+.leftside .leftside-main .leftside-list .trash {
+  width: 100%;
+}
+.leftside .leftside-main .leftside-list .settings {
+  width: 100%;
 }
 .rightside {
   overflow: hidden;

@@ -15,7 +15,7 @@ const verifytoken = require("./server/api/verifytoken")
 const sendpost    = require("./server/api/sendpost")
 // api 返回帖子列表
 const post        = require("./server/api/post")
-// api 返回某条帖子
+ // api 返回某条帖子
 const getpost     = require("./server/api/getpost")
 // api tenxunyun temple token 
 const sts         = require("./server/api/sts")
@@ -25,7 +25,8 @@ const viewpost    = require("./server/api/viewpost")
 const changeuser  = require("./server/api/changeuser")
 // api 返回邮箱验证码
 const getemailtoken = require("./server/api/getemailtoken")
-
+// api 返回用户文集
+const getbooks    = require("./server/api/getbooks")
 
 const bodyparser  = require("body-parser")
 // 返回某用户的个人信息
@@ -71,6 +72,7 @@ app.post("/getuser", getuser)
 app.post("/changeuser",changeuser)
 app.post("/signup",signup)
 app.post("/getemailtoken", getemailtoken)
+app.post("/getbooks",getbooks)
 
 app.get("/viewpost.html",viewpost)
 app.get("/test", (req, res) =>res.send("haha :)"))
