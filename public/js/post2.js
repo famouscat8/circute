@@ -128,12 +128,13 @@ $(()=>{
     });
 
     var ajax    = new MyAjax();
+    var usermanager = new UserManager();
     var myBooks = new Books("leftside-list");
     var myTrash = new Trash("leftside-list");
     var mySettings = new Settings("leftside-list");
     var btn_books_listen = (obj)=>{
 	myBooks.init();
-	mlistBooks.init(ajax);
+	mlistBooks.init(ajax,usermanager);
     };
     var btn_trash_listen = ()=>{
 	myTrash.init();

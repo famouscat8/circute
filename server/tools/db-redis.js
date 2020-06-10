@@ -77,8 +77,6 @@ function hgetall(key){
     })
 }
 
-
-
 function hdel(key){
     return new Promise((resolve, reject)=>{
 	redisClient.hdel(key, (err, res)=>{
@@ -87,9 +85,6 @@ function hdel(key){
 	})
     })
 }
-
-
-
 
 function hmset(key, object){
     return new Promise((resolve, reject)=>{

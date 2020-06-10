@@ -13,13 +13,45 @@ class ListBooks extends HTMLElement{
 	
     }
     
-    init(ajax){
+    init(ajax,usermanager){
+	// 新建文集的方法
+	function createBooks(books_name){
+	    var token = usermanager.getToken();
+	    var pd = {
+		usertoken:token,
+		books:books_name,
+		action: "createbooks",
+	    };
+	    function success(data){
+		console.dir(data);
+	    };
+	    function error(e){
+		console.dir(e);
+	    };
+	    ajax.post("/createbooks",
+		      JSON.stringify(pd),
+		      success,error);
+	}
+	
+	// 获取用户输入文集标题的方法
+	var getBooksTitle=()=>{
+	    layer.prompt({
+		formType:0,
+		value:'',
+		title:'请输入标题:',
+		maxlength:20,
+	    },function(value,index,elem){
+		layer.close(index);
+		createBooks(value);
+	    });
+	}
+	
 	function success(data){
 	    var books_list = document
 		.getElementsByClassName("books-list")[0];
-
-	    for(let i=0;i<data.books.length;i++){
-		let book = data.books[i];
+	    console.dir(data);
+	    for(let i=0;i<data.bookss.length;i++){
+		let books = data.bookss[i];
 		var item = document.createElement("div");
 		item.innerHTML=
 		    `<div class="books-item">
@@ -34,22 +66,26 @@ class ListBooks extends HTMLElement{
 		books_list.appendChild(item);
 		var title = document
 		    .getElementById("books-item-title-id-"+i);
-		title.innerText=book;
+		title.innerText=books.booksname;
 	    }
 	    var newbooks = document.createElement("div");
 	    newbooks.innerHTML=`
+      <button class="books-item-newbooks-btn">
       <i class="fa fa-plus" aria-hidden="true"></i>
-      <p class="books-item-newbooks-p">新建文集</p>`;
+      <p class="books-item-newbooks-p">新建文集</p></button>`;
 	    newbooks.className="books-item-newbooks";
-	    
 	    books_list.appendChild(newbooks);
+	    var createbooks_btn = document
+		.getElementsByClassName("books-item-newbooks-btn")[0];
+	    createbooks_btn.onclick=getBooksTitle;
 	    console.dir(data);
 	};
 	function error(e){
 	    console.dir(e);
 	};
 	
-	var pd = {usertoken:"test token",action:"get my books"};
+	var token = usermanager.getToken();
+	var pd = {usertoken:token,action:"get my books"};
 	ajax.post("/getbooks",JSON.stringify(pd),success,error);
     }
 }

@@ -209,6 +209,16 @@
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
+.books .books-list .books-item-newbooks .books-item-newbooks-btn {
+  border: none;
+  color: #999999;
+  background: transparent;
+  transition-duration: 0.3s;
+  outline: none;
+}
+.books .books-list .books-item-newbooks .books-item-newbooks-btn:hover {
+  color: #000;
+}
 .books .books-list .books-item-newbooks:hover {
   background: #eee;
 }

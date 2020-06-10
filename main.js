@@ -27,6 +27,8 @@ const changeuser  = require("./server/api/changeuser")
 const getemailtoken = require("./server/api/getemailtoken")
 // api 返回用户文集
 const getbooks    = require("./server/api/getbooks")
+// api 新建文集
+const createbooks = require('./server/api/createbooks')
 
 const bodyparser  = require("body-parser")
 // 返回某用户的个人信息
@@ -73,6 +75,7 @@ app.post("/changeuser",changeuser)
 app.post("/signup",signup)
 app.post("/getemailtoken", getemailtoken)
 app.post("/getbooks",getbooks)
+app.post('/createbooks',createbooks)
 
 app.get("/viewpost.html",viewpost)
 app.get("/test", (req, res) =>res.send("haha :)"))
