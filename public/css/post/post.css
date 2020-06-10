@@ -199,6 +199,25 @@
   padding-left: 1rem;
   box-shadow: 0 0 5px #999999;
 }
+.books .books-list .books-item-newbooks {
+  color: #666;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition-duration: 0.3s;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.books .books-list .books-item-newbooks:hover {
+  background: #eee;
+}
+.books .books-list .books-item-newbooks i {
+  font-size: 1.8rem;
+}
+.books .books-list .books-item-newbooks p {
+  font-size: 0.8rem;
+}
 .books .books-list .books-item {
   margin: 1rem 0;
   height: 100px;

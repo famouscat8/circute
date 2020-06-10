@@ -36,6 +36,13 @@ class ListBooks extends HTMLElement{
 		    .getElementById("books-item-title-id-"+i);
 		title.innerText=book;
 	    }
+	    var newbooks = document.createElement("div");
+	    newbooks.innerHTML=`
+      <i class="fa fa-plus" aria-hidden="true"></i>
+      <p class="books-item-newbooks-p">新建文集</p>`;
+	    newbooks.className="books-item-newbooks";
+	    
+	    books_list.appendChild(newbooks);
 	    console.dir(data);
 	};
 	function error(e){
