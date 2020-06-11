@@ -139,6 +139,7 @@
   color: #9d2933;
 }
 .left-bar .left-bar-settings,
+.left-bar .left-bar-draft,
 .left-bar .left-bar-books,
 .left-bar .left-bar-trash {
   height: 51px;
@@ -151,6 +152,7 @@
   transition: 0.3s;
 }
 .left-bar .left-bar-settings i,
+.left-bar .left-bar-draft i,
 .left-bar .left-bar-books i,
 .left-bar .left-bar-trash i {
   font-size: 1.2rem;
@@ -236,6 +238,10 @@
   justify-content: center;
   align-items: center;
   box-shadow: 0 0px 3px #999999;
+  transition: 0.3s;
+}
+.books .books-list .books-item:hover {
+  background: #eee;
 }
 .books .books-list .books-item .books-item-title {
   color: #555;
@@ -260,6 +266,101 @@
 .books .books-list .books-item .books-item-footer small:hover {
   background: #eee;
 }
+.draft .draft-list-header {
+  height: 3.8rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #333;
+  font-weight: 700;
+  font-size: 1.5rem;
+  padding-left: 1rem;
+  box-shadow: 0 0 5px #999999;
+}
+.artical .artical-list-header {
+  height: 3.8rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #333;
+  font-weight: 700;
+  font-size: 1.5rem;
+  padding-left: 1rem;
+  box-shadow: 0 0 5px #999999;
+}
+.artical .artical-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.artical .artical-list .artical-item-newartical {
+  width: 100%;
+  color: #666;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition-duration: 0.3s;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.artical .artical-list .artical-item-newartical .artical-item-newartical-btn {
+  border: none;
+  color: #999999;
+  background: transparent;
+  transition-duration: 0.3s;
+  outline: none;
+}
+.artical .artical-list .artical-item-newartical .artical-item-newartical-btn:hover {
+  color: #000;
+}
+.artical .artical-list .artical-item-newartical:hover {
+  background: #eee;
+}
+.artical .artical-list .artical-item-newartical i {
+  font-size: 1.8rem;
+}
+.artical .artical-list .artical-item-newartical p {
+  font-size: 0.8rem;
+}
+.artical .artical-list .artical-list-item {
+  width: 100%;
+  border-bottom: 1px #ddd solid;
+  height: 66px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #666;
+  transition: 0.3s;
+}
+.artical .artical-list .artical-list-item:hover {
+  background: #eee;
+}
+.artical .artical-list .artical-list-item .artical-item-main {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-grow: 1;
+}
+.artical .artical-list .artical-list-item .artical-item-main .artical-item-title {
+  font-size: 1.2rem;
+  padding-left: 1rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.artical .artical-list .artical-list-item .artical-item-footer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.artical .artical-list .artical-list-item .artical-item-footer small {
+  padding-left: 1rem;
+}
 .leftside {
   height: 100vh;
   overflow: hidden;
@@ -274,6 +375,9 @@
   height: 100%;
 }
 .leftside .leftside-main .leftside-list .books {
+  width: 100%;
+}
+.leftside .leftside-main .leftside-list .draft {
   width: 100%;
 }
 .leftside .leftside-main .leftside-list .trash {

@@ -3,8 +3,8 @@
 const list_books = document.createElement("template");
 
 list_books.innerHTML=`<div class="books-list"></div>`;
-var mlistBooks = null;
 
+var mlistBooks = null;
 class ListBooks extends HTMLElement{
     constructor(){
 	super();
@@ -12,8 +12,7 @@ class ListBooks extends HTMLElement{
 	mlistBooks = this;
 	
     }
-    
-    init(ajax,usermanager){
+    init(ajax,usermanager,tools,clickbooks){
 	// 新建文集的方法
 	function createBooks(books_name){
 	    var token = usermanager.getToken();
@@ -58,16 +57,28 @@ class ListBooks extends HTMLElement{
                     <p class="books-item-title" 
                     id="books-item-title-id-`+i+`"/>
                     <div class="books-item-footer">
-               <small class="books-item-book">0篇文章</small>
-               <small class="books-item-time">十天前修改</small>
+               <small class="books-item-book"
+                     id="books-item-book-id-`+i+`"></small>
+               <small class="books-item-time"
+                     id="books-item-time-id-`+i+`"></small>
       <small><i class='fa fa-wrench' aria-hidden='true'></i></small>
                 </div>
                 </div>`;
 		books_list.appendChild(item);
 		var title = document
-		    .getElementById("books-item-title-id-"+i);
-		title.innerText=books.booksname;
+		    .getElementById("books-item-title-id-"+i)
+		    .innerText=books.booksname;
+		var articalnum = document
+		    .getElementById('books-item-book-id-'+i)
+		    .innerText=books.articalnum+'篇文章';
+		var time = document
+		    .getElementById('books-item-time-id-'+i)
+		    .innerText=tools.getDateDiff(books.time)+'创建';
+		item.onclick=()=>{
+		    clickbooks(books.bid,books.booksname);
+		}
 	    }
+	    
 	    var newbooks = document.createElement("div");
 	    newbooks.innerHTML=`
       <button class="books-item-newbooks-btn">

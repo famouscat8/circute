@@ -1,12 +1,27 @@
+// post 界面左边界面切换工厂
+
 class Base{
     constructor(className){
 	this.rootView = document
 	    .getElementsByClassName(className)[0];
     }
-    
     init(childViewClassName){
 	this.rootView.innerHTML=
 	    `<div class="`+childViewClassName+`"></div>`;
+    }
+}
+
+class Artical extends Base{
+    constructor(className){
+	super(className);
+    } 
+    init(booksname='我的文章'){
+	super.init("artical");
+	var articalView = document
+	    .getElementsByClassName("artical")[0];
+	articalView.innerHTML=
+	    `<div class="artical-list-header">
+            `+booksname+`</div><list-artical></list-artical>`;
     }
 }
 
@@ -24,6 +39,19 @@ class Books extends Base{
     }
 }
 
+class Draft extends Base{
+    constructor(className){
+	super(className);
+    }
+    init(){
+	super.init("draft");
+	var draftView = document
+	    .getElementsByClassName('draft')[0];
+	draftView.innerHTML=`<div class="draft-list-header">
+        我的草稿</div>test`;
+    }
+}
+
 class Trash extends Base{
     constructor(className){
 	super(className);
@@ -35,7 +63,6 @@ class Trash extends Base{
 	booksView.innerHTML=
 	    `<div class="trash-list-header">
             回收站</div><list-trash></list-trash>`;
-	
     }
 }
 

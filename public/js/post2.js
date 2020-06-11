@@ -1,42 +1,12 @@
 // 发布帖子界面
 
-var testeditor;
 var imgs = [];
 
 $(()=>{
     
-    var edmdtoolbarIcons=()=>{
-	return ["undo","redo",
-		"|","bold",
-		"del","italic",
-		"quote","ucwords",
-		"uppercase","lowercase",
-		"|","h1","h2","h3","h4","|",
-		"list-ul","list-ol","hr","|",
-		"link","reference-link","image",
-		"code","preformatted-text","code-block",
-		"table","datetime","emoji","html-entities",
-		"pagebreak","|","goto-line","watch","preview",
-		"fullscreen","search","|","help","info"];
-    };
+
     
-    var edmdonload=()=>{
-	var codeEditor=$(".CodeMirror-wrap")[0];
-	codeEditor.ondragenter=e=>{
-	    e.preventDefault();e.stopPropagation();
-	    return false;
-	};
-	codeEditor.ondragover=e=>{
-	    e.preventDefault();e.stopPropagation();
-	    return false;
-	};
-	codeEditor.ondrop=e=>{
-	    e.preventDefault();e.stopPropagation();
-	    var files=e.dataTransfer.files // 获取到用户的文件
-	    tenxuncos(files[0], uploadUrlCallback);
-	}
-    };
-    
+
     function sts(){
 	return new Promise((resolve,reject)=>{
 	    $.ajax({
@@ -106,35 +76,36 @@ $(()=>{
 	if(alt==="")cm.setCursor(cursor.line,cursor.ch+2);
     }
     
-    
-    testeditor = editormd("editor", {
-	placeholder:
-	"本编辑器支持markdown编辑，左边编写，右边预览",
-	width: "100%",
-	path: "js/libs/editor.md/lib/",
-	saveHTMLToTextarea:false,
-	emoji:true,taskList:true,
-	tocm: true,tex:true,
-	// for@link and table of contents
-	atlink: true,toc: true,	
-	// disable decode the html
-	// for email address auto link
-	htmlDecode:false,emailLink:true, 	
-	lineNumbers: true,tabSize: 4,
-	flowChart:true,	// 流程图支持 默认关闭
-	sequenceDiagram:true,	// 时序图支持 默认关闭
-	onload:edmdonload,	// 图片上传成功后的处理
-	toolbarIcons: edmdtoolbarIcons,	// 自定义工具栏
-    });
 
+    
+    
     var ajax    = new MyAjax();
     var usermanager = new UserManager();
+    var tools   = new Tools();
     var myBooks = new Books("leftside-list");
+    var myArtical = new Artical('leftside-list');
+    var myDraft = new Draft('leftside-list');
     var myTrash = new Trash("leftside-list");
     var mySettings = new Settings("leftside-list");
+    
+    meditorMd.init(ajax,usermanager);
+
+    // 钩子:当文章被点击时,显示对应的文章内容在编辑器中
+    var clickartical=(aid,artical)=>{
+	meditorMd.setAid(aid);
+	meditorMd.getEditor().setMarkdown(artical);
+    }
+    // 钩子:当文集被点击时,显示文集对应的文章
+    var clickbooks = (bid,booksname)=>{
+	myArtical.init(booksname);
+	mlistArtical.init(bid,ajax,usermanager,tools,clickartical);
+    };
     var btn_books_listen = (obj)=>{
 	myBooks.init();
-	mlistBooks.init(ajax,usermanager);
+	mlistBooks.init(ajax,usermanager,tools,clickbooks);
+    };
+    var btn_draft_listen = (obj)=>{
+	myDraft.init();
     };
     var btn_trash_listen = ()=>{
 	myTrash.init();
@@ -145,11 +116,14 @@ $(()=>{
 
     var btn_books = document
 	.getElementsByClassName("left-bar-books")[0];
+    var btn_draft = document
+	.getElementsByClassName("left-bar-draft")[0];
     var btn_trash = document
 	.getElementsByClassName("left-bar-trash")[0];
     var btn_settings = document
 	.getElementsByClassName("left-bar-settings")[0];
     btn_books.onclick=btn_books_listen;
+    btn_draft.onclick=btn_draft_listen;
     btn_trash.onclick=btn_trash_listen;
     btn_settings.onclick=btn_settings_listen;
 
@@ -207,6 +181,3 @@ $(".btn-float").click(()=>{
 		  ()=>{sendPost(testeditor,imgs);},
 		  ()=>{layer.msg("取消成功，哈哈哈");});
 });
-
-
-

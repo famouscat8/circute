@@ -45,6 +45,7 @@ function loop2(uid,bname,baid,res){
 	booksname : bname,
 	bid       : bid,
 	articalnum: 1,
+	time      : time,
 	owner     : 'user:'+uid,
     };
     

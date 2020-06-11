@@ -1,0 +1,75 @@
+@import url(../theme/theme.less);
+@import url(common.less);
+
+
+.artical{
+    .artical-list-header{
+	.list-header();
+    }
+    .artical-list{
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	.artical-item-newartical{
+	    width: 100%;
+	    color: #666;
+	    display: flex;
+	    flex-direction: column;
+	    justify-content: center;
+	    align-items: center;
+	    transition-duration: .3s;
+	    padding-top: 1rem;
+	    padding-bottom: 1rem;
+	    .artical-item-newartical-btn{
+		.button-1();
+	    }
+	    &:hover{
+		background: #eee;
+	    }
+	    i{
+		font-size:1.8rem;
+	    }
+	    p{
+		font-size:.8rem;
+	    }
+	}
+	.artical-list-item{
+	    width: 100%;
+	    border-bottom: 1px #ddd solid;
+	    height: 66px;
+	    display: flex;
+	    flex-direction: column;
+	    justify-content: center;
+	    align-items: center;
+	    color: #666;
+	    transition: .3s;
+	    &:hover{
+		background: #eee;
+	    }
+	    .artical-item-main{
+		width: 100%;
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		flex-grow: 1;
+		.artical-item-title{
+		    font-size: 1.2rem;
+		    padding-left: 1rem;
+		    display: flex;
+		    justify-content: flex-start;
+		    align-items: center;
+		}
+	    }
+	    .artical-item-footer{
+		width: 100%;
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		small{
+		    padding-left:1rem;
+		}
+	    }
+	}
+    }
+}

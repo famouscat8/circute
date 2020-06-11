@@ -2,6 +2,8 @@
 @import url(settings.less);
 @import url(trash.less);
 @import url(books.less);
+@import url(draft.less);
+@import url(artical.less);
 
 .leftside{
     height: 100vh;
@@ -14,8 +16,11 @@
 	    overflow-y:scroll;
 	    height: 100%;
 	    // 随着leftbar的控制
-	    // 下面3的界面一次加载进leftside-main
+	    // 下面4个界面依次加载进leftside-main
 	    .books{
+		width: 100%;
+	    }
+	    .draft{
 		width: 100%;
 	    }
 	    .trash{

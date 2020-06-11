@@ -38,6 +38,14 @@
 	      <span class="left-bar-books-p">文集</span>
 	    </button>
 	  </div>
+	  
+	  <div class="left-bar-draft">
+	    <button class="left-bar-draft-btn">
+	      <i class="fa fa-cloud" aria-hidden="true"></i>
+	      <span class="left-bar-draft-p">草稿</span>
+	    </button>
+	  </div>
+
 	  <div class="left-bar-trash">
 	    <button class="left-bar-trash-btn">
 	      <i class="fa fa-trash" aria-hidden="true"></i>
@@ -68,19 +76,24 @@
       </div>
       
       <div class="rightside">
-	<div class="myeditor">
-	  <div class="editor" id="editor">
-	    <textarea></textarea>
-	  </div>
-	</div>
+	<editor-md></editor-md>
+	<!-- <div class="myeditor"> -->
+	<!--   <div class="editor" id="editor"> -->
+	<!--     <textarea id="testtest"></textarea> -->
+	<!--   </div> -->
+	<!-- </div> -->
+	
       </div>
     </div>
     
+    <script src="js/modules/tools/tools.js"></script>
     <script src="js/modules/tools/usermanager.js"></script>
     <script src="js/modules/tools/ajax.js"></script>
     <script src="js/components/post/list-books.js"></script>
     <script src="js/components/post/list-settings.js"></script>
     <script src="js/components/post/list-trash.js"></script>
+    <script src="js/components/post/list-artical.js"></script>
+    <script src="js/components/post/editor.js"></script>
     
     <script src="js/post/leftside_main.js"></script>
     <script src="js/libs/editor.md/editormd.min.js"></script>
