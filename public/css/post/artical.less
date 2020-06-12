@@ -86,8 +86,29 @@
 		display: flex;
 		justify-content: flex-start;
 		align-items: center;
-		small{
+		.artical-item-time{
+		    flex-grow:1;
 		    padding-left:1rem;
+		}
+		.artical-item-up-container{
+		    display: flex;
+		    justify-content:center;
+		    align-items: center;
+		    margin-right:.5rem;
+		    transition:.3s;
+		    cursor: pointer;
+		    &:hover{
+			background: #aaa;
+			small{
+			    color:#fff;
+			}
+		    }
+		    small{
+			transition: 1s;
+		    }
+		    .artical-item-up{
+			margin-right: .5rem;
+		    }
 		}
 	    }
 	}

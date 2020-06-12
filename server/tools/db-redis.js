@@ -104,6 +104,15 @@ function hmget(key, subkeys){
     })
 }
 
+function hincrby(key,subkey,num){
+    return new Promise((resolve,reject)=>{
+	redisClient.hincrby(key,subkey,num,(err,res)=>{
+	    if(err)reject(err)
+	    resolve(res);
+	})
+    })
+}
+
 function exists(key){
     return new Promise((resolve, reject)=>{
 	redisClient.exists(key, (err, res)=>{
@@ -177,6 +186,7 @@ module.exports = {
     hdel,
     hmset,
     hmget,
+    hincrby,
     exists,
     get,
     incrby,

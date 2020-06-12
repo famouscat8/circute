@@ -21,7 +21,7 @@ function loop1(uid,aid,title,res){
 	    loop2(aid,title,res);
 	else res.json({state:'-2',e:null,m:'想屁吃呢?'})
     }).catch(e=>{
-	error(e);
+	error(e,res);
     })
 }
 
@@ -29,11 +29,11 @@ function loop2(aid,title,res){
     dbtools.hset('artical:'+aid,'title',title).then(r=>{
 	res.json({state:'1',e:null,});
     }).catch(e=>{
-	error(e);
+	error(e,res);
     })
 }
 
-function error(e){
+function error(e,res){
     console.log('savearticaltitle.js:');
     console.dir(e);
     res.json({state:'-1',e:e,m:'something error'});

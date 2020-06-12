@@ -1,5 +1,4 @@
 // 编辑器界面我的文集组件
-
 const list_books = document.createElement("template");
 
 list_books.innerHTML=`<div class="books-list"></div>`;
@@ -10,8 +9,8 @@ class ListBooks extends HTMLElement{
 	super();
 	this.appendChild(list_books.content.cloneNode(true));
 	mlistBooks = this;
-	
     }
+    
     init(ajax,usermanager,tools,clickbooks){
 	// 新建文集的方法
 	function createBooks(books_name){
@@ -61,9 +60,9 @@ class ListBooks extends HTMLElement{
                      id="books-item-book-id-`+i+`"></small>
                <small class="books-item-time"
                      id="books-item-time-id-`+i+`"></small>
-      <small><i class='fa fa-wrench' aria-hidden='true'></i></small>
-                </div>
-                </div>`;
+         <small class="books-item-setting">
+          <i class='fa fa-wrench' aria-hidden='true'></i>
+         </small></div></div>`;
 		books_list.appendChild(item);
 		var title = document
 		    .getElementById("books-item-title-id-"+i)
@@ -92,6 +91,7 @@ class ListBooks extends HTMLElement{
 	    console.dir(data);
 	};
 	function error(e){
+	    layer.msg(e.m);
 	    console.dir(e);
 	};
 	

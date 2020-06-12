@@ -29,12 +29,17 @@ const getemailtoken = require("./server/api/getemailtoken")
 const getbooks    = require("./server/api/getbooks")
 // api 新建文集
 const createbooks = require('./server/api/createbooks')
+// api 新建文章
+const createartical=require('./server/api/createartical')
 // api 返回文集对应的文章
 const getarticals = require('./server/api/getarticals')
 // api 保存文章
 const saveartical = require('./server/api/saveartical')
 // api 修改artical title
 const savearticaltitle=require('./server/api/savearticaltitle')
+// api 发布文章
+const upartical=require('./server/api/upartical')
+
 
 const bodyparser  = require("body-parser")
 // 返回某用户的个人信息
@@ -85,6 +90,9 @@ app.post('/createbooks',createbooks)
 app.post('/getarticals',getarticals)
 app.post('/saveartical',saveartical)
 app.post('/savearticaltitle',savearticaltitle)
+app.post('/createartical',createartical)
+app.post('/upartical',upartical)
+
 
 app.get("/viewpost.html",viewpost)
 app.get("/test", (req, res) =>res.send("haha :)"))

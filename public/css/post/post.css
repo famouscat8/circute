@@ -266,6 +266,23 @@
 .books .books-list .books-item .books-item-footer small:hover {
   background: #eee;
 }
+.books .books-list .books-item .books-item-footer .books-item-setting {
+  padding: 0.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+.books .books-list .books-item .books-item-footer .books-item-setting i {
+  transition: 1s;
+}
+.books .books-list .books-item .books-item-footer .books-item-setting:hover {
+  background: #aaa;
+}
+.books .books-list .books-item .books-item-footer .books-item-setting:hover i {
+  color: #fff;
+}
 .draft .draft-list-header {
   height: 3.8rem;
   display: flex;
@@ -378,8 +395,29 @@
   justify-content: flex-start;
   align-items: center;
 }
-.artical .artical-list .artical-list-item .artical-item-footer small {
+.artical .artical-list .artical-list-item .artical-item-footer .artical-item-time {
+  flex-grow: 1;
   padding-left: 1rem;
+}
+.artical .artical-list .artical-list-item .artical-item-footer .artical-item-up-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 0.5rem;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.artical .artical-list .artical-list-item .artical-item-footer .artical-item-up-container:hover {
+  background: #aaa;
+}
+.artical .artical-list .artical-list-item .artical-item-footer .artical-item-up-container:hover small {
+  color: #fff;
+}
+.artical .artical-list .artical-list-item .artical-item-footer .artical-item-up-container small {
+  transition: 1s;
+}
+.artical .artical-list .artical-list-item .artical-item-footer .artical-item-up-container .artical-item-up {
+  margin-right: 0.5rem;
 }
 .leftside {
   height: 100vh;

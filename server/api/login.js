@@ -43,7 +43,8 @@ function loop1(logda,uid,res){
 // 生成usertoken
 function createUserToken(user,uid, res){
     let content = {uid:uid};
-    var options={expiresIn:3600};
+    // 10小时过期的token
+    var options={expiresIn:36000};
     token_tool.create(content,options).then(token=>{
 	res.json({state: "1",user:user,token:token});
     }).catch(e=>{
