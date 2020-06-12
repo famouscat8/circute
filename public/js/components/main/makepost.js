@@ -7,11 +7,15 @@ makepost.innerHTML=`<div class="makepost-container b-p-07rem">
   </div>
   <p class="hr-2"/>
   <div class="makepost-main-container">
-    <p class="makepost-main">
-      CIRCUTE 是一个主张友好,文明的技术交流社区
-CIRCUTE 是一个主张友好,文明的技术交流社区
-CIRCUTE 是一个主张友好,文明的技术交流社区</p>
-    
+   <div class="makepost-main-artical-container">
+    <div class="makepost-main-artical-i-container">
+      <i class='fa fa-pencil' aria-hidden='true'></i>
+    </div>
+    <p class='makepost-main-makeartical'>写文章</p>
+   </div>    
+
+
+
   </div>
   <p class="hr-2"/>
 

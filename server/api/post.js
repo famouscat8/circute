@@ -8,22 +8,22 @@ const dbtools =require("../tools/db-redis")
 async function getposts(t_posts){
     // 返回给客户端的数据
     var rposts=[];	
-    // 接受postsid时间排列;
     var posts=t_posts;
     var posts_len=posts.length;
     var rpost={};
     for(var i=0;i<posts_len;i++){
-	var postid=posts[i]; // post:12
-	// 根据帖子id查询帖子
+	var postid=posts[i];
 	var p=await dbtools.hgetall(postid)
 	    .catch(e=>{return e;});
-	var content=await dbtools.hgetall(p.content)
-	    .catch(e=>{return e;});
+	if(p.type!=4){
+	    var content=await dbtools.hgetall(p.content)
+		.catch(e=>{return e;});
+	    p.content=content;
+	}
 	var owner=await dbtools.hgetall(p.owner)
 	    .catch(e=>{return e;});
 	var comment=await dbtools.hgetall(p.comment)
 	    .catch(e=>{return e;});
-	p.content=content;
 	p.owner=owner;
 	p.comment=comment;
 	rposts.unshift(p);
@@ -36,16 +36,38 @@ async function getposts(t_posts){
 // {page:int;}
 router.post("/post",(req,res)=>{
     var reqdata=req.body;
-    dbtools.zrange("postids",0,-1).then(obj=>{
-	getposts(obj).then(post=>{
-	    res.json({state:"1",posts:post,});
-	}).catch(e=>{
-	    res.json({state:"-1",e:e,m:"查找帖子错误"});
-	});
-    }).catch(e=>{
-	res.json({state:"-1",e:e,m:"获取帖子时序错误"});
-    })
+    loop1(res);
 })
+
+
+// data2client:发送给用户的缓存数据
+function loop1(res){
+    var dp=['articalups','postids'];
+    dbtools.zunionstore('data2client',2,'articalups','postids')
+	.then(sum=>{
+	    loop2(sum,res);
+	}).catch(e=>{
+	    error(e,res);
+	})
+}
+
+function loop2(sum,res){
+    dbtools.zrange("data2client",0,-1).then(obj=>{
+    	getposts(obj).then(post=>{
+    	    res.json({state:"1",posts:post,sum:sum,});
+    	}).catch(e=>{
+	    error(e,res);
+    	});
+    }).catch(e=>{
+	error(e,res);
+    })
+}
+
+function error(e,res){
+    console.log('post.js:');
+    console.dir(e);
+    res.json({state:'-1',e:e,m:'null'});
+}
 
 module.exports = router;
 

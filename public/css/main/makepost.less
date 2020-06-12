@@ -14,9 +14,46 @@
     }
     .makepost-main-container{
 	flex-grow: 1;
-	.makepost-main{
-	    color: #666;
-	    
+	display:flex;
+	justify-content: center;
+	align-item:center;
+	.makepost-main-artical-container{
+	    cursor:pointer;
+	    display: flex;
+	    justify-content: center;
+	    flex-direction: column;
+	    align-items: center;
+	    i{
+		transition:1s;
+	    }
+	    &:hover{
+		i{
+		    color: #862028;
+		}
+		.makepost-main-artical-i-container{
+		    background:rgba(228,125,125,.5);
+		}
+		.makepost-main-makeartical{
+		    color: @theme-color-light;
+		}
+	    }
+	    .makepost-main-artical-i-container{
+		display:flex;
+		justify-content: center;
+		align-items:center;
+		border-radius: 50%;
+		background: rgba(236,162,162,.5);
+		padding: .5rem;
+		width: 1.5rem;
+		height: 1.5rem;
+		font-size:1.3rem;
+		color: @theme-color-light;
+		transition:.3s;
+	    }
+	    .makepost-main-makeartical{
+		color:#666;
+		transition: .3s;
+	    }
 	}
     }
     .makepost-footer-container{
@@ -33,7 +70,4 @@
 	}
     }
 }
-
-
-
 

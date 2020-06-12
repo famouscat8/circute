@@ -19,46 +19,42 @@
   <body>
     
     <!-- 发送帖子的按钮 固定在页面右下角 -->
-    <label for="toggle-funny"></label>
-    <input type="checkbox"
-	   id="toggle-funny"
-	   class="toggle-funny">
-    <!-- 点击上面这个按钮后出现的界面 -->
-    <div class="startfunny view-float">
-      <!-- 引导用户发表帖子的界面 -->
-      <input class="startfunny-title"
-	     type="text"
-	     placeholder="输入帖子标题">
-      <button class="startfunny-start"
-	      >开始创作</button>
-    </div>
+    <!-- <label for="toggle-funny"></label> -->
+    <!-- <input type="checkbox" -->
+    <!-- 	   id="toggle-funny" -->
+    <!-- 	   class="toggle-funny"> -->
+    <!-- <\!-- 点击上面这个按钮后出现的界面 -\-> -->
+    <!-- <div class="startfunny view-float"> -->
+    <!--   <\!-- 引导用户发表帖子的界面 -\-> -->
+    <!--   <input class="startfunny-title" -->
+    <!-- 	     type="text" -->
+    <!-- 	     placeholder="输入帖子标题"> -->
+    <!--   <button class="startfunny-start" -->
+    <!-- 	      >开始创作</button> -->
+    <!-- </div> -->
     
     <tool-bar></tool-bar>    
-
-    <main class="mymain">
-      <div class="middle card b-p-1rem">
-	<div class="title">
-	  <a href="">全部帖子</a>
+    <div class="scroll">
+      <main class="mymain">
+	<div class="middle card b-p-1rem">
+	  <div class="title">
+	    <a href="">全部帖子</a>
+	  </div>
+	  <div>
+	    <p class="hr-1 b-m-top-08rem b-m-bottom-08rem"/>
+	  </div>
+	  <main-list></main-list>
+	  <card-footer></card-footer>
+	  
 	</div>
-	<div>
-	  <p class="hr-1 b-m-top-08rem b-m-bottom-08rem"/>
+	
+	<div class="rightside">
+	  <make-post></make-post>
+	  <art-post></art-post>
 	</div>
-	<main-list></main-list>
-	<div class="card-footer b-m-1rem">
-	  card footer here!</div>
-      </div>
-      
-      <div class="rightside">
-	<make-post></make-post>
-	<art-post></art-post>
-      </div>
-      
-      
-      
-    </main>
-    <footer>
-      famouscat @Copyright 2020
-    </footer>
+      </main>
+      <footer>famouscat @CopyRight</footer>
+    </div>
     <script type="text/javascript" src="js/online_tool.js"></script>
     <script src="js/libs/jquery.js"></script>
     <script src="js/libs/layer/layer.js"></script>
@@ -71,8 +67,10 @@
     <script src="js/components/main/list.js"></script>
     <script src="js/components/main/makepost.js"></script>
     <script src="js/components/main/artpost.js"></script>
+    <script src="js/components/main/cardfooter.js"></script>
+    
     <script src="js/modules/tools/viewtools.js"></script>
     <script src="js/main.js"></script>
 
-    </body>
-  </html>
+  </body>
+</html>

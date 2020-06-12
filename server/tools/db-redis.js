@@ -158,6 +158,15 @@ function zrangebyscore(key,min,max){
     })
  }
 
+function zunionstore(destination,num,...keys){
+    return new Promise((resolve,reject)=>{
+	redisClient.zunionstore(destination,num,
+				keys[0],keys[1],(err,r)=>{
+	    if(err)reject(err)
+	    resolve(r)
+	})
+    })
+}
 
  function zrange(key,min,max){
     return new Promise((resolve,reject)=>{
@@ -193,5 +202,6 @@ module.exports = {
     zadd,
     zrangebyscore,
     zrange,
+    zunionstore,
     expire,
 }

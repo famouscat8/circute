@@ -8,6 +8,15 @@
 body {
     display: flex;
     flex-direction: column;
+    overflow:hidden;
+    tool-bar{
+	z-index:2;
+    }
+    .scroll{
+	overflow-y:scroll;
+	height: calc(100vh - @toolbar-height);
+	
+    }
     main {
 	flex-grow: 1;
     }

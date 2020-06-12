@@ -188,7 +188,7 @@ class ListArtical extends HTMLElement{
 		layer.msg('发布失败:-)');
 	    });
 	    
-	},function(){});
+	},()=>{});
     }
 
 }

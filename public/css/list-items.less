@@ -1,5 +1,6 @@
 // 首页帖子列表item布局
 @import url(theme/theme.less);
+@import url(main/list-item-artical);
 
 // 签到帖子样式
 .list-items-3{
@@ -8,6 +9,10 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+    margin-bottom:.8rem;
+    margin-top:.8rem;
+    border-bottom: 1px #eee solid;
+    padding-bottom: .8rem;
     .list-item-3-img-container{
 	display: flex;
 	flex-direction: row;
@@ -15,7 +20,6 @@
 	align-items: center;
 	width: @item3-height;
 	height: @item3-height;
-	
 	.list-item-3-img{
 	    width: 60px;
 	    height: 60px;
@@ -89,7 +93,9 @@
     // 放不下也不换行
     flex-warp: nowrap;
     justify-content: flex-start;
-    
+    border-bottom: 1px #eee solid;
+    margin-bottom: .8rem;
+    padding-bottom: .8rem;
     .list-items-conner{
 	cursor:pointer;
 	img{
