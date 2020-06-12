@@ -33,6 +33,8 @@ const createbooks = require('./server/api/createbooks')
 const getarticals = require('./server/api/getarticals')
 // api 保存文章
 const saveartical = require('./server/api/saveartical')
+// api 修改artical title
+const savearticaltitle=require('./server/api/savearticaltitle')
 
 const bodyparser  = require("body-parser")
 // 返回某用户的个人信息
@@ -82,6 +84,7 @@ app.post("/getbooks",getbooks)
 app.post('/createbooks',createbooks)
 app.post('/getarticals',getarticals)
 app.post('/saveartical',saveartical)
+app.post('/savearticaltitle',savearticaltitle)
 
 app.get("/viewpost.html",viewpost)
 app.get("/test", (req, res) =>res.send("haha :)"))

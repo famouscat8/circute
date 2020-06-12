@@ -346,11 +346,31 @@
   flex-grow: 1;
 }
 .artical .artical-list .artical-list-item .artical-item-main .artical-item-title {
+  flex-grow: 1;
   font-size: 1.2rem;
   padding-left: 1rem;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+}
+.artical .artical-list .artical-list-item .artical-item-main .artical-item-title-editor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  transition: 0.3s;
+  margin-right: 0.5rem;
+}
+.artical .artical-list .artical-list-item .artical-item-main .artical-item-title-editor:hover {
+  background: #aaa;
+}
+.artical .artical-list .artical-list-item .artical-item-main .artical-item-title-editor:hover i {
+  color: #fff;
+}
+.artical .artical-list .artical-list-item .artical-item-main .artical-item-title-editor i {
+  transition: 1s;
 }
 .artical .artical-list .artical-list-item .artical-item-footer {
   width: 100%;

@@ -54,11 +54,31 @@
 		align-items: center;
 		flex-grow: 1;
 		.artical-item-title{
+		    flex-grow:1;
 		    font-size: 1.2rem;
 		    padding-left: 1rem;
 		    display: flex;
 		    justify-content: flex-start;
 		    align-items: center;
+		}
+		.artical-item-title-editor{
+		    display: flex;
+		    justify-content: center;
+		    align-items:center;
+		    border-radius:50%;
+		    height: 30px;
+		    width: 30px;
+		    transition: .3s;
+		    margin-right: .5rem;
+		    &:hover{
+			background: #aaa;
+			i{
+			    color: #fff;
+			}
+		    }
+		    i{
+			transition:1s;
+		    }
 		}
 	    }
 	    .artical-item-footer{

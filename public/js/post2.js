@@ -4,9 +4,6 @@ var imgs = [];
 
 $(()=>{
     
-
-    
-
     function sts(){
 	return new Promise((resolve,reject)=>{
 	    $.ajax({
@@ -76,7 +73,7 @@ $(()=>{
 	if(alt==="")cm.setCursor(cursor.line,cursor.ch+2);
     }
     
-
+    
     
     
     var ajax    = new MyAjax();
@@ -89,7 +86,10 @@ $(()=>{
     var mySettings = new Settings("leftside-list");
     
     meditorMd.init(ajax,usermanager);
-
+    // 钩子:当修改文章标题按钮被点击时
+    var click_edit_title=(aid)=>{
+	mlistArtical.editATitle(aid,ajax,usermanager,tools,);
+    }
     // 钩子:当文章被点击时,显示对应的文章内容在编辑器中
     var clickartical=(aid,artical)=>{
 	meditorMd.setAid(aid);
@@ -98,11 +98,13 @@ $(()=>{
     // 钩子:当文集被点击时,显示文集对应的文章
     var clickbooks = (bid,booksname)=>{
 	myArtical.init(booksname);
-	mlistArtical.init(bid,ajax,usermanager,tools,clickartical);
+	mlistArtical.init(bid,ajax,usermanager,tools,
+			  clickartical,click_edit_title);
     };
     var btn_books_listen = (obj)=>{
 	myBooks.init();
-	mlistBooks.init(ajax,usermanager,tools,clickbooks);
+	mlistBooks.init(ajax,usermanager,tools,
+			clickbooks,);
     };
     var btn_draft_listen = (obj)=>{
 	myDraft.init();
