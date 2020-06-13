@@ -1,0 +1,83 @@
+@import url(../theme/theme.less);
+// 显示作者信息的控件
+@main-user-avatar-heigth: 5.2rem;
+.main-user-message{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    .shadow-1();
+    padding:.8rem;
+    .main-user-avatar-container{
+	display: flex;
+	flex-direction: column;
+	justify-content:center;
+	align-items: center;
+	margin-bottom: 1rem;
+	.main-user-avatar{
+	    width: @main-user-avatar-heigth;
+	    height: @main-user-avatar-heigth;
+	    margin-bottom:.3rem;
+	    border-radius: 50%;
+	    .img-src-center();
+	    background:#eee;
+	}
+	.main-user-username{
+	    display:flex;
+	    justify-content:center;
+	    align-items:center;
+	    color: 1.2rem;
+	    font-weight: 700;
+	}
+    }
+
+    .main-user-message-container{
+	display:flex;
+	justify-content:space-around;
+	align-items:center;
+	font-size: 1.46rem;
+	margin-bottom: 1rem;
+	width:100%;
+	.main-user-articalnum-container,
+	.main-user-thumbsup-container,
+	.main-user-star-container{
+	    display:flex;
+	    justify-content: center;
+	    align-items:center;
+	    flex-direction: column;
+	    transition:.2s;
+	    color: #666;
+	    &:hover{
+		color: @theme-color-light;
+	    }
+	    
+	    div{
+		padding: .7rem;
+		border-radius:50%;
+		background: #eee;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	    }
+	    p{
+		font-size:1rem;
+	    }
+	}
+    }
+
+    .main-user-footer-container{
+	display: flex;
+	justify-content:space-around;
+	align-items: center;
+	width: 100%;
+	button{
+	    .button-4();
+	    i{
+		margin-right: .5rem;
+	    }
+	}
+	.main-user-follow-active{
+	    
+	}
+    }
+}

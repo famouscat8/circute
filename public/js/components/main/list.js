@@ -126,28 +126,61 @@ class MainList extends HTMLElement{
 
     // 渲染文章类型的帖子
     display_artical(post,i,list,tools){
+	console.dir(post);
 	var item=document.createElement('div');
+	item.className='list-item-artical';
 	item.innerHTML=`
         <div class="list-item-artical-title-container">
-  <p class="list-item-artical-title">测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标</p>
-</div>
-
+         <p class="list-item-artical-title"
+              id="list-item-artical-title-id-`+i+`"></p>
+      </div>
 <div class="list-item-artical-main-container">
 <div class="list-item-artical-main-content">
-  <p class="list-item-artical-content">内容题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标题测试标</p>
+  <p class="list-item-artical-content"
+      id="list-item-artical-content-id-`+i+`"></p>
 <div class="list-item-artical-footer-container">
-  测试文本题测试标题测试标题测试标
+  <div class="list-item-artical-time-container">
+   <i class="fa fa-clock-o" aria-hidden="true"></i>
+   <p class="list-item-artical-time-p"
+       id="list-item-artical-time-id-`+i+`">-----</p>
+  </div>
+
+  <div class="list-item-artical-thumbs-container">
+   <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+   <p class="list-item-artical-thumbs-p"
+       id="list-item-artical-thumbs-id-`+i+`">-----</p>
+  </div>
+  <div class="list-item-artical-comment-container">
+   <i class="fa fa-commenting-o" aria-hidden="true"></i>
+   <p class="list-item-artical-comment-p"
+       id="list-item-artical-comment-id-`+i+`">-----</p>
+  </div>
+
 </div></div>
   <div class="list-item-artical-img-container">
     <img src="https://circute2-1259491699.cos.ap-beijing.myqcloud.com/1n2HbD.jpg"
-class="list-item-artical-img"/>
+class="list-item-artical-img"
+  id="list-item-artical-img-id-`+i+`"/>
   </div>
-</div>
-`;
-	item.className='list-item-artical';
-	
+</div>`;
 	list.appendChild(item);
-	
+	var title=document
+	    .getElementById('list-item-artical-title-id-'+i)
+	    .innerText=post.title;
+	var content=document
+	    .getElementById('list-item-artical-content-id-'+i)
+	    .innerText=post.content;
+	var time=document
+	    .getElementById('list-item-artical-time-id-'+i)
+	    .innerText=tools.getDateDiff(post.time);
+	var img=document
+	    .getElementById('list-item-artical-img-id-'+i);
+	if(!Boolean(post.img))
+	    img.style.display='none';
+	item.onclick=()=>{
+	    window.open('/viewpost.html?aid='+post.aid,'_blank');
+	    console.dir(post);
+	}
     }
     
     

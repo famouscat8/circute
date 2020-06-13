@@ -1,8 +1,12 @@
 class Tools {
-    constructor(){
-	
-    }
+    constructor(){}
 
+    getUrlParam(key){
+	var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+	var r = window.location.search.slice(1).match(reg);
+	if (r != null) return unescape(r[2]); return null;
+    }
+    
     // 输入时间戳，返回人性化的时间显示
     getDateDiff(dataTimeStamp){
 	var result="";
@@ -25,7 +29,7 @@ class Tools {
 	else if(minC>=1)result=""+parseInt(minC)+"分钟前";
 	else result="刚刚";
 	return result;
-    
+	
     }
 
 }

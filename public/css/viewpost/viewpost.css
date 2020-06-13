@@ -188,6 +188,7 @@ header .logo-rightside .login .user:hover .user-cover {
   margin: 0;
   padding: 0;
   box-sizing: border-size;
+  font-family: sans-serif;
 }
 ::selection {
   color: #fff;
@@ -210,100 +211,164 @@ ul {
 :root {
   font-size: 15px;
 }
-main {
-  padding: 1rem 2rem;
-  display: grid;
-  grid-template-rows: 100%;
-  grid-column-gap: 1.3rem;
-  grid-template-columns: 26% 69%;
-}
-main .middle #test-editormd {
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
-}
-.leftsight .puser {
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  overflow: hidden;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  height: 266px;
-  padding-bottom: 1rem;
-}
-.leftsight .puser .usercontainer {
-  width: 100%;
+.main-header-container {
   display: flex;
   flex-direction: row;
-}
-.leftsight .puser .usercontainer .useravatar {
-  width: 69px;
-  height: 69px;
-  padding: 0.6rem;
-  display: flex;
+  justify-content: flex-start;
   align-items: center;
-  justify-content: center;
+  overflow: hidden;
+  padding-bottom: 0.6rem;
+  margin-bottom: 0.6rem;
+  border-bottom: 0.8px #ddd solid;
 }
-.leftsight .puser .usercontainer .useravatar .avatar {
-  border: 1px red solid;
+.main-header-container .main-header-avatar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main-header-container .main-header-avatar-container .main-header-avatar {
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
-  width: 67px;
-  height: 67px;
+  object-fit: cover;
 }
-.leftsight .puser .usercontainer .usermessage {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
-.leftsight .puser .usercontainer .usermessage .userqu {
-  flex-grow: 4;
+.main-header-container .main-header-message {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  margin-left: 0.8rem;
 }
-.leftsight .puser .usercontainer .usermessage .userqu .pusername {
-  color: #000000;
-  font-weight: 600;
-  font-size: 1.2rem;
+.main-header-container .main-header-message .main-header-upto {
+  color: #666;
 }
-.leftsight .puser .usercontainer .usermessage .userqu .usersign {
-  font-weight: 500;
-  color: #666666;
-  font-size: 0.9rem;
-}
-.leftsight .puser .usercontainer .usermessage .userstar {
-  min-height: 25px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-grow: 2;
-}
-.postmessage {
-  margin-top: 1rem;
-  padding: 1rem;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
-  height: 266px;
+.main-user-message {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  -webkit-box-shadow: 0 0 6px rgba(10, 10, 10, 0.2);
+  box-shadow: 0 0 6px rgba(10, 10, 10, 0.2);
+  padding: 0.8rem;
 }
-.postmessage .titlecontainer {
-  flex-grow: 1;
-}
-.postmessage .titlecontainer p {
-  font-weight: 700;
-  color: #999999;
-  font-size: 1.25rem;
-}
-.postmessage .message {
-  flex-grow: 10;
+.main-user-message .main-user-avatar-container {
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.main-user-message .main-user-avatar-container .main-user-avatar {
+  width: 5.2rem;
+  height: 5.2rem;
+  margin-bottom: 0.3rem;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #eee;
+}
+.main-user-message .main-user-avatar-container .main-user-username {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: 1.2rem;
+  font-weight: 700;
+}
+.main-user-message .main-user-message-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.46rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+.main-user-message .main-user-message-container .main-user-articalnum-container,
+.main-user-message .main-user-message-container .main-user-thumbsup-container,
+.main-user-message .main-user-message-container .main-user-star-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: 0.2s;
+  color: #666;
+}
+.main-user-message .main-user-message-container .main-user-articalnum-container:hover,
+.main-user-message .main-user-message-container .main-user-thumbsup-container:hover,
+.main-user-message .main-user-message-container .main-user-star-container:hover {
+  color: #9d2933;
+}
+.main-user-message .main-user-message-container .main-user-articalnum-container div,
+.main-user-message .main-user-message-container .main-user-thumbsup-container div,
+.main-user-message .main-user-message-container .main-user-star-container div {
+  padding: 0.7rem;
+  border-radius: 50%;
+  background: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main-user-message .main-user-message-container .main-user-articalnum-container p,
+.main-user-message .main-user-message-container .main-user-thumbsup-container p,
+.main-user-message .main-user-message-container .main-user-star-container p {
+  font-size: 1rem;
+}
+.main-user-message .main-user-footer-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+.main-user-message .main-user-footer-container button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #999999;
+  border-radius: 4px;
+  padding: 4px 12px;
+  overflow: hidden;
   color: #999999;
-  font-size: 0.9rem;
-  font-weight: 300;
+  text-decoration: none;
+  transition-duration: 0.3s;
+  outline: none;
+}
+.main-user-message .main-user-footer-container button:hover {
+  border: 1px solid #9d2933;
+  background: #9d2933;
+  color: #fff;
+}
+.main-user-message .main-user-footer-container button i {
+  margin-right: 0.5rem;
+}
+.main {
+  padding: 1rem 0rem;
+  display: grid;
+  grid-template-rows: 100%;
+  grid-template-columns: 60% 23%;
+  justify-content: center;
+  grid-column-gap: 1.2rem;
+}
+.main .leftsight {
+  display: grid;
+  grid-template-columns: 100%;
+  justify-content: center;
+  align-content: start;
+  grid-row-gap: 1rem;
+  width: 100%;
+}
+.recommendread-main {
+  display: flex;
+  -webkit-box-shadow: 0 0 6px rgba(10, 10, 10, 0.2);
+  box-shadow: 0 0 6px rgba(10, 10, 10, 0.2);
+  padding: 0.8rem;
+}
+.shadow-1 {
+  -webkit-box-shadow: 0 0 6px rgba(10, 10, 10, 0.2);
+  box-shadow: 0 0 6px rgba(10, 10, 10, 0.2);
+}
+.p-one-line {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .img-src-center {
   object-fit: cover;
@@ -408,6 +473,10 @@ main .middle #test-editormd {
   border: 1px solid #9d2933;
   background: #9d2933;
   color: #fff;
+}
+#test-editormd {
+  font-size: 1.22rem;
+  padding: 0px;
 }
 body {
   display: flex;

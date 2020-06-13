@@ -1,20 +1,20 @@
 @import url(../theme/theme.less);
 
-main {
-    padding              : 1rem 2rem;
+.main {
+    padding              : 1rem 0rem;
     display              : grid;
     grid-template-rows   : 100%;
-    grid-column-gap      : 1.3rem;
-    grid-template-columns: 26% 69%;
-
-    .middle{
-	#test-editormd{
-	    box-shadow:@shadow01;
-	}
-    }
+    grid-template-columns: 60% 23%;
+    justify-content      : center;
+    grid-column-gap      : 1.2rem;
+    .middle{}
     
     .leftsight{
-	// box-shadow: @shadow01;
+	display              : grid;
+	grid-template-columns: 100%;
+	justify-content      : center;
+	align-content        : start;
+	grid-row-gap         : 1rem;
+	width                : 100%;
     }
-
 }

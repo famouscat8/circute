@@ -103,6 +103,10 @@
     transform: rotate(0deg);
   }
 }
+.shadow-1 {
+  -webkit-box-shadow: 0 0 6px rgba(10, 10, 10, 0.2);
+  box-shadow: 0 0 6px rgba(10, 10, 10, 0.2);
+}
 .p-one-line {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -664,11 +668,14 @@
   align-items: center;
 }
 .list-item-artical {
-  height: 10rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px #eee solid;
   display: flex;
   flex-direction: column;
+  transition: 0.3s;
+}
+.list-item-artical:hover {
+  background: #eee;
 }
 .list-item-artical .list-item-artical-title-container {
   display: flex;
@@ -677,6 +684,7 @@
   align-items: center;
   color: #000;
   font-size: 1.3rem;
+  margin-bottom: 0.3rem;
 }
 .list-item-artical .list-item-artical-title-container .list-item-artical-title {
   overflow: hidden;
@@ -688,6 +696,7 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  flex-grow: 1;
 }
 .list-item-artical .list-item-artical-main-container .list-item-artical-main-content {
   display: flex;
@@ -695,11 +704,37 @@
   align-items: flex-start;
   flex-direction: column;
   padding-right: 0.6rem;
+  flex-grow: 1;
 }
 .list-item-artical .list-item-artical-main-container .list-item-artical-main-content .list-item-artical-content {
   width: 100%;
   color: #666;
   flex-grow: 1;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  margin-bottom: 0.3rem;
+}
+.list-item-artical .list-item-artical-main-container .list-item-artical-main-content .list-item-artical-footer-container {
+  display: flex;
+  justify-content: flex-start;
+  align-item: center;
+}
+.list-item-artical .list-item-artical-main-container .list-item-artical-main-content .list-item-artical-footer-container i {
+  margin-right: 0.3rem;
+}
+.list-item-artical .list-item-artical-main-container .list-item-artical-main-content .list-item-artical-footer-container div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 0.5rem;
+  transition: 0.3s;
+}
+.list-item-artical .list-item-artical-main-container .list-item-artical-main-content .list-item-artical-footer-container div:hover {
+  background: #eee;
+  color: #9d2933;
 }
 .list-item-artical .list-item-artical-main-container .list-item-artical-img-container {
   display: flex;
@@ -1034,6 +1069,7 @@ main {
   margin: 0;
   padding: 0;
   box-sizing: border-size;
+  font-family: sans-serif;
 }
 ::selection {
   color: #fff;

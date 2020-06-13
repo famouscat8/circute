@@ -1,0 +1,39 @@
+@import url(../theme/theme.less);
+
+// 显示帖子用户信息的界面
+@main-header-height: 3rem;
+.main-header-container{
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items:center;
+    overflow: hidden;
+    padding-bottom: .6rem;
+    margin-bottom : .6rem;
+    border-bottom: .8px #ddd solid;
+    .main-header-avatar-container{
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	.main-header-avatar{
+	    width: @main-header-height;
+	    height: @main-header-height;
+	    border-radius: 50%;
+	    .img-src-center();
+	}
+    }
+    .main-header-message{
+	flex-grow:1;
+	display:flex;
+	flex-direction: column;
+	justify-content:center;
+	align-items: flex-start;
+	margin-left:.8rem;
+	.main-header-username{
+	    
+	}
+	.main-header-upto{
+	    color: #666;
+	}
+    }
+}

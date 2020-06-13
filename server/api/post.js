@@ -3,6 +3,17 @@ const express=require("express")
 const router=express.Router()
 const dbtools =require("../tools/db-redis")
 
+
+// 删除字符串空格换行
+function msubstring(string,len){
+    return string.replace(/\ +/g, "")
+	.replace(/[ ]/g, "")
+	.replace(/[\r\n]/g, "")
+	.replace(/[\n]/g, "")
+	.replace(/[\r]/g, "")
+	.substring(0,len);
+}
+
 // t_posts:postid时间排列
 // return: Promise:post object
 async function getposts(t_posts){
@@ -18,7 +29,10 @@ async function getposts(t_posts){
 	if(p.type!=4){
 	    var content=await dbtools.hgetall(p.content)
 		.catch(e=>{return e;});
+	    content.content=msubstring(content.content,120);
 	    p.content=content;
+	}else if(p.type==4){
+	    p.content=msubstring(p.content,120);
 	}
 	var owner=await dbtools.hgetall(p.owner)
 	    .catch(e=>{return e;});

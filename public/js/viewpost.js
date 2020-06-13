@@ -1,20 +1,7 @@
 $(()=>{
-    // 错误处理函数
-    var errorshow=error=>{
-	
-    }
-	
-    // 处理用户信息
-    var avatar=avatar_data=>{
-	$(".avatar").attr("src",avatar_data.avatarurl);
-	$(".pusername").html(avatar_data.nickname);
-	$(".puser").css("background-image",
-		       "url("+avatar_data.uimg+")");
-	
-    };
-    var show=post_data=>{
+    var show=content=>{
 	var testeditor = editormd.markdownToHTML("test-editormd",{
-	    markdown: post_data,
+	    markdown: content,
 	    emoji: true,
 	    taskList:true,
 	    tex:true,
@@ -22,38 +9,38 @@ $(()=>{
 	});
     }
 
-    // 显示帖子信息
-    var post_message=post_data=>{
-	$(".message").text("time: "+ post_data.time+
-			   "  star:"+ post_data.star);
-    }
-
-    var getUrlParam=name=>{
-	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-	var r = window.location.search.slice(1).match(reg);
-	if (r != null) return unescape(r[2]); return null;
-    }
     
-    $.ajax({
-	type:"POST",
-	url:"/getpost",
-	contentType:"application/json;charset=UTF-8",
-	data:JSON.stringify({pid:getUrlParam("pid")}),
-	success:r=>{
-	    if(r.state=="-1"){
-		errorshow(r.e);
-		return;
+    function success(data){
+	console.dir(data);
+	if(data.state=="1"){
+	    var post=data.post;
+	    var artical=data.artical;	    
+	    if(Boolean(post)){//post
+		document.title=post.content.title;
+		show(post.content.content);
+		mviewUser.init(post.owner);
+	    }else{//artical
+		document.title=artical.title;
+		show(artical.content);
+		mviewUser.init(artical.owner);
 	    }
-	    
-	    document.title=r.post.content.title;
-	    show(r.post.content.content);
-	    avatar(r.post.owner);
-	    post_message(r.post);
-	    console.dir(r);
-	},error:e=>{
-	    errorshow(e);
+	}else{
+	    console.log('加载失败');
 	}
-    })
+    };
+    
+    function error(e){
+	console.dir(e);
+    };
+    
+    var tools=new Tools();
+    var ajax=new MyAjax();
+    var pd={
+	aid:tools.getUrlParam("aid"),
+	pid:tools.getUrlParam('pid'),
+    };
+    pd=JSON.stringify(pd);
+    ajax.post('/getpost',pd,success,error);
     
 })
 

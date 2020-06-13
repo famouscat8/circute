@@ -27,28 +27,28 @@
   </head>
   <body>
     <tool-bar></tool-bar>
+    
+    <div class="main">
       
-    <main class="mmain">
+      <div class="middle">
+	<main-header></main-header>
+	<div id="test-editormd"></div>
+	<div class="main-footer">commenting</div>
+      </div>
       <div class="leftsight">
 	<!-- 显示用户信息 -->
 	<viewpost-user></viewpost-user>
 	<!-- 显示帖子信息 -->
-	<div class="postmessage"
-	     id="postmessage">
-	  <div class="titlecontainer" id="title">
-	    <p class="title">帖子信息:</p>
-	  </div>
-	  <p class="message"></p>
-	</div>	
+	<recommend-read></recommend-read>
       </div>
-      
-      <div class="middle">
-	<div id="test-editormd">
-	</div>
-      </div>
-    </main>
+    </div>
+    
+    <script src="js/modules/tools/tools.js"></script>
+    <script src="js/modules/tools/ajax.js"></script>
     <script src="js/components/toolbar.js"></script>
     <script src="js/components/viewpost/viewpost_user.js"></script>
+    <script src="js/components/viewpost/mainheader.js"></script>
+    <script src="js/components/viewpost/recommend.js"></script>
     <script src="js/viewpost.js"></script>
   </body>
   
