@@ -39,7 +39,8 @@ const saveartical = require('./server/api/saveartical')
 const savearticaltitle=require('./server/api/savearticaltitle')
 // api 发布文章
 const upartical=require('./server/api/upartical')
-
+// api 粉丝系统
+const fans = require('./server/api/fans')
 
 const bodyparser  = require("body-parser")
 // 返回某用户的个人信息
@@ -92,7 +93,7 @@ app.post('/saveartical',saveartical)
 app.post('/savearticaltitle',savearticaltitle)
 app.post('/createartical',createartical)
 app.post('/upartical',upartical)
-
+app.post('/fans',fans)
 
 app.get("/viewpost.html",viewpost)
 app.get("/test", (req, res) =>res.send("haha :)"))

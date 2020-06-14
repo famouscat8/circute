@@ -20,9 +20,8 @@ async function getposts(t_posts){
     // 返回给客户端的数据
     var rposts=[];	
     var posts=t_posts;
-    var posts_len=posts.length;
     var rpost={};
-    for(var i=0;i<posts_len;i++){
+    for(var i=0;i<posts.length;i++){
 	var postid=posts[i];
 	var p=await dbtools.hgetall(postid)
 	    .catch(e=>{return e;});

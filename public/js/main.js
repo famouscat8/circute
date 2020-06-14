@@ -2,19 +2,6 @@
 
 $(()=>{
     var ajax = new MyAjax();
-    // 将标题临时保存在localStorage:spost_title
-    $(".startfunny-start").click(()=>{
-	var title=$(".startfunny-title").val();
-	let localdb = new LocalDB();
-	localdb.setItem("spost_title",title).then(r=>{
-	    layer.msg("标题已保存");
-	    var url=location.href+"post.html";
-	    // 新标签打开编辑帖子界面
-	    window.open(url);
-	}).catch(e=>{
-	    layer.msg("标题保存失败:" +e.e)
-	});
-    });
 
     // 从后端获取帖子成功后调用显示帖子数据
     function init(posts){

@@ -12,15 +12,13 @@ router.post("/signup", (req, res)=>{
     var token= data.token;
     var email= data.email;
     var pass = md5(data.password);
-    console.dir(pass);
-    // 验证token
     dbtools.get("email:signup:"+email).then(r=>{
 	if(token == r)
 	    loop2(email,pass,res);
 	else
-	    res.json({state:"-1",m:"token verify error"});
+	    error(null,'token verify error',res);
     }).catch(e=>{
-	res.json({state:"-1",m:"token can not be null"});
+	error(e,'token can not be null',res);
     })
 })
 
@@ -28,26 +26,39 @@ function loop2(email, pass,res){
     dbtools.get("usernum").then(uid=>{
 	loop3(email,pass,uid,res);
     }).catch(e=>{
-	res.json({state:"-1",e:e,m:"get uid error"});
+	error(e,'get uid error',res);
     });
 }
 
 function loop3(email,pass,uid,res){
+    var time = new Date().getTime();
     var user = {
-	nickname : "nickname__test",
+	nickname : "Anonym",
 	uimg     : "https://s1.ax1x.com/2020/05/22/YOkjTs.png",
 	avatarurl: "",
-	username : "username__test",
+	username : "Anonym",
 	psd      : pass,
+	uid      : uid,
+	time     : time,
     };
     var addUserNum = dbtools.incrby("usernum",1);
     var saveUser   = dbtools.hmset("user:"+uid,user);
     var saveEmail  = dbtools.set("user:email:"+email,uid);
     Promise.all([addUserNum,saveUser,saveEmail]).then(r=>{
-	res.json({state:"1",e:null,m:"恭喜你,注册成功"});
+	success('signup success',res);
     }).catch(reasons=>{
-	res.json({state:"-1",e:reasons,m:"稍后重试"});
+	error(reasons,"请稍后重试",res);
     });
+}
+
+
+function success(m,res){
+    res.json({state:"1",m:m,});
+}
+
+function error(e,m,res){
+    console.log('signup.js:');
+    res.json({state:'-1',e:e,});
 }
 
 module.exports = router

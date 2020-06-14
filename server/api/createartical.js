@@ -37,6 +37,7 @@ function loop2(uid,bid,aid,title,res){
 	owner:'user:'+uid,
 	title:title,
 	time:time,
+	type:4,
     }
     var akey='artical:'+aid;
     var bkey='books:'+bid;

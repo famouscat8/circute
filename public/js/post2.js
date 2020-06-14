@@ -1,4 +1,4 @@
-// 发布帖子界面
+// 编辑帖子界面
 
 var imgs = [];
 
@@ -20,42 +20,7 @@ $(()=>{
 	})
     }
 
-    function test1(tmpkeys,file,call){
-	var loading_index=layer.load(1,{shade:[0.1,"#fff"]});
-	var mycos = new MyCOS(tmpkeys);
-	// proData:
-	// {loaded:int, total:int,speed:float,precent: float}
-	function progress(proData){
-	    console.log("post2.js->pro");
-	    console.dir(proData);
-	};
-	// data: {Location:url, statusCode: int}
-	// err : {}
-	function callback(err, data){
-	    layer.close(loading_index);
-	    if(err)layer.msg(JSON.stringify(err));
-	    else{
-		var url = "https://" + data.Location;
-		call(url);	
-		imgs.push(url);
-	    } 
-	};
-	mycos.putObject(file,callback,progress);
-    }
 
-    // @param: file:file object
-    // @param: callback: callback after upload
-    // upload file to tenxunyun...
-    function tenxuncos(file,callback){
-	sts().then(tmpkeys=>{
-	    console.dir(tmpkeys);
-	    test1(tmpkeys,file,callback);
-	}).catch(err=>{
-	    console.log("post2.js-> create cos token error");
-	    console.dir(err);
-	})
-    }
-    
     // 生成代码片段c，插入markdown
     function uploadUrlCallback(data){
 	var url=data;
@@ -115,7 +80,7 @@ $(()=>{
     var btn_settings_listen = ()=>{
 	mySettings.init();
     };
-
+    btn_books_listen();
     var btn_books = document
 	.getElementsByClassName("left-bar-books")[0];
     var btn_draft = document

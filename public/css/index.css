@@ -221,7 +221,6 @@
   flex-direction: column;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
   border-radius: 0.3rem;
-  margin-bottom: 2rem;
 }
 .makepost-container .makepost-title-container .makepost-title {
   color: #666;
@@ -1064,6 +1063,14 @@ main {
   grid-template-columns: 60% 25%;
   grid-column-gap: 1.3rem;
   justify-content: center;
+}
+main .rightside {
+  display: grid;
+  grid-template-columns: 100%;
+  justify-content: start;
+  align-content: start;
+  width: 100%;
+  grid-row-gap: 1.3rem;
 }
 * {
   margin: 0;

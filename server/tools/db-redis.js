@@ -53,7 +53,7 @@ function hget(key, subkey){
 	    resolve(data)
 	})
     })
- }
+}
 
 
 
@@ -138,11 +138,20 @@ function incrby(key, num){
 	    resolve(re)
 	})
     })
- }
+}
 
 function zadd(key,score,subkey){
     return new Promise((resolve, reject)=>{
 	redisClient.zadd([key,score,subkey],(err,re)=>{
+	    if(err)reject(err)
+	    resolve(re);
+	})
+    })
+}
+
+function zrem(key, subkey){
+    return new Promise((resolve,reject)=>{
+	redisClient.zrem(key,subkey,(err,re)=>{
 	    if(err)reject(err)
 	    resolve(re);
 	})
@@ -156,26 +165,35 @@ function zrangebyscore(key,min,max){
 	    resolve(obj)
 	})
     })
- }
+}
 
 function zunionstore(destination,num,...keys){
     return new Promise((resolve,reject)=>{
 	redisClient.zunionstore(destination,num,
 				keys[0],keys[1],(err,r)=>{
-	    if(err)reject(err)
-	    resolve(r)
-	})
+				    if(err)reject(err)
+				    resolve(r)
+				})
     })
 }
 
- function zrange(key,min,max){
+function zrange(key,min,max){
     return new Promise((resolve,reject)=>{
 	redisClient.zrange(key,min,max,(err,obj)=>{
 	    if(err)reject(err)
 	    resolve(obj)
 	})
     })
- }
+}
+
+function zscore(key,subkey){
+    return new Promise((resolve,reject)=>{
+	redisClient.zscore(key,subkey,(err,obj)=>{
+	    if(err)reject(err)
+	    resolve(obj);
+	})
+    })
+}
 
 function expire(key, time){
     return new Promise((resolve,reject)=>{
@@ -200,8 +218,10 @@ module.exports = {
     get,
     incrby,
     zadd,
+    zrem,
     zrangebyscore,
     zrange,
+    zscore,
     zunionstore,
     expire,
 }

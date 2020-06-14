@@ -56,6 +56,7 @@ function loop2(uid,bname,baid,res){
 	content : '',
 	time    : time,
 	owner   : 'user:'+uid,
+	type    :4,
     }
     
     var addbooksid = dbtools.incrby("booksnum",1);

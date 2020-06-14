@@ -112,7 +112,17 @@
     }
 }
 
-
+.button-2-active{
+    background: #1e88c7;
+    color     : #d0eeff;
+    outline   : none;
+    border    : 1px solid #1e88c7;
+    &:hover{
+	background: #1e88c7;
+	border    : 1px solid #1e88c7;
+	color     : #d0eeff;
+    }
+}
 
 // button-2 蓝色边框按钮
 .button-2{
@@ -127,7 +137,7 @@
     color          : #1e88c7;
     text-decoration: none;
     outline        : none;
-
+    transition     : .3s;
     &:hover{
 	background     : #aadffd;
 	border-color   :#78c3f3;

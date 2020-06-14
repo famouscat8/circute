@@ -322,22 +322,34 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #999999;
+  background: #d0eeff;
+  border: 1px solid #99d3f5;
   border-radius: 4px;
   padding: 4px 12px;
   overflow: hidden;
-  color: #999999;
+  color: #1e88c7;
   text-decoration: none;
-  transition-duration: 0.3s;
   outline: none;
+  transition: 0.3s;
 }
 .main-user-message .main-user-footer-container button:hover {
-  border: 1px solid #9d2933;
-  background: #9d2933;
-  color: #fff;
+  background: #aadffd;
+  border-color: #78c3f3;
+  color: #004974;
 }
 .main-user-message .main-user-footer-container button i {
   margin-right: 0.5rem;
+}
+.main-user-message .main-user-footer-container .main-user-follow-btn-active {
+  background: #1e88c7;
+  color: #d0eeff;
+  outline: none;
+  border: 1px solid #1e88c7;
+}
+.main-user-message .main-user-footer-container .main-user-follow-btn-active:hover {
+  background: #1e88c7;
+  border: 1px solid #1e88c7;
+  color: #d0eeff;
 }
 .main {
   padding: 1rem 0rem;
@@ -403,6 +415,17 @@ ul {
 .button-122:hover {
   color: #000;
 }
+.button-2-active {
+  background: #1e88c7;
+  color: #d0eeff;
+  outline: none;
+  border: 1px solid #1e88c7;
+}
+.button-2-active:hover {
+  background: #1e88c7;
+  border: 1px solid #1e88c7;
+  color: #d0eeff;
+}
 .button-2 {
   display: flex;
   justify-content: center;
@@ -415,6 +438,7 @@ ul {
   color: #1e88c7;
   text-decoration: none;
   outline: none;
+  transition: 0.3s;
 }
 .button-2:hover {
   background: #aadffd;

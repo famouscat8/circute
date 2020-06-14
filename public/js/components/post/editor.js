@@ -73,14 +73,14 @@ class EditorMd extends HTMLElement{
 	    lineNumbers: true,tabSize: 4,
 	    flowChart:true,	// 流程图支持 默认关闭
 	    sequenceDiagram:true,
-	    onload:function(){meditorMd.getFile(this)},
+	    onload:function(){meditorMd.getFile(this,ajax)},
 	    toolbarIcons: this.editorIcons,	// 自定义工具栏
 	});
 
     }// init end
     
     // 
-    getFile(editor_md){
+    getFile(editor_md,ajax){
 	var codeEditor=$(".CodeMirror-wrap")[0];
 	codeEditor.ondragenter=e=>{
 	    e.preventDefault();e.stopPropagation();
@@ -92,20 +92,54 @@ class EditorMd extends HTMLElement{
 	};
 	codeEditor.ondrop=e=>{
 	    e.preventDefault();e.stopPropagation();
-	    var files=e.dataTransfer.files // 获取到用户的文件
-	    tenxuncos(files[0], uploadUrlCallback);
+	    var files=e.dataTransfer.files;
+	    console.dir(files);
+	    meditorMd.uploadFile(files[0],'',ajax);
 	}
 	var keyMap={'Ctrl-S':function(cm){meditorMd.saveArtical()}}
 	editor_md.addKeyMap(keyMap);
     }
+
+
+    // 插入内容到editormd
+    updateEditor(url){
+	if(!url)return;
+	var cm=this.editor_md;
+	var cursor=cm.getCursor();
+	cm.replaceSelection("![]("+url+")");
+	cm.setCursor(cursor.line,cursor.ch+2);
+    }
+
+    // 上传文件到服务器
+    uploadFile(file,callback,ajax){
+	function success(temkey){
+	    //var loading_index=layer.load(1,{shade:[0.1,"#fff"]});
+	    var mycos = new MyCOS(temkey);
+	    mycos.putObject(file,function(err,back){
+		var url='https://'+back.Location;
+		meditorMd.updateEditor(url);
+	    },function(pro){
+		console.dir(pro);
+	    });
+	};
+	function error(e){
+	    console.dir(e);
+	};
+	var pd=JSON.stringify({action:['name/cos:GetService']});
+	ajax.post('/sts',pd,success,error);
+    }
+
     
     getEditor(){
 	return this.editor_md; 
     }
+    
     // 设置当前正在编辑的文章的id
     setAid(aid){
 	this.aid=aid;
     }
+
+    
 }
 
 
