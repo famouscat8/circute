@@ -145,6 +145,17 @@
 .button-122:hover {
   color: #000;
 }
+.button-2-active {
+  background: #1e88c7;
+  color: #d0eeff;
+  outline: none;
+  border: 1px solid #1e88c7;
+}
+.button-2-active:hover {
+  background: #1e88c7;
+  border: 1px solid #1e88c7;
+  color: #d0eeff;
+}
 .button-2 {
   display: flex;
   justify-content: center;
@@ -157,6 +168,7 @@
   color: #1e88c7;
   text-decoration: none;
   outline: none;
+  transition: 0.3s;
 }
 .button-2:hover {
   background: #aadffd;
@@ -353,6 +365,22 @@
 }
 .artpost-container .artpost-main .artpost-main-item .artpost-item-postmessage-container .artpost-item-collect {
   margin-right: 0.5rem;
+}
+.card-footer {
+  height: 2.6rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(157, 41, 51, 0.5);
+  transition: 0.3s;
+}
+.card-footer i {
+  margin-left: 0.3rem;
+}
+.card-footer:hover {
+  background: #eee;
+  color: #9d2933;
 }
 .signup-layer {
   position: fixed;

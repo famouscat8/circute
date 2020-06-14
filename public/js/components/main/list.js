@@ -9,6 +9,7 @@ class MainList extends HTMLElement{
 	super();
 	this.appendChild(main_list.content.cloneNode(true));
 	mMainList = this;
+	this._posts=[];
     }
 
     // 渲染签到类型的帖子
@@ -126,7 +127,6 @@ class MainList extends HTMLElement{
 
     // 渲染文章类型的帖子
     display_artical(post,i,list,tools){
-	console.dir(post);
 	var item=document.createElement('div');
 	item.className='list-item-artical';
 	item.innerHTML=`
@@ -144,7 +144,6 @@ class MainList extends HTMLElement{
    <p class="list-item-artical-time-p"
        id="list-item-artical-time-id-`+i+`">-----</p>
   </div>
-
   <div class="list-item-artical-thumbs-container">
    <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
    <p class="list-item-artical-thumbs-p"
@@ -155,7 +154,6 @@ class MainList extends HTMLElement{
    <p class="list-item-artical-comment-p"
        id="list-item-artical-comment-id-`+i+`">-----</p>
   </div>
-
 </div></div>
   <div class="list-item-artical-img-container">
     <img src="https://circute2-1259491699.cos.ap-beijing.myqcloud.com/1n2HbD.jpg"
@@ -184,25 +182,67 @@ class="list-item-artical-img"
     }
     
     
-    init(posts,tools,$){
+    init(ajax,tools){
 	var list=document.getElementsByClassName("card-main")[0];
-	
+	function success(data){
+	    if(data.state=="1"){
+		var posts = data.posts;
+		mMainList._sortPost(posts,list,tools);
+	    }else if(data.state=="-1") console.log('list.js:error');
+	};
+	function error(e){
+	    console.dir(e);
+	};
+	var pd={
+	    index:'',
+	    pagesize:10,
+	};
+	ajax.post('/post',JSON.stringify(pd),success,error);
+    }
+    
+    // 分页加载,获取下一页
+    getNextPage(ajax,tools){
+	var list=document.getElementsByClassName("card-main")[0];
+	function success(data){
+	    if(data.state=="1"){
+		var posts = data.posts;
+		mMainList._sortPost(posts,list,tools);
+	    }else if(data.state=='-1') console.dir(data.e);
+	};
+	function error(e){
+	    console.dir(e);
+	};
+	var index=mMainList._posts[mMainList._posts.length-1];
+	var aid=index.aid;
+	var pid=index.pid;
+	if(!aid)index='post:'+pid;
+	else index='artical:'+aid;
+	var pd={
+	    index:index,
+	    pagesize:10,
+	};
+	ajax.post("/post",JSON.stringify(pd),success,error);
+    }
+    
+    // 帖子类型选择器
+    _sortPost(posts,list,tools){
 	for(var i=0;i<posts.length;i++){
 	    var post = posts[i];
-	    // type == 1 普通帖子
-	    // type == 2 教程
-	    // type == 3 签到
-	    // type == 4 artical
+	    mMainList._posts.push(post);
 	    var type = post.type|0;
 	    if(type==3){
-		mMainList.display_sign(post,i,list,tools);
+		mMainList.display_sign(post,'pid'+post.pid,
+				       list,tools);
 	    }else if(!Boolean(type)){
-		mMainList.display_post(post,i,list,tools);
+		mMainList.display_post(post,'pid'+post.pid,
+				       list,tools);
 	    }else if(type==4){
-		mMainList.display_artical(post,i,list,tools);
+		mMainList.display_artical(post,'aid'+post.aid,
+					  list,tools);
 	    }
 	}
     }
+    
     
 }
 

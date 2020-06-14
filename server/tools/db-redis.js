@@ -186,6 +186,15 @@ function zrange(key,min,max){
     })
 }
 
+function zrevrange(key,min,max){
+    return new Promise((resolve,reject)=>{
+	redisClient.zrevrange(key,min,max,(err,obj)=>{
+	    if(err)reject(err)
+	    resolve(obj)
+	})
+    })
+}
+
 function zscore(key,subkey){
     return new Promise((resolve,reject)=>{
 	redisClient.zscore(key,subkey,(err,obj)=>{
@@ -221,6 +230,7 @@ module.exports = {
     zrem,
     zrangebyscore,
     zrange,
+    zrevrange,
     zscore,
     zunionstore,
     expire,
