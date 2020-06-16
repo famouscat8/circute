@@ -5,7 +5,6 @@ makepost.innerHTML=`<div class="makepost-container b-p-07rem">
   <div class="makepost-title-container">
     <p class="makepost-title">社区小贴</p>
   </div>
-  <p class="hr-2"/>
   <div class="makepost-main-container">
    <div class="makepost-main-artical-container">
     <div class="makepost-main-artical-i-container">
@@ -17,7 +16,6 @@ makepost.innerHTML=`<div class="makepost-container b-p-07rem">
 
 
   </div>
-  <p class="hr-2"/>
 
   <div class="makepost-footer-container">
     <button class="makepost-sendpost">

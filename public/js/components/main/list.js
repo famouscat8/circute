@@ -171,6 +171,13 @@ class="list-item-artical-img"
 	var time=document
 	    .getElementById('list-item-artical-time-id-'+i)
 	    .innerText=tools.getDateDiff(post.time);
+	var star=document
+	    .getElementById('list-item-artical-thumbs-id-'+i)
+	    .innerText=post.star;
+	var comment=document
+	    .getElementById('list-item-artical-comment-id-'+i)
+	    .innerText=post.comment;
+	
 	var img=document
 	    .getElementById('list-item-artical-img-id-'+i);
 	if(!Boolean(post.img))
@@ -187,6 +194,7 @@ class="list-item-artical-img"
 	function success(data){
 	    if(data.state=="1"){
 		var posts = data.posts;
+		console.dir(data);
 		mMainList._sortPost(posts,list,tools);
 	    }else if(data.state=="-1") console.log('list.js:error');
 	};

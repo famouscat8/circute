@@ -77,9 +77,9 @@ function hgetall(key){
     })
 }
 
-function hdel(key){
+function hdel(key,subkey){
     return new Promise((resolve, reject)=>{
-	redisClient.hdel(key, (err, res)=>{
+	redisClient.hdel(key,subkey,(err, res)=>{
 	    if(err) reject(err)
 	    resolve(res)
 	})
@@ -230,6 +230,7 @@ function expire(key, time){
 	})
     })
 }
+
 module.exports = {
     redisClient,
     set,

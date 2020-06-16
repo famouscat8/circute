@@ -1,0 +1,49 @@
+@import url(../theme/theme.less);
+
+.leftbar-container{
+    position:fixed;
+    height: calc(100vh - @toolbar-height - 3rem);
+    z-index: 1;
+    width: 6.6rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.leftbar{
+    display:grid;
+    grid-template-columns:100%;
+    justify-content: center;
+    grid-row-gap: 1.5rem;
+    
+    .leftbar-star,
+    .leftbar-collect,
+    .leftbar-comment{
+	width: 100%;
+	cursor:pointer;
+	padding: .3rem;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content:center;
+	align-items: center;
+	color:#ccc;
+	font-size: 1.5rem;
+	transition: .2s;
+	&:hover{
+	    border: 2px dashed @theme-color-light02;
+	    i{
+		font-size: 1.6rem;
+		color: @theme-color-light;
+	    }
+	}
+	.leftbar-i-container{
+	    flex-grow: 1;
+	    padding: .6rem;
+	}
+	p{
+	    font-size:.8rem;
+	}
+    }
+}

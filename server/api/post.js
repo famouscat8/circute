@@ -21,15 +21,22 @@ async function getposts(t_posts){
 		.catch(e=>{return e;});
 	    content.content=tools.substring(content.content,120);
 	    p.content=content;
+	    var comment=await dbtools.hgetall(p.comment)
+		.catch(e=>{return e;});
+	    p.comment=comment;
 	}else if(p.type==4){
 	    p.content=tools.substring(p.content,120);
+	    var starnum=await dbtools.zcard(p.star);
+	    var collectnum=await dbtools.zcard(p.collect);
+	    var commentnum=await dbtools.zcard(p.comment);
+	    p.star=starnum|0;
+	    p.collect=collectnum|0;
+	    p.comment=commentnum|0;
 	}
+	
 	var owner=await dbtools.hgetall(p.owner)
 	    .catch(e=>{return e;});
-	var comment=await dbtools.hgetall(p.comment)
-	    .catch(e=>{return e;});
 	p.owner=owner;
-	p.comment=comment;
 	rposts.push(p);
     }
     return rposts;
@@ -64,7 +71,7 @@ function loop2(index,pagesize,sum,res){
 	var getIndex = dbtools.zrank("data2client",index);
 	var getLength=dbtools.zcard("data2client");
 	Promise.all([getIndex,getLength]).then(rs=>{
-	    var start= rs[1]-rs[0]-1;
+	    var start= rs[1]-rs[0];
 	    loop3(start,start+pagesize-1,pagesize,res);
 	}).catch(es=>{
 	    error(es,res);

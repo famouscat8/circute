@@ -29,6 +29,7 @@ $(()=>{
 		show(artical.content);
 		mviewUser.init(artical.owner,ajax,usermanager,tools);
 		mmainHeader.init(artical.owner);
+		mleftBar.init(artical,ajax,usermanager,tools);
 	    }
 	}else{
 	    console.log('加载失败');

@@ -39,6 +39,9 @@ const saveartical = require('./server/api/saveartical')
 const savearticaltitle=require('./server/api/savearticaltitle')
 // api 发布文章
 const upartical=require('./server/api/upartical')
+// api 文章系统
+const setpost = require("./server/api/setpost")
+
 // api 粉丝系统
 const fans = require('./server/api/fans')
 
@@ -94,6 +97,7 @@ app.post('/savearticaltitle',savearticaltitle)
 app.post('/createartical',createartical)
 app.post('/upartical',upartical)
 app.post('/fans',fans)
+app.post('/setpost',setpost)
 
 app.get("/viewpost.html",viewpost)
 app.get("/test", (req, res) =>res.send("haha :)"))
