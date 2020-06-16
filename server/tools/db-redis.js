@@ -204,6 +204,24 @@ function zscore(key,subkey){
     })
 }
 
+function zrank(key,subkey){
+    return new Promise((resolve,reject)=>{
+	redisClient.zrank(key,subkey,(err,obj)=>{
+	    if(err)reject(err)
+	    resolve(obj)
+	})
+    })
+}
+
+function zcard(key){
+    return new Promise((resolve,reject)=>{
+	redisClient.zcard(key,(err,r)=>{
+	    if(err)reject(err)
+	    resolve(r)
+	})
+    })
+}
+
 function expire(key, time){
     return new Promise((resolve,reject)=>{
 	redisClient.expire(key,time,(err,r)=>{
@@ -232,6 +250,8 @@ module.exports = {
     zrange,
     zrevrange,
     zscore,
+    zrank,
+    zcard,
     zunionstore,
     expire,
 }

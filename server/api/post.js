@@ -37,29 +37,47 @@ async function getposts(t_posts){
 
 // 返回帖子数据的api
 // 客户端请求数据格式
-// {page:int;}
+// {page:int;pagesize}
 router.post("/post",(req,res)=>{
     var rd=req.body;
+    var index = rd.index;
+    var pagesize = rd.pagesize;
     console.dir(rd);
-    loop1(res);
+    loop1(index,pagesize,res);
 })
 
 
 // data2client:发送给用户的缓存数据
-function loop1(res){
+function loop1(index,pagesize,res){
     var dp=['articalups','postids'];
     dbtools.zunionstore('data2client',2,'articalups','postids')
 	.then(sum=>{
-	    loop2(sum,res);
+	    loop2(index,pagesize,sum,res);
 	}).catch(e=>{
 	    error(e,res);
 	})
 }
 
-function loop2(sum,res){
-    dbtools.zrevrange("data2client",0,9).then(obj=>{
+function loop2(index,pagesize,sum,res){
+    if(!Boolean(index))loop3(0 ,pagesize-1,pagesize,res);
+    else{
+	var getIndex = dbtools.zrank("data2client",index);
+	var getLength=dbtools.zcard("data2client");
+	Promise.all([getIndex,getLength]).then(rs=>{
+	    var start= rs[1]-rs[0]-1;
+	    loop3(start,start+pagesize-1,pagesize,res);
+	}).catch(es=>{
+	    error(es,res);
+	})
+    }
+}
+
+function loop3(start,end,pagesize,res){
+    console.dir([start,end]);
+    dbtools.zrevrange("data2client",start,end).then(obj=>{
+	console.dir(obj);
     	getposts(obj).then(post=>{
-    	    res.json({state:"1",posts:post,sum:sum,});
+    	    res.json({state:"1",posts:post,sum:pagesize});
     	}).catch(e=>{
 	    error(e,res);
     	});
