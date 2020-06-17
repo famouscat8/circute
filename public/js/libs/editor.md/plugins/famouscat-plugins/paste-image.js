@@ -73,7 +73,6 @@
 		console.dir(file);
 		upload(file);
 	    }
-	    console.dir(mirror_wrap);
 	    
 	    // 监听剪贴板
 	    $("#"+id).on("paste",function(e){
