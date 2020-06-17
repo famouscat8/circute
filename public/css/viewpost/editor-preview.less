@@ -1,4 +1,46 @@
+
+@import url(../theme/theme.less);
+
 #test-editormd{
-    font-size: 1.22rem;
+    font-size: 1.1rem;
     padding: 0px;
+    color: @textcolor;
+    img{
+	width: 100%;
+	padding-right: 3rem;
+	padding-left: 3rem;
+    }
+    pre.prettyprint{
+	border:none;
+    }
+    ol.linenums{
+	color: #999;
+    }
+    blockquote{
+	padding-left:.8rem;
+	font-style:normal;
+    }
+    hr{
+	margin:3rem;
+	margin-right: 5rem;
+	margin-left: 5rem;
+    }
+
+    pre{
+	ol{
+	    li{
+		background: none;
+	    }
+	}
+    }
+    p{
+	line-height: 2.33rem;
+	code{
+	    
+	    color:@theme-color-light;
+	    font-weight: 700;
+	    border:none;
+	}
+    }
+    
 }

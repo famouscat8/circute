@@ -91,6 +91,7 @@ class LeftBar extends HTMLElement{
 	    action=1;
 	}
 	var pd=JSON.stringify({
+
 	    usertoken:usermanager.getToken(),
 	    id:post.aid|post.pid,
 	    type:post.type,
@@ -114,6 +115,7 @@ class LeftBar extends HTMLElement{
     }
 
     _review(isstar=mleftBar._isstar,iscollect=mleftBar._iscollect){
+
 	if(Boolean(isstar))document
 	    .getElementById('leftbar-i-star')
 	    .className='fa fa-thumbs-up';

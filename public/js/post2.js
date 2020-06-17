@@ -4,40 +4,6 @@ var imgs = [];
 
 $(()=>{
     
-    function sts(){
-	return new Promise((resolve,reject)=>{
-	    $.ajax({
-		type:"POST",
-		contentType:"application/json;charset=UTF-8",
-		url:"/sts",
-		data:JSON.stringify(
-		    {action:["name/cos:GetService"]}),
-		success:r=>{
-		    resolve(r);
-		},error:e=>{
-		    reject(e);},
-	    });
-	})
-    }
-
-
-    // 生成代码片段c，插入markdown
-    function uploadUrlCallback(data){
-	var url=data;
-	var link=url;
-	if(!url)return false;
-	var alt="";
-	var cm=testeditor;
-	var cursor=cm.getCursor();
-	
-	// 以下是对图片上传结果的处理，应用原image-load插件的代码
-	var altAttr=(alt!=="")?"\""+alt+"\"":"";
-	if(link===""||link==="http://")
-	    cm.replaceSelection("!["+alt+"]("+url+altAttr+")");
-	else cm.replaceSelection("!["+alt+"]("+url+altAttr+")");
-	if(alt==="")cm.setCursor(cursor.line,cursor.ch+2);
-    }
-    
     
     
     

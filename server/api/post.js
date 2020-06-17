@@ -26,9 +26,9 @@ async function getposts(t_posts){
 	    p.comment=comment;
 	}else if(p.type==4){
 	    p.content=tools.substring(p.content,120);
-	    var starnum=await dbtools.zcard(p.star);
-	    var collectnum=await dbtools.zcard(p.collect);
-	    var commentnum=await dbtools.zcard(p.comment);
+	    var starnum=await dbtools.zcard(p.star|0);
+	    var collectnum=await dbtools.zcard(p.collect|0);
+	    var commentnum=await dbtools.zcard(p.comment|0);
 	    p.star=starnum|0;
 	    p.collect=collectnum|0;
 	    p.comment=commentnum|0;

@@ -407,9 +407,9 @@ ul {
   padding: 1rem 0rem;
   display: grid;
   grid-template-rows: 100%;
-  grid-template-columns: 55.6% 22%;
+  grid-template-columns: 52% 22%;
   justify-content: center;
-  grid-column-gap: 1.2rem;
+  grid-column-gap: 3rem;
 }
 .main .leftsight {
   display: grid;
@@ -551,8 +551,40 @@ ul {
   color: #fff;
 }
 #test-editormd {
-  font-size: 1.22rem;
+  font-size: 1.1rem;
   padding: 0px;
+  color: #636b6f;
+}
+#test-editormd img {
+  width: 100%;
+  padding-right: 3rem;
+  padding-left: 3rem;
+}
+#test-editormd pre.prettyprint {
+  border: none;
+}
+#test-editormd ol.linenums {
+  color: #999;
+}
+#test-editormd blockquote {
+  padding-left: 0.8rem;
+  font-style: normal;
+}
+#test-editormd hr {
+  margin: 3rem;
+  margin-right: 5rem;
+  margin-left: 5rem;
+}
+#test-editormd pre ol li {
+  background: none;
+}
+#test-editormd p {
+  line-height: 2.33rem;
+}
+#test-editormd p code {
+  color: #9d2933;
+  font-weight: 700;
+  border: none;
 }
 body {
   display: flex;
