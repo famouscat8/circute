@@ -1,3 +1,12 @@
+.shadow-1 {
+  -webkit-box-shadow: 0 0 6px rgba(10, 10, 10, 0.2);
+  box-shadow: 0 0 6px rgba(10, 10, 10, 0.2);
+}
+.p-one-line {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .img-src-center {
   object-fit: cover;
 }
@@ -31,6 +40,17 @@
 .button-122:hover {
   color: #000;
 }
+.button-2-active {
+  background: #1e88c7;
+  color: #d0eeff;
+  outline: none;
+  border: 1px solid #1e88c7;
+}
+.button-2-active:hover {
+  background: #1e88c7;
+  border: 1px solid #1e88c7;
+  color: #d0eeff;
+}
 .button-2 {
   display: flex;
   justify-content: center;
@@ -43,6 +63,7 @@
   color: #1e88c7;
   text-decoration: none;
   outline: none;
+  transition: 0.3s;
 }
 .button-2:hover {
   background: #aadffd;
@@ -101,6 +122,81 @@
   border: 1px solid #9d2933;
   background: #9d2933;
   color: #fff;
+}
+.test-editormd,
+#test-editormd {
+  font-size: 1.1rem;
+  padding: 0px;
+  color: #636b6f;
+}
+.test-editormd .linkcard-container,
+#test-editormd .linkcard-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.test-editormd .linkcard-container .linkcard,
+#test-editormd .linkcard-container .linkcard {
+  text-decoration: none;
+  width: 29rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #eee;
+  height: 5.2rem;
+  border-radius: 0.8rem;
+  margin: 1rem;
+  margin-left: 4.6rem;
+  margin-right: 4.6rem;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.test-editormd .linkcard-container .linkcard:hover,
+#test-editormd .linkcard-container .linkcard:hover {
+  background: #ccc;
+}
+.test-editormd img,
+#test-editormd img {
+  width: 100%;
+  padding-right: 3rem;
+  padding-left: 3rem;
+}
+.test-editormd pre.prettyprint,
+#test-editormd pre.prettyprint {
+  border: none;
+}
+.test-editormd ol.linenums,
+#test-editormd ol.linenums {
+  color: #999;
+}
+.test-editormd blockquote,
+#test-editormd blockquote {
+  padding-left: 0.8rem;
+  font-style: normal;
+}
+.test-editormd hr,
+#test-editormd hr {
+  margin: 3rem;
+  margin-right: 5rem;
+  margin-left: 5rem;
+}
+.test-editormd pre ol li,
+#test-editormd pre ol li {
+  background: none;
+}
+.test-editormd p,
+#test-editormd p {
+  line-height: 2.33rem;
+}
+.test-editormd p code,
+#test-editormd p code {
+  color: #9d2933;
+  font-weight: 700;
+  border: none;
+}
+pre {
+  background: red;
 }
 .float-view {
   display: none;

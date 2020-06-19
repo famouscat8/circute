@@ -3,7 +3,7 @@ const _editor = document.createElement('template');
 
 _editor.innerHTML=`
 	<div class="myeditor">
-	  <div class="editor" id="editor">
+	  <div class="editor test-editormd" id="editor">
 	    <textarea id="testtest"></textarea>
 	  </div>
 	</div>`;
@@ -61,16 +61,17 @@ class EditorMd extends HTMLElement{
     init(ajax,usermanager){
 	this.ajax=ajax;
 	this.usermanager=usermanager;
+	
 	meditorMd.editor_md = editormd("editor", {
 	    placeholder:
 	    "本编辑器支持markdown编辑，左边编写，右边预览",
-	    width: "100%",
+	    width: "100%",delay:0,
 	    path: "js/libs/editor.md/lib/",
 	    saveHTMLToTextarea:false,
 	    emoji:true,taskList:true,
 	    tocm: true,tex:true,
 	    atlink: true,toc: true,	
-	    htmlDecode:false,emailLink:true, 	
+	    htmlDecode:true,emailLink:true, 	
 	    lineNumbers: true,tabSize: 4,
 	    flowChart:true,	// 流程图支持 默认关闭
 	    sequenceDiagram:true,
@@ -81,15 +82,30 @@ class EditorMd extends HTMLElement{
     }// init end
 
 
-
+    markedrender(){
+	var marked=editormd.$marked;
+	console.dir(editormd);
+	console.dir(editormd.markedRenderer);
+	console.dir(editormd.$marked);
+	console.dir(editormd.$marked.options);
+    }
     onload(editor_md,ajax){
+	var pluginUrl="js/libs/editor.md/plugins/famouscat-plugins";
 	var keyMap={
 	    'Ctrl-S':function(cm){meditorMd.saveArtical()}
 	}
+	meditorMd.markedrender();
 	editor_md.addKeyMap(keyMap);
-	editormd.loadPlugin("js/libs/editor.md/plugins/famouscat-plugins/paste-image",function(){
-	    meditorMd.editor_md.imagePaste(ajax);
-	});
+	editormd.loadPlugin(pluginUrl+"/paste-image",
+			    function(){
+				meditorMd.editor_md
+				    .imagePaste(ajax);
+			    });
+	editormd.loadPlugin(pluginUrl+"/linkcard",
+			    function(){
+				meditorMd.editor_md
+				    .linkCard(editor_md);
+			    });
 	
     }
 

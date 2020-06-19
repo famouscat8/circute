@@ -53,10 +53,13 @@ function loop2(uid,bname,baid,res){
 	ownbooks: bkey,
 	aid     : aid,
 	title   : "默认文章",
-	content : '',
+	content : "",
 	time    : time,
 	owner   : 'user:'+uid,
-	type    :4,
+	type    : 4,
+	star    : "artical:star:"+aid,
+	collect : "artical:collect:"+aid,
+	comment : "artical:comment:"+aid,
     }
     
     var addbooksid = dbtools.incrby("booksnum",1);

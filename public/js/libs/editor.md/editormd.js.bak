@@ -333,12 +333,7 @@
     editormd.$marked      = null;
     editormd.$CodeMirror  = null;
     editormd.$prettyPrint = null;
-    editormd.$onchange    = function(href,title,text){
-	console.dir(['onchange',href]);
-	setTimeout(()=>{
-	    return "haha"
-	},1000);
-    };
+    
     var timer, flowchartTimer;
 
     editormd.prototype    = editormd.fn = {
@@ -3363,9 +3358,8 @@
         twemoji       : /:(tw-([\w]+)-?(\w+)?):/g,
         fontAwesome   : /:(fa-([\w]+)(-(\w+)){0,}):/g,
         editormdLogo  : /:(editormd-logo-?(\w+)?):/g,
-        pageBreak     : /^\[[=]{8,}\]$/,
-	// famouscat
-	linkCard      : /(\w+)@(\w+)@(\w+)/g,
+        pageBreak     : /^\[[=]{8,}\]$/
+	
     };
 
     // Emoji graphics files url path
@@ -3401,7 +3395,6 @@
             tex                  : false,          // TeX(LaTeX), based on KaTeX
             flowChart            : false,          // flowChart.js only support IE9+
             sequenceDiagram      : false,          // sequenceDiagram.js only support IE9+
-	    linkCard:true,
         };
         
         var settings        = $.extend(defaults, options || {});    
@@ -3418,13 +3411,9 @@
         var faIconReg       = regexs.fontAwesome;
         var editormdLogoReg = regexs.editormdLogo;
         var pageBreakReg    = regexs.pageBreak;
-	var linkCardReg        = regexs.linkCard;
-	
-	markedRenderer.linkCard = function(text){
-	    console.dir([text,"my-linkcard"]);
-	    return text;
-	}
+
         markedRenderer.emoji = function(text) {
+            console.dir([text,'haha']);
             text = text.replace(editormd.regexs.emojiDatetime, function($1) {           
                 return $1.replace(/:/g, "&#58;");
             });
@@ -3491,22 +3480,22 @@
         };
 
         markedRenderer.atLink = function(text) {
-	    
-	    
-            if (atLinkReg.test(text)){ 
-                if (settings.atLink){
-                    text = text.replace(emailReg, function($1, $2, $3, $4){
+
+            if (atLinkReg.test(text))
+            { 
+                if (settings.atLink) 
+                {
+                    text = text.replace(emailReg, function($1, $2, $3, $4) {
                         return $1.replace(/@/g, "_#_&#64;_#_");
                     });
+
                     text = text.replace(atLinkReg, function($1, $2) {
-                        return "<a href=\"" + editormd.urls.atLinkBase +
-			    "" + $2 + "\" title=\"&#64;" +
-			    $2 + "\" class=\"at-link\">" +
-			    $1 + "</a>";
+                        return "<a href=\"" + editormd.urls.atLinkBase + "" + $2 + "\" title=\"&#64;" + $2 + "\" class=\"at-link\">" + $1 + "</a>";
                     }).replace(/_#_&#64;_#_/g, "@");
                 }
                 
-                if (settings.emailLink){
+                if (settings.emailLink)
+                {
                     text = text.replace(emailLinkReg, function($1, $2, $3, $4, $5) {
                         return (!$2 && $.inArray($5, "jpg|jpeg|png|gif|webp|ico|icon|pdf".split("|")) < 0) ? "<a href=\"mailto:" + $1 + "\">"+$1+"</a>" : $1;
                     });
@@ -3519,7 +3508,7 @@
         };
                 
         markedRenderer.link = function (href, title, text) {
-	    
+
             if (this.options.sanitize) {
                 try {
                     var prot = decodeURIComponent(unescape(href)).replace(/[^\w:]/g,"").toLowerCase();
@@ -3531,23 +3520,20 @@
                     return "";
                 }
             }
-	    
-	    if(text=="linkcard"){
-	    	var retHTML="<link-card href=\""+href+"\"></link-card>";
-	    	return retHTML;
-	    };
 
             var out = "<a href=\"" + href + "\"";
             
-            if (atLinkReg.test(title) || atLinkReg.test(text)){
-                if (title){
+            if (atLinkReg.test(title) || atLinkReg.test(text))
+            {
+                if (title)
+                {
                     out += " title=\"" + title.replace(/@/g, "&#64;");
                 }
                 
                 return out + "\">" + text.replace(/@/g, "&#64;") + "</a>";
             }
 
-            if (title){
+            if (title) {
                 out += " title=\"" + title + "\"";
             }
 
@@ -3556,17 +3542,19 @@
             return out;
         };
         
-        markedRenderer.heading = function(text, level, raw){
+        markedRenderer.heading = function(text, level, raw) {
                     
             var linkText       = text;
             var hasLinkReg     = /\s*\<a\s*href\=\"(.*)\"\s*([^\>]*)\>(.*)\<\/a\>\s*/;
             var getLinkTextReg = /\s*\<a\s*([^\>]+)\>([^\>]*)\<\/a\>\s*/g;
 
-            if (hasLinkReg.test(text)){
+            if (hasLinkReg.test(text)) 
+            {
                 var tempText = [];
                 text         = text.split(/\<a\s*([^\>]+)\>([^\>]*)\<\/a\>/);
 
-                for (var i = 0, len = text.length; i < len; i++){
+                for (var i = 0, len = text.length; i < len; i++)
+                {
                     tempText.push(text[i].replace(/\s*href\=\"(.*)\"\s*/g, ""));
                 }
 
@@ -3924,8 +3912,7 @@
             emoji                : false,
             flowChart            : false,
             sequenceDiagram      : false,
-            previewCodeHighlight : true,
-	    linkCrad:true,
+            previewCodeHighlight : true
         };
         
         editormd.$marked  = marked;
@@ -3956,7 +3943,6 @@
             flowChart            : settings.flowChart,
             sequenceDiagram      : settings.sequenceDiagram,
             previewCodeHighlight : settings.previewCodeHighlight,
-	    linkCard:settings.linkCard,
         };
 
         var markedOptions = {

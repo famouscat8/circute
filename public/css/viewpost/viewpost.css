@@ -550,37 +550,74 @@ ul {
   background: #9d2933;
   color: #fff;
 }
+.test-editormd,
 #test-editormd {
   font-size: 1.1rem;
   padding: 0px;
   color: #636b6f;
 }
+.test-editormd div.linkcard,
+#test-editormd div.linkcard {
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+  height: 66px;
+  background: #eee;
+  border-radius: 0.8rem;
+  margin: 1rem;
+  margin-left: 4.6rem;
+  margin-right: 4.6rem;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.test-editormd div.linkcard:hover,
+#test-editormd div.linkcard:hover {
+  background: #aaa;
+}
+.test-editormd div.linkcard:before,
+#test-editormd div.linkcard:before {
+  content: "";
+  width: 30%;
+}
+.test-editormd div.linkcard:after,
+#test-editormd div.linkcard:after {
+  content: "";
+  width: 30%;
+}
+.test-editormd img,
 #test-editormd img {
   width: 100%;
   padding-right: 3rem;
   padding-left: 3rem;
 }
+.test-editormd pre.prettyprint,
 #test-editormd pre.prettyprint {
   border: none;
 }
+.test-editormd ol.linenums,
 #test-editormd ol.linenums {
   color: #999;
 }
+.test-editormd blockquote,
 #test-editormd blockquote {
   padding-left: 0.8rem;
   font-style: normal;
 }
+.test-editormd hr,
 #test-editormd hr {
   margin: 3rem;
   margin-right: 5rem;
   margin-left: 5rem;
 }
+.test-editormd pre ol li,
 #test-editormd pre ol li {
   background: none;
 }
+.test-editormd p,
 #test-editormd p {
   line-height: 2.33rem;
 }
+.test-editormd p code,
 #test-editormd p code {
   color: #9d2933;
   font-weight: 700;

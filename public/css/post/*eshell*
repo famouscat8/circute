@@ -1,0 +1,7 @@
+Welcome to the Emacs shell
+
+~/test/web/public/css/viewpost # lessc post.less post.css
+lessc: ENOENT: no such file or directory, open '/root/test/web/public/css/viewpost/post.less'
+~/test/web/public/css/viewpost # cd ../post/
+~/test/web/public/css/post # lessc post.less post.css
+~/test/web/public/css/post # 

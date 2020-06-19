@@ -26,18 +26,20 @@ function loop1(uid,bid,title,res){
     }).catch(e=>{
 	error(e,res);
     })
-    
 }
 
 function loop2(uid,bid,aid,title,res){
     var time = new Date().getTime();
     var artical={
-	aid:aid,
-	ownbooks:bid,
-	owner:'user:'+uid,
-	title:title,
-	time:time,
-	type:4,
+	aid      : aid,
+	ownbooks : bid,
+	owner    : 'user:'+uid,
+	title    : title,
+	time     : time,
+	type     : 4,
+	star     : "artical:star:"+aid,
+	collect  : "artical:collect:"+aid,
+	comment  : "artical:comment:"+aid,
     }
     var akey='artical:'+aid;
     var bkey='books:'+bid;
@@ -45,11 +47,12 @@ function loop2(uid,bid,aid,title,res){
     var createArtical=dbtools.hmset(akey,artical);
     var add2Books=dbtools.zadd(bkey,time,akey);
     var editBooksInfo=dbtools.hincrby(bkey_info,'articalnum',1);
-    Promise.all([createArtical,add2Books.editBooksInfo]).then(rs=>{
-	res.json({state:'1',m:rs,e:null});
-    }).catch(es=>{
-	error(es,res);
-    })
+    Promise.all([createArtical,add2Books.editBooksInfo])
+	.then(rs=>{
+	    res.json({state:'1',m:rs,e:null});
+	}).catch(es=>{
+	    error(es,res);
+	})
 }
 
 function error(e,res){

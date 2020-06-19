@@ -19,19 +19,21 @@ async function getposts(t_posts){
 	if(p.type!=4){
 	    var content=await dbtools.hgetall(p.content)
 		.catch(e=>{return e;});
-	    content.content=tools.substring(content.content,120);
+	    content.content=tools
+		.substring(content.content,120);
 	    p.content=content;
 	    var comment=await dbtools.hgetall(p.comment)
 		.catch(e=>{return e;});
 	    p.comment=comment;
 	}else if(p.type==4){
+	    console.dir([i,p]);
 	    p.content=tools.substring(p.content,120);
-	    var starnum=await dbtools.zcard(p.star|0);
-	    var collectnum=await dbtools.zcard(p.collect|0);
-	    var commentnum=await dbtools.zcard(p.comment|0);
-	    p.star=starnum|0;
-	    p.collect=collectnum|0;
-	    p.comment=commentnum|0;
+	    var starnum=await dbtools.zcard(p.star);
+	    var collectnum=await dbtools.zcard(p.collect);
+	    var commentnum=await dbtools.zcard(p.comment);
+	    p.star=starnum||0;
+	    p.collect=collectnum||0;
+	    p.comment=commentnum||0;
 	}
 	
 	var owner=await dbtools.hgetall(p.owner)

@@ -4,9 +4,6 @@ var imgs = [];
 
 $(()=>{
     
-    
-    
-    
     var ajax    = new MyAjax();
     var usermanager = new UserManager();
     var tools   = new Tools();

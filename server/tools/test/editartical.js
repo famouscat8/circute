@@ -13,19 +13,21 @@ function test1(){
 }
 
 function loop1(num){
-    console.dir(num);
     for(var i=0;i<num;i++){
 	var key="artical:"+i;
-	var addcomment=dbtools.hset(key,'comment',
-				    'artical:comment:'+i);
-	var addstar =dbtools.hset(key,'star','artical:star:'+i);
-	var addcollect = dbtools.hset(key,'collect',
-				      'artical:collect:'+i);
-	Promise.all([addcollect,addcomment,addstar,]).then(rs=>{
-	    console.dir(rs);
-	}).catch(es=>{
-	    console.dir(es);
-	})
+	console.dir([key]);
+	var addcomment=dbtools
+	    .hset(key,'comment','artical:comment:'+i);
+	var addstar =dbtools
+	    .hset(key,'star','artical:star:'+i);
+	var addcollect = dbtools
+	    .hset(key,'collect','artical:collect:'+i);
+	Promise.all([addcollect,addcomment,addstar,])
+	    .then(rs=>{
+		console.dir(rs);
+	    }).catch(es=>{
+		console.dir(es);
+	    })
     }
 }
 
@@ -55,4 +57,4 @@ function loop4(num){
 }
 
 
-test2();
+test1();
