@@ -123,6 +123,10 @@
   background: #9d2933;
   color: #fff;
 }
+.editormd-preview-container,
+.editormd-html-preview {
+  font-size: inherit;
+}
 .test-editormd,
 #test-editormd {
   font-size: 1.1rem;
@@ -151,6 +155,45 @@
   margin-right: 4.6rem;
   transition: 0.3s;
   cursor: pointer;
+  padding: 1rem;
+}
+.test-editormd .linkcard-container .linkcard .linkcard-main,
+#test-editormd .linkcard-container .linkcard .linkcard-main {
+  flex-grow: 1;
+  color: #666;
+}
+.test-editormd .linkcard-container .linkcard .linkcard-main .linkcard-main-title,
+#test-editormd .linkcard-container .linkcard .linkcard-main .linkcard-main-title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.test-editormd .linkcard-container .linkcard .linkcard-main .linkcard-main-url-container,
+#test-editormd .linkcard-container .linkcard .linkcard-main .linkcard-main-url-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.test-editormd .linkcard-container .linkcard .linkcard-main .linkcard-main-url-container i,
+#test-editormd .linkcard-container .linkcard .linkcard-main .linkcard-main-url-container i {
+  margin-right: 0.3rem;
+}
+.test-editormd .linkcard-container .linkcard .linkcard-main .linkcard-main-url-container .linkcard-main-url,
+#test-editormd .linkcard-container .linkcard .linkcard-main .linkcard-main-url-container .linkcard-main-url {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.test-editormd .linkcard-container .linkcard .linkcard-img,
+#test-editormd .linkcard-container .linkcard .linkcard-img {
+  width: 5rem;
+  height: 4rem;
+  border-radius: 0.8rem;
+  border: none;
+  padding: 0;
+  background: url(../../images/editor/web.svg);
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .test-editormd .linkcard-container .linkcard:hover,
 #test-editormd .linkcard-container .linkcard:hover {
@@ -194,6 +237,13 @@
   color: #9d2933;
   font-weight: 700;
   border: none;
+}
+.editormd ::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 0px;
+  border-radisu: 0px;
+}
+.editormd ::-webkit-scrollbar {
+  background: rgba(0, 0, 0, 0.05);
 }
 pre {
   background: red;
