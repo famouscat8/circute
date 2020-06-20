@@ -1,7 +1,6 @@
 var mlinkCard=null;
 
 
-var urlData={};
 class LinkCard extends HTMLElement{
     constructor(){
 	super();
@@ -17,8 +16,6 @@ class LinkCard extends HTMLElement{
 
 	var img =document.createElement("div");
 	img.className="linkcard-img";
-	img.style.backgroundSize="cover";
-	img.style.backgroundImage="url(https://circute2-1259491699.cos.ap-beijing.myqcloud.com/%E8%AF%BE%E8%A1%A82.png)";
 	var main_title=
 	    document.createElement("p");
 	main_title.className="linkcard-main-title";
@@ -44,23 +41,18 @@ class LinkCard extends HTMLElement{
 	
 	this.appendChild(link_card_container);
 	mlinkCard=this;
+	
 	var url=this.getAttribute("href");
+	var title=this.getAttribute('title');
 	
-	if(Boolean(urlData[url])){
-	    linkcard.href=urlData[url];
-	    main_url.innerText=urlData[url];	
-	}else{
-	    var time =  new Date().getTime();
-	    urlData[url]=time;
-	    linkcard.href=urlData[url];
-	    main_url.innerText=urlData[url];	
+	main_title.innerText=title;
+	linkcard.href=url;
+	if(url.indexOf("https://")==0){
+	    url=url.substring(8,url.length);
+	}else if(url.indexOf("http://")==0){
+	    url=url.substring(7,url.length);
 	}
-
-	console.dir(urlData);
-	
-    }
-
-    init(){
+	main_url.innerText=url;
 	
     }
 }

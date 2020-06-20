@@ -142,15 +142,17 @@
 }
 .test-editormd .linkcard-container .linkcard,
 #test-editormd .linkcard-container .linkcard {
+  line-height: normal;
   text-decoration: none;
-  width: 29rem;
+  width: 20rem;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
   background: #eee;
   height: 5.2rem;
   border-radius: 0.8rem;
-  margin: 1rem;
+  margin: 0.6rem;
   margin-left: 4.6rem;
   margin-right: 4.6rem;
   transition: 0.3s;
@@ -167,6 +169,10 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  line-height: normal;
+  text-overflow: hidden;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .test-editormd .linkcard-container .linkcard .linkcard-main .linkcard-main-url-container,
 #test-editormd .linkcard-container .linkcard .linkcard-main .linkcard-main-url-container {
@@ -177,6 +183,8 @@
 .test-editormd .linkcard-container .linkcard .linkcard-main .linkcard-main-url-container i,
 #test-editormd .linkcard-container .linkcard .linkcard-main .linkcard-main-url-container i {
   margin-right: 0.3rem;
+  font-size: 0.93rem;
+  margin-top: 0.18rem;
 }
 .test-editormd .linkcard-container .linkcard .linkcard-main .linkcard-main-url-container .linkcard-main-url,
 #test-editormd .linkcard-container .linkcard .linkcard-main .linkcard-main-url-container .linkcard-main-url {

@@ -550,39 +550,89 @@ ul {
   background: #9d2933;
   color: #fff;
 }
+.editormd-preview-container,
+.editormd-html-preview {
+  font-size: inherit;
+}
 .test-editormd,
 #test-editormd {
   font-size: 1.1rem;
   padding: 0px;
   color: #636b6f;
 }
-.test-editormd div.linkcard,
-#test-editormd div.linkcard {
+.test-editormd .linkcard-container,
+#test-editormd .linkcard-container {
   display: flex;
-  justify-content: space-between;
-  width: 300px;
-  height: 66px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.test-editormd .linkcard-container .linkcard,
+#test-editormd .linkcard-container .linkcard {
+  line-height: normal;
+  text-decoration: none;
+  width: 20rem;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: #eee;
+  height: 5.2rem;
   border-radius: 0.8rem;
-  margin: 1rem;
+  margin: 0.6rem;
   margin-left: 4.6rem;
   margin-right: 4.6rem;
   transition: 0.3s;
   cursor: pointer;
+  padding: 1rem;
 }
-.test-editormd div.linkcard:hover,
-#test-editormd div.linkcard:hover {
-  background: #aaa;
+.test-editormd .linkcard-container .linkcard .linkcard-main,
+#test-editormd .linkcard-container .linkcard .linkcard-main {
+  flex-grow: 1;
+  color: #666;
 }
-.test-editormd div.linkcard:before,
-#test-editormd div.linkcard:before {
-  content: "";
-  width: 30%;
+.test-editormd .linkcard-container .linkcard .linkcard-main .linkcard-main-title,
+#test-editormd .linkcard-container .linkcard .linkcard-main .linkcard-main-title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  line-height: normal;
+  text-overflow: hidden;
+  overflow: hidden;
+  white-space: nowrap;
 }
-.test-editormd div.linkcard:after,
-#test-editormd div.linkcard:after {
-  content: "";
-  width: 30%;
+.test-editormd .linkcard-container .linkcard .linkcard-main .linkcard-main-url-container,
+#test-editormd .linkcard-container .linkcard .linkcard-main .linkcard-main-url-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.test-editormd .linkcard-container .linkcard .linkcard-main .linkcard-main-url-container i,
+#test-editormd .linkcard-container .linkcard .linkcard-main .linkcard-main-url-container i {
+  margin-right: 0.3rem;
+  font-size: 0.93rem;
+  margin-top: 0.18rem;
+}
+.test-editormd .linkcard-container .linkcard .linkcard-main .linkcard-main-url-container .linkcard-main-url,
+#test-editormd .linkcard-container .linkcard .linkcard-main .linkcard-main-url-container .linkcard-main-url {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.test-editormd .linkcard-container .linkcard .linkcard-img,
+#test-editormd .linkcard-container .linkcard .linkcard-img {
+  width: 5rem;
+  height: 4rem;
+  border-radius: 0.8rem;
+  border: none;
+  padding: 0;
+  background: url(../../images/editor/web.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.test-editormd .linkcard-container .linkcard:hover,
+#test-editormd .linkcard-container .linkcard:hover {
+  background: #ccc;
 }
 .test-editormd img,
 #test-editormd img {
@@ -622,6 +672,13 @@ ul {
   color: #9d2933;
   font-weight: 700;
   border: none;
+}
+.editormd ::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 0px;
+  border-radisu: 0px;
+}
+.editormd ::-webkit-scrollbar {
+  background: rgba(0, 0, 0, 0.05);
 }
 body {
   display: flex;

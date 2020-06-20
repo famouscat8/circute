@@ -48,6 +48,9 @@ const fans = require('./server/api/fans')
 const bodyparser  = require("body-parser")
 // 返回某用户的个人信息
 const getuser     = require("./server/api/getuser")
+// 返回指定k链接的title
+const geturltitle = require('./server/api/geturltitle')
+
 
 app.use(bodyparser.urlencoded({extende:true}))
 app.use(bodyparser.json())
@@ -98,6 +101,8 @@ app.post('/createartical',createartical)
 app.post('/upartical',upartical)
 app.post('/fans',fans)
 app.post('/setpost',setpost)
+app.post('/geturltitle',geturltitle)
+
 
 app.get("/viewpost.html",viewpost)
 app.get("/test", (req, res) =>res.send("haha :)"))

@@ -65,7 +65,7 @@ class EditorMd extends HTMLElement{
 	meditorMd.editor_md = editormd("editor", {
 	    placeholder:
 	    "本编辑器支持markdown编辑，左边编写，右边预览",
-	    width: "100%",delay:0,
+	    width: "100%",delay:88,
 	    path: "js/libs/editor.md/lib/",
 	    saveHTMLToTextarea:false,
 	    emoji:true,taskList:true,
@@ -82,30 +82,22 @@ class EditorMd extends HTMLElement{
     }// init end
 
 
-    markedrender(){
-	var marked=editormd.$marked;
-	console.dir(editormd);
-	console.dir(editormd.markedRenderer);
-	console.dir(editormd.$marked);
-	console.dir(editormd.$marked.options);
-    }
     onload(editor_md,ajax){
 	var pluginUrl="js/libs/editor.md/plugins/famouscat-plugins";
 	var keyMap={
 	    'Ctrl-S':function(cm){meditorMd.saveArtical()}
 	}
-	meditorMd.markedrender();
 	editor_md.addKeyMap(keyMap);
 	editormd.loadPlugin(pluginUrl+"/paste-image",
 			    function(){
 				meditorMd.editor_md
 				    .imagePaste(ajax);
 			    });
-	editormd.loadPlugin(pluginUrl+"/linkcard",
-			    function(){
-				meditorMd.editor_md
-				    .linkCard(editor_md);
-			    });
+	editormd.loadPlugin(pluginUrl+"/linkcard-dialog",()=>{});
+	editormd.loadPlugin(pluginUrl+"/keymap-plugin",function(){
+	    meditorMd.editor_md
+		.keyMapPlugin(editor_md);
+	});
 	
     }
 

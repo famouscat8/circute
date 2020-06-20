@@ -3531,9 +3531,12 @@
                     return "";
                 }
             }
-	    
-	    if(text=="linkcard"){
-	    	var retHTML="<link-card href=\""+href+"\"></link-card>";
+
+	    //截取形如linkcard:知乎的链接渲染为卡片链接
+	    if(text.indexOf('linkcard:')==0){
+		var _t=text.substring(9,text.length);
+	    	var retHTML="<link-card href=\""+href+
+		    "\" title=\""+_t+"\"></link-card>";
 	    	return retHTML;
 	    };
 

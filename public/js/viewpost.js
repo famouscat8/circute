@@ -4,12 +4,15 @@ $(()=>{
     var ajax=new MyAjax();
 
     var show=content=>{
+	
 	var testeditor = editormd.markdownToHTML("test-editormd",{
 	    markdown: content,
 	    emoji: true,
 	    taskList:true,
 	    tex:true,
+	    htmlDecode:true,
 	    sequenceDiagram:true,
+	    onload:function(){},
 	});
     }
 
