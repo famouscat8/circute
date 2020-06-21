@@ -113,7 +113,7 @@ class ListArtical extends HTMLElement{
 	    formType:0,
 	    value:'',
 	    title:'输入文章标题:',
-	    maxlength: 20,
+	    maxlength: 38,
 	},function(value,index,elem){
 	    layer.close(index);
 	    layer.msg('创建中...');
@@ -142,7 +142,7 @@ class ListArtical extends HTMLElement{
 	    formType:0,
 	    value:'',
 	    title:'输入新的文章标题:',
-	    maxlength:20,
+	    maxlength:38,
 	},function(value,index,elem){
 	    layer.close(index);
 	    layer.msg('保存中...');

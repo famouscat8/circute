@@ -3401,7 +3401,6 @@
             tex                  : false,          // TeX(LaTeX), based on KaTeX
             flowChart            : false,          // flowChart.js only support IE9+
             sequenceDiagram      : false,          // sequenceDiagram.js only support IE9+
-	    linkCard:true,
         };
         
         var settings        = $.extend(defaults, options || {});    
@@ -3418,7 +3417,6 @@
         var faIconReg       = regexs.fontAwesome;
         var editormdLogoReg = regexs.editormdLogo;
         var pageBreakReg    = regexs.pageBreak;
-	var linkCardReg        = regexs.linkCard;
 	
 	markedRenderer.linkCard = function(text){
 	    console.dir([text,"my-linkcard"]);
@@ -3518,6 +3516,13 @@
             return text;
         };
                 
+	markedRenderer.image = function(href,title,text){
+	    console.dir([href,title,text]);
+	    return "<div class=\"img-container\"><img src=\""+href+
+		"\" alt></img><small class=\"img-p-small\">"+
+		text+"</small></div>";
+	}
+	
         markedRenderer.link = function (href, title, text) {
 	    
             if (this.options.sanitize) {

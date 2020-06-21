@@ -638,11 +638,27 @@ ul {
 #test-editormd .linkcard-container .linkcard:hover {
   background: #ccc;
 }
-.test-editormd img,
-#test-editormd img {
+.test-editormd .img-container,
+#test-editormd .img-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.test-editormd .img-container img,
+#test-editormd .img-container img {
   width: 100%;
   padding-right: 3rem;
   padding-left: 3rem;
+}
+.test-editormd .img-container .img-p-small,
+#test-editormd .img-container .img-p-small {
+  color: #666;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.2rem;
+  width: 100%;
 }
 .test-editormd pre.prettyprint,
 #test-editormd pre.prettyprint {
@@ -761,6 +777,8 @@ ul {
   .leftbar-container .leftbar .leftbar-star .leftbar-i-container,
   .leftbar-container .leftbar .leftbar-collect .leftbar-i-container,
   .leftbar-container .leftbar .leftbar-comment .leftbar-i-container {
+    padding: unset;
+    padding-right: 0.3rem;
     flex-grow: unset;
   }
   .leftbar-container .leftbar .leftbar-star p,
@@ -769,13 +787,21 @@ ul {
     all: unset;
     white-space: nowrap;
   }
+  .leftbar-container .leftbar .leftbar-comment,
   .leftbar-container .leftbar .leftbar-collect {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    padding-right: 0.5rem;
   }
+  .leftbar-container .leftbar .leftbar-comment .leftbar-i-container,
+  .leftbar-container .leftbar .leftbar-collect .leftbar-i-container {
+    padding: unset;
+    paddgin-right: 0.3rem;
+  }
+  .leftbar-container .leftbar .leftbar-comment i,
   .leftbar-container .leftbar .leftbar-collect i {
-    padding: 0.45rem;
+    padding: 0.3rem;
     flex-grow: unset;
   }
   .leftbar-container .leftbar .leftbar-star {

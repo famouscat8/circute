@@ -2,6 +2,10 @@
   -webkit-box-shadow: 0 0 6px rgba(10, 10, 10, 0.2);
   box-shadow: 0 0 6px rgba(10, 10, 10, 0.2);
 }
+.shadow-2 {
+  -webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
+  box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
+}
 .p-one-line {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -207,11 +211,27 @@
 #test-editormd .linkcard-container .linkcard:hover {
   background: #ccc;
 }
-.test-editormd img,
-#test-editormd img {
+.test-editormd .img-container,
+#test-editormd .img-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.test-editormd .img-container img,
+#test-editormd .img-container img {
   width: 100%;
   padding-right: 3rem;
   padding-left: 3rem;
+}
+.test-editormd .img-container .img-p-small,
+#test-editormd .img-container .img-p-small {
+  color: #666;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.2rem;
+  width: 100%;
 }
 .test-editormd pre.prettyprint,
 #test-editormd pre.prettyprint {
@@ -605,6 +625,14 @@ pre {
 .myeditor {
   overflow: hidden;
   height: 100vh;
+}
+@media screen and (min-width: 300px) and (max-width: 479px) {
+  .main {
+    all: unset;
+  }
+  .main .leftside {
+    display: none;
+  }
 }
 * {
   padding: 0;
