@@ -9,6 +9,8 @@
 @import url(main/makepost.less);
 @import url(main/artpost.less);
 @import url(main/list-footer.less);
+@import url(main/main.less);
+
 @import url(signup.less);
 @import url(title.less);
 @import url(hr.less);
@@ -16,8 +18,12 @@
 @import url(padding.less);
 @import url(card.less);
 @import url(list-items.less);
-@import url(header.less);
-@import url(main.less);
+@import url(toolbar/toolbar.less);
 @import url(common.less);
-@import url(big.less) only screen and (min-width: 1200px);
+@import url(big.less) screen and (min-width: 1200px);
 // 后面的会覆盖前面的style;
+@import url(middle/middle.less) screen and (min-width:768px) and (max-width:1199px);
+
+@import url(small/small.less) screen and (min-width: 480px) and (max-width:767px);
+
+@import url(small-m/small-m.less) screen and (min-width:300px) and (max-width:479px);

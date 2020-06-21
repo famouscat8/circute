@@ -1,0 +1,65 @@
+@import url(../../../theme/theme.less);
+@leftbar-height: 50px;
+
+.leftbar-container{
+    all:unset;
+    z-index:10000000;
+    position: fixed;
+    right: 0px;
+    bottom: 0px;
+    width: 100%;
+    box-shadow: 0 0 5px rgba(0,0,0,.1);
+    background: #fff;
+    .leftbar{
+	all:unset;
+	display:flex;
+	.leftbar-star,
+	.leftbar-collect,
+	.leftbar-comment{
+	    all:unset;
+	    display:flex;
+	    justify-content:center;
+	    align-items:center;
+	    &:hover{
+		i{
+		    font-size:unset;
+		}
+	    }
+	    .leftbar-i-container{
+		flex-grow:unset;
+	    }
+	    p{
+		all:unset;
+		white-space:nowrap;
+	    }
+	}
+	.leftbar-collect{
+	    display:flex;
+	    justify-content:flex-end;
+	    align-items:center;
+	    i{
+		padding:0.45rem;
+		flex-grow:unset;
+	    }
+	}
+	.leftbar-star{
+	    width:90px;
+	    border: 2px @theme-color-light solid;
+	    border-radius: 1.8rem;
+	    margin:.3rem;
+	    display:flex;
+	    font-size:1.2rem;
+	    padding-right: .5rem;
+	    padding-left:.5rem;
+	    p{
+		all:unset;
+		display:flex;
+		justify-content:center;
+		align-items:center;
+	    }
+	}
+	.leftbar-collect{
+	    flex-grow:1;
+	}
+    }
+}

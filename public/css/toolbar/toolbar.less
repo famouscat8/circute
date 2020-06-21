@@ -1,0 +1,23 @@
+// toolbar控件
+
+@import url(../theme/theme.less);
+@import url(search.less);
+@import url(bell.less);
+@import url(logo.less);
+@import url(links.less);
+@import url(login.less);
+@import url(user-cover.less);
+header{
+    height: @toolbar-height;
+    padding: @toolbar-padding;
+    display: flex;
+    align-items: center;
+    .shadow-1();
+//    box-shadow:@toolbar-shadow;
+    .logo-rightside{
+	margin-left:1rem;
+	display:flex;
+	flex-grow:1;
+	
+    }
+}

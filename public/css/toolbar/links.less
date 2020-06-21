@@ -1,0 +1,24 @@
+@import url(../theme/theme.less);
+header{
+    .logo-rightside{
+	.links{
+	    display:flex;
+	    align-items:center;
+	    flex-grow:2;
+	    li{
+		margin-right: 1.2rem;
+		a{
+		    transition:.5s;
+		    font-weight: 500;
+		    font-size: 1.2rem;
+		    color:@grey02;
+		}
+		&:hover{
+		    a{
+			color:@theme-color-light;
+		    }
+		}
+	    }
+	}
+    }
+}

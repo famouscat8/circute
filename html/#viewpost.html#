@@ -5,8 +5,6 @@
   <head>
     <title>查看贴子</title>
     <meta charset="utf-8">
-    <meta name="viewport"
-	  content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="images/favicon.ico"
 	  mce_href="images/favicon.ico"
 	  type="images/x-icon"/>
@@ -23,7 +21,7 @@
     <script src="js/libs/editor.md/lib/sequence-diagram.min.js">
     </script>
     <script src="js/libs/editor.md/lib/flowchart.min.js"></script>
-    <script src="js/libs/editor.md/editormd.js"></script>
+    <script src="js/libs/editor.md/editormd2.js"></script>
     <script src="js/modules/tools/usermanager.js"></script>
     
   </head>
