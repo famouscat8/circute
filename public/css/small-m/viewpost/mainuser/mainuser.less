@@ -1,0 +1,43 @@
+@import url(../../../theme/theme.less);
+
+.main-user-message{
+    all:unset;
+    .shadow-2();
+    padding:.8rem;
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    grid-template-rows:auto;
+    grid-template-areas:"avatar message message"
+			    "avatar footer footer";
+    .main-user-message-container{
+	
+	flex-wrap:wrap;
+	grid-area:message;
+	.main-user-articalnum-container,
+	.main-user-thumbsup-container,
+	.main-user-star-container{
+	    display:flex;
+	    justify-content:center;
+	    flex-direction: row;
+	    color:#666;
+	    font-weight: 700;
+	    font-size: 1.3rem;
+	    div{
+		all:unset;
+		i{
+		    margin-right: .3rem;
+		}
+	    }
+	    p{
+		margin-right: .3rem;
+	    }
+	}
+    }
+    .main-user-avatar-container{
+	grid-area:avatar;
+	margin-bottom:unset;
+    }
+    .main-user-footer-container{
+	grid-area:footer;
+    }
+}

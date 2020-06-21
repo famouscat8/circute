@@ -842,6 +842,59 @@ ul {
     margin-left: unset;
     margin-right: unset;
   }
+  .main-user-message {
+    all: unset;
+    -webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
+    box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
+    padding: 0.8rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: "avatar message message" "avatar footer footer";
+  }
+  .main-user-message .main-user-message-container {
+    flex-wrap: wrap;
+    grid-area: message;
+  }
+  .main-user-message .main-user-message-container .main-user-articalnum-container,
+  .main-user-message .main-user-message-container .main-user-thumbsup-container,
+  .main-user-message .main-user-message-container .main-user-star-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    color: #666;
+    font-weight: 700;
+    font-size: 1.3rem;
+  }
+  .main-user-message .main-user-message-container .main-user-articalnum-container div,
+  .main-user-message .main-user-message-container .main-user-thumbsup-container div,
+  .main-user-message .main-user-message-container .main-user-star-container div {
+    all: unset;
+  }
+  .main-user-message .main-user-message-container .main-user-articalnum-container div i,
+  .main-user-message .main-user-message-container .main-user-thumbsup-container div i,
+  .main-user-message .main-user-message-container .main-user-star-container div i {
+    margin-right: 0.3rem;
+  }
+  .main-user-message .main-user-message-container .main-user-articalnum-container p,
+  .main-user-message .main-user-message-container .main-user-thumbsup-container p,
+  .main-user-message .main-user-message-container .main-user-star-container p {
+    margin-right: 0.3rem;
+  }
+  .main-user-message .main-user-avatar-container {
+    grid-area: avatar;
+    margin-bottom: unset;
+  }
+  .main-user-message .main-user-footer-container {
+    grid-area: footer;
+  }
+  .recommendread-main {
+    all: unset;
+    display: flex;
+    padding: 0.8rem;
+    -webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
+    box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
+  }
   .main {
     all: unset;
     margin-bottom: 50px;
