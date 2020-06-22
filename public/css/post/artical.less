@@ -35,9 +35,10 @@
 	    }
 	}
 	.artical-list-item{
+	    cursor:pointer;
 	    width: 100%;
 	    border-bottom: 1px #ddd solid;
-	    height: 66px;
+	    //height: 66px;
 	    display: flex;
 	    flex-direction: column;
 	    justify-content: center;
@@ -47,6 +48,7 @@
 	    &:hover{
 		background: #eee;
 	    }
+	    
 	    .artical-item-main{
 		width: 100%;
 		display: flex;
@@ -89,6 +91,16 @@
 		.artical-item-time{
 		    flex-grow:1;
 		    padding-left:1rem;
+		}
+		.artical-item-tags{
+		    padding-right: .5rem;
+		    padding-left: .5rem;
+		    flex-wrap:no-wrap;
+		    transition: .3s;
+		    &:hover{
+			background:#aaa;
+			color:#fff;
+		    }
 		}
 		.artical-item-up-container{
 		    display: flex;

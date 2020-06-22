@@ -69,12 +69,13 @@ class EditorMd extends HTMLElement{
 	    path: "js/libs/editor.md/lib/",
 	    saveHTMLToTextarea:false,
 	    emoji:true,taskList:true,
-	    tocm: true,tex:true,
-	    atlink: true,toc: true,	
+	    tocm: false,tex:true,
+	    atlink: true,toc: false,	
 	    htmlDecode:true,emailLink:true, 	
 	    lineNumbers: true,tabSize: 4,
 	    flowChart:true,	// 流程图支持 默认关闭
 	    sequenceDiagram:true,
+	    
 	    onload:function(){meditorMd.onload(this,ajax)},
 	    toolbarIcons: this.editorIcons,
 	});

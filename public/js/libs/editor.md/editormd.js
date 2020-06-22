@@ -3544,6 +3544,12 @@
 		    "\" title=\""+_t+"\"></link-card>";
 	    	return retHTML;
 	    };
+	    //渲染形如github:famouscat8的链接
+	    if(text.indexOf('github:'==0)){
+		var _t=text.substring(7,text.length);
+		return "<i class=\"fa fa-github editormd-github-link-icon\" aria-hidden=\"true\"></i><a href="+
+		    href+">"+_t+"</a>";
+	    }
 
             var out = "<a href=\"" + href + "\"";
             
@@ -3621,14 +3627,11 @@
             var isToC           = (settings.tocm) ? /^(\[TOC\]|\[TOCM\])$/.test(text) : /^\[TOC\]$/.test(text);
             var isToCMenu       = /^\[TOCM\]$/.test(text);
             
-            if (!isTeXLine && isTeXInline) 
-            {
+            if (!isTeXLine && isTeXInline){
                 text = text.replace(/(\$\$([^\$]*)\$\$)+/g, function($1, $2) {
                     return "<span class=\"" + editormd.classNames.tex + "\">" + $2.replace(/\$/g, "") + "</span>";
                 });
-            } 
-            else 
-            {
+            }else{
                 text = (isTeXLine) ? text.replace(/\$/g, "") : text;
             }
             
@@ -3639,22 +3642,13 @@
         };
 
         markedRenderer.code = function (code, lang, escaped) { 
-
-            if (lang === "seq" || lang === "sequence")
-            {
+            if (lang === "seq" || lang === "sequence"){
                 return "<div class=\"sequence-diagram\">" + code + "</div>";
-            } 
-            else if ( lang === "flow")
-            {
+            }else if ( lang === "flow"){
                 return "<div class=\"flowchart\">" + code + "</div>";
-            } 
-            else if ( lang === "math" || lang === "latex" || lang === "katex")
-            {
+            }else if ( lang === "math" || lang === "latex" || lang === "katex"){
                 return "<p class=\"" + editormd.classNames.tex + "\">" + code + "</p>";
-            } 
-            else 
-            {
-
+            }else{
                 return marked.Renderer.prototype.code.apply(this, arguments);
             }
         };
@@ -3702,27 +3696,16 @@
         
         startLevel      = startLevel  || 1;
         
-        for (var i = 0, len = toc.length; i < len; i++) 
-        {
+        for (var i = 0, len = toc.length; i < len; i++){
             var text  = toc[i].text;
             var level = toc[i].level;
             
-            if (level < startLevel) {
-                continue;
-            }
-            
-            if (level > lastLevel) 
-            {
-                html += "";
-            }
+            if (level < startLevel)continue;
+            if (level > lastLevel)html += "";
             else if (level < lastLevel) 
-            {
                 html += (new Array(lastLevel - level + 2)).join("</ul></li>");
-            } 
             else 
-            {
                 html += "</ul></li>";
-            }
 
             html += "<li><a class=\"toc-level-" + level + "\" href=\"#" + text + "\" level=\"" + level + "\">" + text + "</a><ul>";
             lastLevel = level;
@@ -3973,12 +3956,13 @@
             tables      : true,
             breaks      : true,
             pedantic    : false,
-            sanitize    : (settings.htmlDecode) ? false : true, // 是否忽略HTML标签，即是否开启HTML标签解析，为了安全性，默认不开启
+	    // 是否忽略HTML标签，即是否开启HTML标签解析，为了安全性，默认不开启
+            sanitize    : (settings.htmlDecode) ? false : true, 
             smartLists  : true,
             smartypants : true
         };
         
-		markdownDoc = new String(markdownDoc);
+	markdownDoc = new String(markdownDoc);
         
         var markdownParsed = marked(markdownDoc, markedOptions);
         
@@ -3993,46 +3977,32 @@
         div.addClass("markdown-body " + this.classPrefix + "html-preview").append(markdownParsed);
         
         var tocContainer = (settings.tocContainer !== "") ? $(settings.tocContainer) : div;
-        
         if (settings.tocContainer !== "")
-        {
             tocContainer.attr("previewContainer", false);
-        }
          
-        if (settings.toc) 
-        {
-            div.tocContainer = this.markdownToCRenderer(markdownToC, tocContainer, settings.tocDropdown, settings.tocStartLevel);
-            
+        if (settings.toc){
+            div.tocContainer = this.markdownToCRenderer(markdownToC,tocContainer,
+							settings.tocDropdown,settings.tocStartLevel);
             if (settings.tocDropdown || div.find("." + this.classPrefix + "toc-menu").length > 0)
-            {
                 this.tocDropdownMenu(div, settings.tocTitle);
-            }
-            
             if (settings.tocContainer !== "")
-            {
                 div.find(".editormd-toc-menu, .editormd-markdown-toc").remove();
-            }
         }
             
-        if (settings.previewCodeHighlight) 
-        {
+        if (settings.previewCodeHighlight){
             div.find("pre").addClass("prettyprint linenums");
             prettyPrint();
         }
         
-        if (!editormd.isIE8) 
-        {
-            if (settings.flowChart) {
+        if (!editormd.isIE8){
+            if (settings.flowChart)
                 div.find(".flowchart").flowChart(); 
-            }
 
-            if (settings.sequenceDiagram) {
+            if (settings.sequenceDiagram)
                 div.find(".sequence-diagram").sequenceDiagram({theme: "simple"});
-            }
         }
 
-        if (settings.tex)
-        {
+        if (settings.tex){
             var katexHandle = function() {
                 div.find("." + editormd.classNames.tex).each(function(){
                     var tex  = $(this);                    
@@ -4041,18 +4011,13 @@
                 });
             };
             
-            if (settings.autoLoadKaTeX && !editormd.$katex && !editormd.kaTeXLoaded)
-            {
+            if (settings.autoLoadKaTeX && !editormd.$katex && !editormd.kaTeXLoaded){
                 this.loadKaTeX(function() {
                     editormd.$katex      = katex;
                     editormd.kaTeXLoaded = true;
                     katexHandle();
                 });
-            }
-            else
-            {
-                katexHandle();
-            }
+            }else katexHandle();
         }
         
         div.getMarkdown = function() {            

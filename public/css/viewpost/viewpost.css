@@ -564,6 +564,11 @@ ul {
   padding: 0px;
   color: #636b6f;
 }
+.test-editormd .editormd-github-link-icon,
+#test-editormd .editormd-github-link-icon {
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+}
 .test-editormd .linkcard-container,
 #test-editormd .linkcard-container {
   display: flex;
@@ -699,6 +704,49 @@ ul {
 }
 .editormd ::-webkit-scrollbar {
   background: rgba(0, 0, 0, 0.05);
+}
+.toc-container {
+  -webkit-box-shadow: 0 0 6px rgba(10, 10, 10, 0.2);
+  box-shadow: 0 0 6px rgba(10, 10, 10, 0.2);
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+}
+.toc-container p {
+  margin-bottom: 0.8rem;
+}
+.tags-artical-container {
+  display: flex;
+  flex-flow: wrap;
+}
+.tags-artical-container .tag-container {
+  cursor: pointer;
+  color: #9d2933;
+  display: flex;
+  padding: 0.2rem 0.3rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+  border: 1px #eee solid;
+  transition: 0.3s;
+  margin: 0.33rem;
+}
+.tags-artical-container .tag-container:hover {
+  border: 1px #aaa solid;
+}
+.tags-artical-container .tag-container:hover i {
+  color: #666;
+}
+.tags-artical-container .tag-container i {
+  padding: 0.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 4px;
+}
+.tags-artical-container .tag-container .tag-text {
+  margin-right: 0.23rem;
+  color: #666;
 }
 @media screen and (min-width: 300px) and (max-width: 479px) {
   * {

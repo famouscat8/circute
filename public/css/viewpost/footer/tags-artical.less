@@ -1,0 +1,35 @@
+@import url(../../theme/theme.less);
+
+.tags-artical-container{
+    display:flex;
+    flex-flow:wrap;
+    .tag-container{
+	cursor:pointer;
+	color:@theme-color-light;
+	display:flex;
+	padding:.2rem .3rem;
+	justify-content:center;
+	align-items:center;
+	border-radius:1rem;
+	border:1px #eee solid;
+	transition:.3s;
+	margin:.33rem;
+	&:hover{
+	    border:1px #aaa solid;
+	    i{
+		color:#666;
+	    }
+	}
+	i{
+	    padding:.2rem;
+	    display:flex;
+	    justify-content:center;
+	    align-items:center;
+	    padding-top:4px;
+	}
+	.tag-text{
+	    margin-right:.23rem;
+	    color:#666;
+	}
+    }
+}

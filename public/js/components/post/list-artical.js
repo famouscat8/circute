@@ -10,6 +10,10 @@ class ListArtical extends HTMLElement{
 	this.appendChild(list_artical.content.cloneNode(true));
 	mlistArtical=this;
     }
+
+    setTags(aid,usermanager,tools,){
+	
+    }
     
     init(bid,ajax,usermanager,tools,clickartical,click_edit_title){
 	var token = usermanager.getToken();
@@ -42,6 +46,8 @@ class ListArtical extends HTMLElement{
                  <div class="artical-item-footer">
               <small class="artical-item-time" 
                      id="artical-item-time-id-`+i+`"></small>
+            <small class="artical-item-tags"
+                    id="artical-item-tags-id-`+i+`">no tags</small>
            <div class="artical-item-up-container"
                  id="artical-item-up-id-`+i+`">
               <small class="artical-item-up">
@@ -76,8 +82,15 @@ class ListArtical extends HTMLElement{
 		    getElementById('artical-item-title-editor-id-'+i)
 		    .onclick=()=>{
 			event.stopPropagation();
-			click_edit_title(artical.aid);
-		    }
+			//click_edit_title(artical.aid);
+			mlistArtical.editAtitle(artical.aid,ajax,usermanager,tools);
+		    };
+		var setTags=document.
+		    getElementById("artical-item-tags-id-"+i)
+		    .onclick=()=>{
+			event.stopPropagation();
+			console.dir(['dasiopdjs']);
+		    };
 	    }
 
 	    var newartical=document.createElement('div');

@@ -8,6 +8,8 @@ $(()=>{
 	var testeditor = editormd.markdownToHTML("test-editormd",{
 	    markdown: content,
 	    emoji: true,
+	    toc:true,
+	    tocContainer:'.toc',
 	    taskList:true,
 	    tex:true,
 	    htmlDecode:true,
