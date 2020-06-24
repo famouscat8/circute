@@ -14,7 +14,7 @@ router.post('/fans',(req,res)=>{
     token_tools.verify(token,token_tools.secret).then(decode=>{
 	if(decode.uid==rd.other)
 	    error('uid can not be other',res);
-	loop1(decode.uid,rd,res);
+	else loop1(decode.uid,rd,res);
     }).catch(e=>{
 	error(e,res);
     })

@@ -149,6 +149,15 @@ function zadd(key,score,subkey){
     })
 }
 
+function zadds(keys){
+    return new Promise((resolve,reject)=>{
+	redisClient.zadd(keys,(err,data)=>{
+	    if(err)reject(err)
+	    resolve(data);
+	})
+    })
+}
+
 function zrem(key, subkey){
     return new Promise((resolve,reject)=>{
 	redisClient.zrem(key,subkey,(err,re)=>{
@@ -246,6 +255,7 @@ module.exports = {
     get,
     incrby,
     zadd,
+    zadds,
     zrem,
     zrangebyscore,
     zrange,

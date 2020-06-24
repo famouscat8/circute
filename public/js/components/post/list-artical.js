@@ -11,9 +11,6 @@ class ListArtical extends HTMLElement{
 	mlistArtical=this;
     }
 
-    setTags(aid,usermanager,tools,){
-	
-    }
     
     init(bid,ajax,usermanager,tools,clickartical,click_edit_title){
 	var token = usermanager.getToken();
@@ -83,13 +80,13 @@ class ListArtical extends HTMLElement{
 		    .onclick=()=>{
 			event.stopPropagation();
 			//click_edit_title(artical.aid);
-			mlistArtical.editAtitle(artical.aid,ajax,usermanager,tools);
+			mlistArtical.editATitle(artical.aid,ajax,usermanager,tools);
 		    };
 		var setTags=document.
 		    getElementById("artical-item-tags-id-"+i)
 		    .onclick=()=>{
 			event.stopPropagation();
-			console.dir(['dasiopdjs']);
+			mlistArtical.setTags(artical.aid,ajax,usermanager);
 		    };
 	    }
 
@@ -118,6 +115,32 @@ class ListArtical extends HTMLElement{
 	    console.dir(e);
 	};
 	ajax.post('/getarticals',JSON.stringify(pd),success,error);
+    }
+
+    //设置文章tags
+    setTags(aid,ajax,usermanager,){
+	layer.prompt({
+	    formType:0,
+	    value:'',
+	    title:'输入文章tags:',
+	    maxlength:38,
+	},(value,index,elem)=>{
+	    layer.close(index);
+	    layer.msg("添加tags中...");
+	    var pd=JSON.stringify({
+		usertoken:usermanager.getToken(),
+		type: 4,
+		tags:["tag-test1","tag-test2"],
+		id: aid,
+		action:8,
+	    });
+	    console.log("dsads");
+	    ajax.post('/setpost',pd,data=>{
+		console.dir(data);
+	    },e=>{
+		console.dir(e);
+	    })
+	})
     }
 
     // 新建文章的方法

@@ -564,6 +564,14 @@ ul {
   padding: 0px;
   color: #636b6f;
 }
+.test-editormd .video-player div small.title,
+#test-editormd .video-player div small.title {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #666;
+}
 .test-editormd .editormd-github-link-icon,
 #test-editormd .editormd-github-link-icon {
   margin-right: 0.5rem;

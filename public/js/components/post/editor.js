@@ -76,14 +76,16 @@ class EditorMd extends HTMLElement{
 	    flowChart:true,	// 流程图支持 默认关闭
 	    sequenceDiagram:true,
 	    
-	    onload:function(){meditorMd.onload(this,ajax)},
+	    onload:function(){
+		meditorMd.onload(this,ajax,usermanager);
+	    },
 	    toolbarIcons: this.editorIcons,
 	});
 
     }// init end
 
 
-    onload(editor_md,ajax){
+    onload(editor_md,ajax,usermanager){
 	var pluginUrl="js/libs/editor.md/plugins/famouscat-plugins";
 	var keyMap={
 	    'Ctrl-S':function(cm){meditorMd.saveArtical()}
@@ -92,10 +94,13 @@ class EditorMd extends HTMLElement{
 	editormd.loadPlugin(pluginUrl+"/paste-image",
 			    function(){
 				meditorMd.editor_md
-				    .imagePaste(ajax);
+				    .imagePaste(
+					ajax,usermanager);
 			    });
-	editormd.loadPlugin(pluginUrl+"/linkcard-dialog",()=>{});
-	editormd.loadPlugin(pluginUrl+"/keymap-plugin",function(){
+	editormd.loadPlugin(pluginUrl+
+			    "/linkcard-dialog",()=>{});
+	editormd.loadPlugin(pluginUrl+
+			    "/keymap-plugin",function(){
 	    meditorMd.editor_md
 		.keyMapPlugin(editor_md);
 	});

@@ -4,7 +4,7 @@
 	var $          = jQuery;
 	var pluginName = "paste-image";
 	//  图片粘贴的方法;将图片上传至云服务器
-	exports.fn.imagePaste = function(ajax){
+	exports.fn.imagePaste = function(ajax,usermanager){
 	    var _this       = this;
 	    var cm          = _this.cm;
 	    var settings    = _this.settings;
@@ -41,12 +41,16 @@
 		};
 		
 		var pd=JSON.stringify({
+		    usertoken: usermanager.getToken(),
 		    action:["name/cos:GetService"],
 		})
 		ajax.post("/sts",pd,temkey=>{
 		    var cos=new MyCOS(temkey);
 		    cos.putObject(file,
-				  uploadCallBack,uploadPro);
+				  {uid:usermanager
+				   .getUser().uid},
+				  uploadCallBack,
+				  uploadPro);
 		    
 		},e=>{
 		    layer.msg("get upload token error");

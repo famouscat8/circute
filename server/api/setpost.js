@@ -33,6 +33,11 @@ function loop1(uid,rd,res){
 	loop7();
     if(action == 7)//返回帖子的社交信息
 	loop8(uid,rd,res);
+    if(action == 8)//设置帖子tags
+	loop9(uid,rd,res);
+    if(action == 9)//返回帖子tags
+	loop10(uid,rd,res);
+    
 }
 
 
@@ -85,7 +90,8 @@ function loop8(uid,rd,res){
 	var getCollectNum=dbtools.zcard(key1);
 	var isStar=dbtools.zscore(key2,'user:'+uid);
 	var isCollect=dbtools.zscore(key1,'user:'+uid);
-	Promise.all([getStarNum,getCollectNum,isStar,isCollect])
+	Promise.all([getStarNum,
+		     getCollectNum,isStar,isCollect])
 	    .then(rs=>{
 		res.json({
 		    state:'1',
@@ -99,6 +105,60 @@ function loop8(uid,rd,res){
 	    })
     }
 }
+
+
+function loop9(uid,rd,res){
+    //rd:{tags:[tag1,tag2,tag3,tag4...]
+    
+    async function test(){
+	var tags = rd.tags;
+	var time = new Date().getTime();
+	var key1 = rd.type ==
+	    4?'artical:'+rd.id:'post:'+rd.id;
+	var keys = [key1+":tags",];
+	
+	if(!Boolean(tags))
+	    error('tags can not be null',res);
+	else{
+	    var tagid = await dbtools.get("tagsnum")
+		.catch(e=>{error(e,res)});
+	    
+	    // increase tagsnum
+	    var step1 = await dbtools
+		.incrby("tagsnum",rd.tags.length)
+		.catch(e=>{error(e,res)});
+
+	    for(var i=0;i<rd.tags.length;i++){
+		var id = tagid + i;
+		keys.push(time);
+		keys.push(rd.tags[i]);
+		var tag_o = {
+		    time: time,
+		    name: rd.tags[i],
+		}
+		var step3 = await dbtools
+		    .hmset("tag:"+id,tag_o)
+		    .catch(e=>{error(e,res)});
+		var step4 = await dbtools
+		    .zadd("tag:"+id+":object",time,key1)
+		    .catch(e=>{error(e,res)});
+	    }
+
+	    // add tags to artical
+	    var step2 = await dbtools.zadds(keys)
+		.catch(e=>{error(e,res)});
+	    
+	}// else end
+    }
+    
+    test().then(r=>{
+	console.dir(r);
+	success(res);
+    }).catch(e=>{error(e,res)});
+}
+
+function loop10(uid,rd,res){}
+
 
 function success(res){
     res.json({state:'1',m:'action success'});

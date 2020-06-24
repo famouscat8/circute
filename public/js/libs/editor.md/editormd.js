@@ -3545,10 +3545,15 @@
 	    	return retHTML;
 	    };
 	    //渲染形如github:famouscat8的链接
-	    if(text.indexOf('github:'==0)){
+	    if(text.indexOf('github:')==0){
 		var _t=text.substring(7,text.length);
 		return "<i class=\"fa fa-github editormd-github-link-icon\" aria-hidden=\"true\"></i><a href="+
 		    href+">"+_t+"</a>";
+	    }
+	    //渲染形如video:url的链接为视频
+	    if(text.indexOf("video:")==0){
+		var _t=text.substring(6,text.length);
+		return "<video-player class=\"video-player\" src=\""+href+"\" t=\""+_t+"\"></video-player>";
 	    }
 
             var out = "<a href=\"" + href + "\"";

@@ -3,6 +3,8 @@ var STS = require("qcloud-cos-sts")
 var express=require("express")
 var app = express();
 var router=express.Router();
+var token_tool = require("../tools/token_tools");
+
 
 var config={
     secretId:"AKIDoOhjRKiKErPhiSsB6l8KFtGPIuGKp2bt",
@@ -41,21 +43,29 @@ router.post("*",(req,res,next)=>{
 
 // 返回临时密钥
 router.post("/sts",(req,res,next)=>{
-    // var scope =[{
-    // 	action:"*",
-    // 	bucket:config.bucket,
-    // 	region:config.region,
-    // }];
-    //var policy = STS.getPolicy(scope);
+    var token = req.body.usertoken;
+    token_tool.verify(token,token_tool.secret).then(decode=>{
+	loop1(decode.uid,res);
+    }).catch(e=>{
+	res.json({state:'-1',e:'verify token error'});
+	return;
+    })
+})
+
+
+function loop1(uid,res){
     var policy ={
 	version:"2.0",
 	statement:[{
 	    action:"*",
 	    effect:"allow",
-	    resource:"*",
+	    resource:[
+		"qcs::cos:ap-beijing:uid/1259491699:circute2-1259491699/user:"+uid+":files/*",
+	    ],
 	}]
     };
-    console.dir(policy);
+
+    console.dir(policy.resource);
     STS.getCredential({
 	secretId:config.secretId,
 	secretKey:config.secretKey,
@@ -65,15 +75,10 @@ router.post("/sts",(req,res,next)=>{
 	if(err)res.json({state: "-1",tmpkeys:null,e:err});
 	else {
 	    res.json(tmpkeys);
-	    console.log("success");
 	    console.dir(tmpkeys);
 	}
     })
-})
+}
 
-// app.all("*", (req,res,next)=>{
-//     res.writeHead(404);
-//     res.json({state:"-1",e:404,m:"404,page not fond!"});
-// })
 
 module.exports=router;

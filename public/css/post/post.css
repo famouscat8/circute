@@ -137,6 +137,14 @@
   padding: 0px;
   color: #636b6f;
 }
+.test-editormd .video-player div small.title,
+#test-editormd .video-player div small.title {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #666;
+}
 .test-editormd .editormd-github-link-icon,
 #test-editormd .editormd-github-link-icon {
   margin-right: 0.5rem;
@@ -422,6 +430,7 @@ pre {
   align-items: center;
   box-shadow: 0 0px 3px #999999;
   transition: 0.3s;
+  cursor: pointer;
 }
 .books .books-list .books-item:hover {
   background: #eee;
@@ -530,6 +539,7 @@ pre {
   cursor: pointer;
   width: 100%;
   border-bottom: 1px #ddd solid;
+  min-height: 5.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
