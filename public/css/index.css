@@ -409,6 +409,9 @@ main .middle {
   -webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
   box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
 }
+main .middle .title {
+  margin-bottom: 0.8rem;
+}
 main .rightside {
   display: grid;
   grid-template-columns: 100%;
