@@ -17,6 +17,7 @@ router.post('/setpost',(req,res)=>{
     });
 })
 
+
 function loop1(uid,rd,res){
     var action = rd.action;
     if(action == 1)//点赞帖子
@@ -37,7 +38,6 @@ function loop1(uid,rd,res){
 	loop9(uid,rd,res);
     if(action == 9)//返回帖子tags
 	loop10(uid,rd,res);
-    
 }
 
 

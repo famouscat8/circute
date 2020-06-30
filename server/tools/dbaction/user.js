@@ -2,6 +2,7 @@ const UserBean = require("../bean/user")
 const dbtools  = require("../db-redis")
 const RandomCode = require("../randomcode")
 const MailSender = require("../mailer")
+const tokenTools = require('../token_tools')
 
 class User {
     static #userPre  = "user:";
@@ -22,16 +23,72 @@ class User {
     get userbean(){
 	return this.#userbean;
     }
-
+    
+    static verifyToken(token){
+	return new Promise((resolve,reject)=>{
+	    if(!Boolean(token))reject('token can not be null');
+	    tokenTools.verify(token,tokenTools.secret)
+		.then(decode=>{
+		    resolve(decode);
+		}).catch(e=>{
+		    reject(e);
+		})
+	})
+    }
+    
+    
     getUserByUid(uid){
 	return new Promise((resolve,reject)=>{
 	    if(!Boolean(uid))reject("uid can not be null");
-	    dbtools.hgetall(this.#userPre).then(user=>{
+	    dbtools.hgetall(this.#userPre+uid).then(user=>{
 		resolve(user);
 	    }).catch(e=>{
 		reject(e);
 	    })
 	})
+    }
+
+    // 此属性存储用户的收藏信息
+    addCollect(o_id,uid){
+	var time = new Date().getTime();
+	var key  = 'user:'+uid+':collect';
+	return new Promise((resolve,reject)=>{
+	    if(!Boolean(o_id))
+		reject("object id can not be null");
+	    dbtools.zadd(key,time,o_id).then(r=>{
+		resolve(r);
+	    }).catch(e=>{reject(e);});
+	})
+    }
+
+    //添加用户的点赞信息
+    // 用户uid向o_id点赞
+    addStar(o_id,uid){
+	var time = new Date().getTime();
+	var key  = 'user:'+uid+":star";
+	return new Promise((resolve,reject)=>{
+	    if(!Boolean(o_id)||!Boolean(uid))
+		reject('object or user id can not be null');
+	    dbtools.zadd(key,time,o_id).then(r=>{
+		resolve(r);
+	    }).catch(e=>{reject(e);});
+	})
+    }
+
+    // 返回用户的点赞对象
+    getStar(uid){
+	var key = 'user:'+uid+':star';
+	return new Promise((resolve,reject)=>{
+	    if(!Boolean(uid))reject("user id can not be null");
+	    dbtools.zrange(key,0,-1).then(r=>{
+		resolve(r);
+	    }).catch(e=>{reject(e);});
+	})
+    }
+    
+    // 修改用户信息
+    editUser(){
+	
     }
     
     async getUserByEmail(email){

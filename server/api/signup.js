@@ -24,14 +24,12 @@ router.post("/signup", (req, res)=>{
     	time     : time,
 	email    : email,
     }
-    var userbean = new UserBean(userobject);
-    console.dir(userobject);
-    user.signup(email, token, userbean).then(r=>{
+    
+    user.signup(email, token, new UserBean(userobject)).then(r=>{
 	res.json({state:'1'});
     }).catch(e=>{
 	error(e,"error:",res);
     })
-
 })
 
 

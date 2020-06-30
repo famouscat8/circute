@@ -1,63 +1,45 @@
 const express=require('express')
 const dbtools=require('../tools/db-redis')
-const token_tools=require('../tools/token_tools')
 const router = express.Router()
+const User   = require('../tools/dbaction/user')
+const Artical= require("../tools/dbaction/artical")
 
+
+// 新建artical api
 router.post('/createartical',(req,res)=>{
     var rd=req.body;
     var token = rd.usertoken;
     var title=rd.title;
     var bid = rd.bid;
-    token_tools.verify(token,token_tools.secret).then(decode=>{
-	loop1(decode.uid,bid,title,res);
-    }).catch(e=>{
-	res.json({state:'-1',e:null,m:'verify token error'});
-    })
-})
-
-// 查询出最新的aid号
-function loop1(uid,bid,title,res){
-    dbtools.get('articalnum').then(aid=>{
-	dbtools.incrby('articalnum',1).then(r=>{
-	    loop2(uid,bid,aid,title,res);
-	}).catch(e=>{
-	    error(e,res);
-	})
+    
+    saveArtical(token,title,bid).then(r=>{
+	console.dir(r);
+	res.json({state:'1',m:'create artical success'});
     }).catch(e=>{
 	error(e,res);
     })
-}
+})
 
-function loop2(uid,bid,aid,title,res){
-    var time = new Date().getTime();
+
+async function saveArtical(token,title,bid,){
+    if(!Boolean(title)||!Boolean(bid))
+	return 'title or bid can not be null';
+    var time   = new Date().getTime();
+    var decode = await User.verifyToken(token)
+	.catch(e=>{return e;});
     var artical={
-	aid      : aid,
 	ownbooks : bid,
-	owner    : 'user:'+uid,
+	owner    : decode.uid,
 	title    : title,
 	time     : time,
-	type     : 4,
-	star     : "artical:star:"+aid,
-	collect  : "artical:collect:"+aid,
-	comment  : "artical:comment:"+aid,
     }
-    var akey='artical:'+aid;
-    var bkey='books:'+bid;
-    var bkey_info=bkey+':info';
-    var createArtical=dbtools.hmset(akey,artical);
-    var add2Books=dbtools.zadd(bkey,time,akey);
-    var editBooksInfo=dbtools.hincrby(bkey_info,'articalnum',1);
-    Promise.all([createArtical,add2Books.editBooksInfo])
-	.then(rs=>{
-	    res.json({state:'1',m:rs,e:null});
-	}).catch(es=>{
-	    error(es,res);
-	})
+    var save = await Artical.save(artical);
+    return [decode,save];
 }
 
+
 function error(e,res){
-    console.log('createartical.js:');
-    console.dir(e);
+    console.dir(['createartical.js:',e]);
     res.json({state:"-1",e:e})
 }
 
