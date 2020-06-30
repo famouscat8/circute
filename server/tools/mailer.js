@@ -1,19 +1,19 @@
 // 向客户端发送邮件的工具类
 const nodemailer = require("nodemailer")
-
+var test = "navsavivpjandfca";
 const config = {
     host: "smtp.qq.com",
     port: 465,
     auth: {
-	user: "3142362556@qq.com",
-	pass: "ismwzmtzcjzldgga"
+	user: "3131677112@qq.com",
+	pass: "ioxfkqtwjatpdgih"
     }
 };
 var transporter = nodemailer.createTransport(config);
 
 var sendSignupMail =(to,html)=>{
     var mailOptions = {
-	from   : "3142362556@qq.com",
+	from   : "3131677112@qq.com",
 	to     : to,
 	subject: "注册CIRCUTE",
 	html   :html,
