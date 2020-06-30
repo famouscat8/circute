@@ -1,5 +1,5 @@
-const express=require('express')
-const dbtools=require('../tools/db-redis')
+const express= require('express')
+const dbtools= require('../tools/db-redis')
 const router = express.Router()
 const User   = require('../tools/dbaction/user')
 const Artical= require("../tools/dbaction/artical")

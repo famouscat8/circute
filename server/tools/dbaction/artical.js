@@ -14,18 +14,18 @@ class Artical{
 #artical;
     
     constructor(){
-this.#artical={
-    aid     : null,
-    ownbooks: null,
-    owner   : 'user:'+null,
-    title   : null,
-    time    : null,
-    type    : 4,
-    star    : 'artical:star:'+null,
-    collect : 'artical:collect:'+null,
-    comment : 'artical:comment:'+null,
-    
-}
+	this.#artical={
+	    aid     : null,
+	    ownbooks: null,
+	    owner   : 'user:'+null,
+	    title   : null,
+	    time    : null,
+	    type    : 4,
+	    star    : 'artical:star:'+null,
+	    collect : 'artical:collect:'+null,
+	    comment : 'artical:comment:'+null,
+	    
+	}
     }
 
     // 将artical保存至redis
@@ -57,6 +57,36 @@ this.#artical={
 
 	var action = await Promise.all([add2Books,cArtical]);
 	return [aid,addAid,action];
+    }
+
+
+    // 保存文章内容
+    static async setContent(aid,content){
+	var time = new Date().getTime();
+	var artical = {
+	    content: content,
+	    updateTime: time,
+	}
+	return new Promise((resolve,reject)=>{
+	    dbtools.hmset('artical:'+aid,artical).then(r=>{
+		resolve(r);
+	    }).catch(e=>{reject(e);});
+	})
+    }
+
+    // 设置帖子其他参数
+    static async setParam(options){
+	
+    }
+
+    // 判断某用户是否对文章有权限
+    static hasPermission(uid,aid){
+	return new Promise((resolve,reject)=>{
+	    dbtools.hget('artical:'+aid,'owner').then(owner=>{
+		if(owner == 'user:'+uid) resolve(true);
+		reject(false);
+	    }).catch(e=>{reject(e);});
+	})
     }
     
     getArticalBean(){
