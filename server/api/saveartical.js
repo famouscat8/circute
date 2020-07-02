@@ -25,7 +25,6 @@ router.post('/saveartical',(req,res)=>{
 
 async function saveArtical(token,aid,content){
     var decode = await User.verifyToken(token);
-    console.dir(decode);
     if(!Boolean(decode)||!Boolean(decode.uid))
 	return 'user id error';
     var hasPer = await Artical.hasPermission(decode.uid,aid);

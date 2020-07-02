@@ -10,19 +10,19 @@ tem2.innerHTML=`
     <div class="main-user-fa-book-container">
       <i class="fa fa-book" aria-hidden="true"></i>
     </div>
-    <p class="main-user-articalnum">--篇文章</p>
+    <p class="main-user-articalnum">0篇文章</p>
   </div>
   <div class="main-user-thumbsup-container">
     <div class="main-user-fa-thumbsup-container">
       <i class="fa fa-thumbs-up" aria-hidden="true"></i>
     </div>
-    <p class="main-user-thumbsupnum">----赞</p>
+    <p class="main-user-thumbsupnum">0赞</p>
   </div>
   <div class="main-user-star-container">
     <div class="main-user-fa-star-container">
       <i class="fa fa-star" aria-hidden="true"></i>
     </div>
-    <p class="main-user-starnum">----收藏</p>
+    <p class="main-user-starnum">0收藏</p>
   </div>
 </div>
 <div class="main-user-footer-container">
@@ -106,15 +106,17 @@ class ViewpostUser extends HTMLElement{
 	    var relation=mviewUser.user_relation;
 	    if(relation==1||relation==3){//已关注,点击取消关注
 		mviewUser.disfollowed();
-		mviewUser
-		    .unfollow_user(user,ajax,usermanager,null,e=>{
-			mviewUser.followed();
-		    });
+		mviewUser.unfollow_user(user,ajax,
+					usermanager,null,e=>{
+					    mviewUser.followed();
+					});
 	    }else{//未关注,点击关注
 		mviewUser.followed();
-		mviewUser.follow_user(user,ajax,usermanager,null,e=>{
-		    mviewUser.disfollowed();
-		});
+		mviewUser.follow_user(user,ajax,usermanager,
+				      null,e=>{
+					  mviewUser
+					      .disfollowed();
+				      });
 	    }
 	}
 	

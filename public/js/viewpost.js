@@ -2,22 +2,21 @@ $(()=>{
     var usermanager= new UserManager();
     var tools=new Tools();
     var ajax=new MyAjax();
-
-    var show=content=>{
-	
-	var testeditor = editormd.markdownToHTML("test-editormd",{
-	    markdown: content,
-	    emoji: true,
-	    toc:true,
-	    tocContainer:'.toc',
-	    taskList:true,
-	    tex:true,
-	    htmlDecode:true,
-	    sequenceDiagram:true,
-	    onload:function(){},
-	});
-    }
-
+    
+    observer.subscribe('show',content=>{
+	var testeditor = editormd
+	    .markdownToHTML('test-editormd',{
+		markdown: content,
+		emoji: true,
+		toc: true,
+		tocContainer: '.toc',
+		taskList: true,
+		tex: true,
+		htmlDecode: true,
+		sequenceDiagram: true,
+		onload: function(){},
+	    });
+    })
     
     function success(data){
 	console.dir(data);
@@ -26,13 +25,14 @@ $(()=>{
 	    var artical=data.artical;	    
 	    if(Boolean(post)){//post
 		document.title=post.content.title;
-		show(post.content.content);
+		observer.publish('show',post.content.content);
 		mviewUser.init(post.owner,ajax,usermanager,tools);
 		mmainHeader.init(post.owner);
 	    }else{//artical
 		document.title=artical.title;
-		show(artical.content);
-		mviewUser.init(artical.owner,ajax,usermanager,tools);
+		observer.publish('show',artical.content);
+		mviewUser
+		    .init(artical.owner,ajax,usermanager,tools);
 		mmainHeader.init(artical.owner);
 		mleftBar.init(artical,ajax,usermanager,tools);
 	    }
@@ -50,7 +50,8 @@ $(()=>{
 	pid:tools.getUrlParam('pid'),
     };
     pd=JSON.stringify(pd);
-    ajax.post('/getpost',pd,success,error);
+
+     ajax.post('/getpost',pd,success,error);
     
 })
 
