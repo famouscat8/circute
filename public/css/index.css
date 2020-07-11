@@ -103,6 +103,9 @@
     transform: rotate(0deg);
   }
 }
+.scrollbar {
+  scrollbar-color: #ccc transparent;
+}
 .shadow-1 {
   -webkit-box-shadow: 0 0 6px rgba(10, 10, 10, 0.2);
   box-shadow: 0 0 6px rgba(10, 10, 10, 0.2);
@@ -395,6 +398,11 @@
 .card-footer:hover {
   background: #eee;
   color: #9d2933;
+}
+* {
+  padding: 0;
+  margin: 0;
+  scrollbar-color: #ccc transparent;
 }
 main {
   padding: 2rem 2rem;

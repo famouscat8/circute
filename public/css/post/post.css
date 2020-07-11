@@ -668,4 +668,5 @@ pre {
 * {
   padding: 0;
   margin: 0;
+  scrollbar-color: #eee transparent;
 }

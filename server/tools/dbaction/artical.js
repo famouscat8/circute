@@ -108,17 +108,9 @@ class Artical{
 	});
     }
 
-    getCollect(aid){
-	
-    }
-
-    getComment(aid){
-	
-    }
-    
-    addStar(aid){
-	
-    }
+    getCollect(aid){}
+    getComment(aid){}
+    addStar(aid){}
 
     // 某用户收藏此文章
     // 在本文章的收藏列表添加该用户
