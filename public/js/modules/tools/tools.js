@@ -22,7 +22,7 @@ class Tools {
 	var weekC=diffValue/(7*day)
 	var hourC=diffValue/hour;
 	var minC=diffValue/minute;
-	if(mouthC>=1)result=""+parseInt(monthC)+"月前";
+	if(mouthC>=1)result=""+parseInt(mouthC)+"月前";
 	else if(weekC>=1)result=""+parseInt(weekC)+"周前";
 	else if(dayC>=1)result=""+parseInt(dayC)+"天前";
 	else if(hourC>=1)result=""+parseInt(hourC)+"小时前";
