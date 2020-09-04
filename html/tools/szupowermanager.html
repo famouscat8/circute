@@ -1,0 +1,134 @@
+<html>
+  <head>
+    <title>Power Manager</title>
+    <script src="js/libs/jquery.js"></script>
+    
+    <style>
+      html{
+	  display: flex;
+	  flex-direction: row;
+	  height: 100%;
+	  weight: 100%;
+	  align-items:center;
+	  justify-content:center;
+      }
+      body{
+	  width: 100%;
+      }
+      img{
+	  min-width: 200px;
+	  min-height: 30px;
+      }
+      #submit{
+	  min-width: 10%;
+      }
+      div{
+	  display:flex;
+	  align-itb.ems:center;
+	  justify-content: center;
+	  width: 100%;
+      }
+    </style>
+  </head>
+  <div>
+    <img id="imgCheckCode" alt="ssss"/>
+  </div>
+  <div>
+    <input id="username" placeholder="username">
+    <input id="password" placeholder="password">
+    <input id="checkcode" placeholder="checkcode">
+    
+  </div>
+  <div>
+    <button id="submit">提交</button>
+    <button id="query">查询</button>
+  </div>
+
+  <script>
+    var ig = $("#imgCheckCode")[0];
+    var cookies = '';
+    var logintoken = '';
+
+    $.ajax({
+	type:"POST",
+	data: {
+	    action: "1",
+	},
+	url: "/szupowermanager",
+	beforeSend: function(req){
+	},success: function(res){
+	    if(res.state=="1"){
+		// 处理cookies
+		var _cookies = res.cookie;
+		for(var j=0;j<_cookies.length;j++){
+		    console.dir(j);
+		    cookies += _cookies[j].split(';')[0] + ";";
+		}
+		
+		// res.data.data Uint8array
+		let arrayBuffer = new Uint8Array(res.data.data).buffer;
+		let bytes = new Uint8Array(arrayBuffer);
+		var len = bytes.byteLength;
+		var s_base64="";
+		for(var i=0;i<len;i++) s_base64 += String.fromCharCode(bytes[i]);
+		s_base64 = window.btoa(s_base64);
+		s_base64 = 'data:image/gif;base64,'+s_base64;
+		ig.src=s_base64;
+		
+		console.dir(res);
+	    }else{
+		console.dir(res);
+	    }
+	},error: function(e){
+	    console.dir(e);
+	}	
+    });
+    
+    $("#submit").click(function(){
+	$.ajax({
+	    type:"POST",
+	    data:{
+		action: "2",
+		login:{
+		    signtype:"SynCard",
+		    username:$("#username").val(),
+		    password:$("#password").val(),
+		    checkcode:$("#checkcode").val(),
+		    cookies: cookies,
+		},
+	    },url: "/szupowermanager",
+	    success: function(r){
+		if(r.state == "1")
+		    logintoken = r.logintoken;
+		
+		console.dir(r);
+	    },error: function(e){
+		console.dir(e);
+	    }
+	})
+	
+	console.dir(cookies);
+    })
+
+$("#query").click(function(){
+    $.ajax({
+	type: "POST",
+	data:{
+	    action: "3",
+	    search: {
+		cookies: cookies+";"+logintoken,
+	    },
+	},url:"/szupowermanager",
+	success: function(r){
+	    if(r.state == '1')
+		console.dir("success");
+	    console.dir(r);
+	},error:function(e){
+	    console.dir(e);
+	}
+    })
+})
+    
+    
+  </script>
+</html>

@@ -5,8 +5,8 @@ tem.innerHTML=`<header>
       <div class="logo-rightside">
 	<ul class="links">
 	  <li><a href="">首页</a></li>
-	  <li><a href=""
-		 class="btn-more-tools">小工具</a></li>
+	  <li><a href="szupowermanager.html"
+		 class="btn-more-tools">Power Manager</a></li>
 	</ul>
 
 <div class="search-container">

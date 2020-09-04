@@ -51,6 +51,11 @@ const getuser     = require("./server/api/getuser")
 // 返回指定k链接的title
 const geturltitle = require('./server/api/geturltitle')
 
+// tools:
+// szu power manager
+const szupowermanager = require("./server/api/szupowermanager")
+// return check code
+const checkcode = require("./server/api/checkcode")
 
 app.use(bodyparser.urlencoded({extende:true}))
 app.use(bodyparser.json())
@@ -102,8 +107,10 @@ app.post('/upartical',upartical)
 app.post('/fans',fans)
 app.post('/setpost',setpost)
 app.post('/geturltitle',geturltitle)
+app.post("/szupowermanager",szupowermanager)
 
 
+app.get("/checkcode",checkcode)
 app.get("/viewpost.html",viewpost)
 app.get("/test", (req, res) =>res.send("haha :)"))
 app.get("/login.html", (req, res)=>{
@@ -122,7 +129,13 @@ app.get("/user.html",(req,res)=>{
 app.get("/signup.html",(req,res)=>{
     res.sendFile("/root/test/web/html/signup/signup.html");
 })
+app.get("/szupowermanager.html",(req,res)=>{
+    res.sendFile("/root/test/web/html/tools/szupowermanager.html");
+})
 
+app.get("/9a.gif",(req,res)=>{
+    res.sendFile("/root/test/web/9a.gif");
+})
 app.listen(port,()=>{
     console.log(`Example app listening on port ${port}!`);
 })

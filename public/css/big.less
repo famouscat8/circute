@@ -4,7 +4,6 @@
 @footer-padding: 1rem;
 @footer-font-size: .88rem;
 
-
 body {
     display: flex;
     flex-direction: column;
@@ -13,11 +12,16 @@ body {
 	z-index:2;
     }
     .scroll{
+	display:flex;
+	justify-content:flex-start;
+	flex-direction: column;
+	align-items:center;
 	overflow-y:scroll;
 	height: calc(100vh - @toolbar-height);
-	
     }
     main {
+	background: none;
+	width: 78%;
 	flex-grow: 1;
     }
     
