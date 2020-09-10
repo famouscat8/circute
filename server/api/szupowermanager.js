@@ -1,9 +1,8 @@
-const axios = require("axios")
+const axios   = require("axios")
 const express = require("express")
 const router  = express.Router()
-const Qs    = require("qs")
-const Fs    = require("fs")
-
+const Qs      = require("qs")
+const Fs      = require("fs")
 
 // action:
 // 1: get check code
@@ -32,6 +31,8 @@ router.post("/szupowermanager",(req,res)=>{
     }
     
 })
+
+
 
 
 function loop3(search,res){

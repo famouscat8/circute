@@ -2,7 +2,7 @@ const express = require("express");
 const nodemailer = require("./server/tools/mailer");
 const path = require("path")
 const app = express();
-const port = 3000;
+const port = 80;
 
 const indexRouter = require("./server/routers/index")
 const signup      = require("./server/api/signup")
