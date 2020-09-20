@@ -4,9 +4,10 @@ tem.innerHTML=`<header>
       <a href='' class="logo">CIRCUTE</a>
       <div class="logo-rightside">
 	<ul class="links">
-	  <li><a href="">首页</a></li>
+	  <li><a href="/">首页</a></li>
 	  <li><a href="szupowermanager.html"
 		 class="btn-more-tools">Power Manager</a></li>
+          <li><a href="buble.html">泡泡茶壶</a></li>
 	</ul>
 
 <div class="search-container">

@@ -88,7 +88,7 @@ function sendPost(t_editor,t_imgs){
 	    layer.close(index_layer);
 	    if(r.state=="1"){
 		layer.msg("发布成功");
-		window.location="http://49.232.164.187:3000";
+		window.location="/";
 	    }else{
 		console.dir(r);
 		layer.msg("发布失败");

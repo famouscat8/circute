@@ -1,7 +1,7 @@
-const express = require("express");
-const nodemailer = require("./server/tools/mailer");
+const express = require("express")
+const nodemailer = require("./server/tools/mailer")
 const path = require("path")
-const app = express();
+const app = express()
 const port = 80;
 
 const indexRouter = require("./server/routers/index")
@@ -15,7 +15,7 @@ const verifytoken = require("./server/api/verifytoken")
 const sendpost    = require("./server/api/sendpost")
 // api 返回帖子列表
 const post        = require("./server/api/post")
- // api 返回某条帖子
+// api 返回某条帖子
 const getpost     = require("./server/api/getpost")
 // api tenxunyun temple token 
 const sts         = require("./server/api/sts")
@@ -57,31 +57,42 @@ const szupowermanager = require("./server/api/szupowermanager")
 // return check code
 const checkcode = require("./server/api/checkcode")
 
+
+
+// 上传文件至服务器
+const upload = require("./server/api/upload")
+
 app.use(bodyparser.urlencoded({extende:true}))
 app.use(bodyparser.json())
 
-var verify_token = (req, res, next)=>{
+var logger  = (req, res, next)=>{
+    var ipAddress;
+    // ipAddress = req.headers['X-Forwarded-For'] &&
+    // 	req.headers['X-Forwarded-For']
+    ipAddress =req&&req.headers&&req.headers['x-forwarded-for'];
+    if(!ipAddress)
+	ipAddress = req.connection.remoteAddress;
+    console.log("request ip address:"+ ipAddress)
     
     if(req.url != "/test") {
-	console.log("请求连接 :"+req.url);
+	console.log("request for:"+req.url);
 	next();
     }else{
-	console.log("请求/test");
+	console.log("request test:");
 	var token = req.query.token;
 	if(token == null) res.json({state:"0"})
 	token_tools.verify(token, "mysecret").then(decode=>{
-	    console.dir("返回结果:"+decode);
+	    console.dir("return :"+decode);
 	    res.json({state: "1"});
 	    next();
 	}).catch(e=>{
-	    console.dir("返回错误:"+e);
+	    console.dir("return error");
 	    res.json({state: "-1"});
 	})
-	
     }
 }
 
-app.use(verify_token)
+app.use(logger)
 // 挂载静态资源
 app.use(express.static("public"))
 app.use("/", indexRouter)
@@ -108,7 +119,7 @@ app.post('/fans',fans)
 app.post('/setpost',setpost)
 app.post('/geturltitle',geturltitle)
 app.post("/szupowermanager",szupowermanager)
-
+app.post("/upload",upload)
 
 app.get("/checkcode",checkcode)
 app.get("/viewpost.html",viewpost)
@@ -132,10 +143,11 @@ app.get("/signup.html",(req,res)=>{
 app.get("/szupowermanager.html",(req,res)=>{
     res.sendFile("/root/test/web/html/tools/szupowermanager.html");
 })
-
-app.get("/9a.gif",(req,res)=>{
-    res.sendFile("/root/test/web/9a.gif");
+app.get("/buble.html",(req,res)=>{
+    res.sendFile("/root/test/web/html/buble/buble.html");
 })
+
+
 app.listen(port,()=>{
     console.log(`Example app listening on port ${port}!`);
 })
